@@ -1,0 +1,5 @@
+[image-1]
+hash = 123456
+title = "My first image"
+description = "Image description"
+tags = ['foo', 'bar', 'baz']
