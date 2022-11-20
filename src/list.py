@@ -4,10 +4,12 @@ def parse_to_gallery(file_contents):
     return tomli.loads(file_contents)
 
 def format(gallery):
-    value = ""
+    rows = []
     for image in gallery.values():
-        value += image["title"] + "\n" + image["description"]
-    return value
+        rows.append(image["title"])
+        rows.append(image["description"])
+        rows.append("")
+    return rows
 
 if __name__ == "__main__":
     images = open("../samples/images.toml", "rb")

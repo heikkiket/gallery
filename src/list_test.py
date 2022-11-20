@@ -25,6 +25,9 @@ tags = ['foo']
 @pytest.fixture
 def simple_gallery():
     return list.parse_to_gallery(singleimage)
+@pytest.fixture
+def complex_gallery():
+    return list.parse_to_gallery(many_images)
 
 def test_parse_to_gallery(simple_gallery):
     assert "image-1" in simple_gallery
@@ -32,4 +35,8 @@ def test_parse_to_gallery(simple_gallery):
 
 def test_list_single_image(simple_gallery):
     formatted = list.format(simple_gallery)
-    assert formatted == "My first image\nImage description"
+    assert formatted == ["My first image", "Image description", ""]
+
+def test_list_many_images(complex_gallery):
+    formatted = list.format(complex_gallery)
+    assert formatted == ["My first image", "Image description", "", "My second image", "Image description as well", ""]
