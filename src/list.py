@@ -36,5 +36,8 @@ if __name__ == "__main__":
     imagefile = read_file(filename)
     image_gallery = tomli.load(imagefile)
     formatted = format(image_gallery)
-
+    tags = tags(image_gallery)
+    print(
+        "This gallery has following {} tags: {}".format(len(tags), tags)
+          )
     print("\n".join(formatted))
