@@ -20,7 +20,9 @@ if __name__ == "__main__":
     else:
         print("Give a .toml gallery filename")
         exit(0)
-    images = read_file(filename)
-    parsed = tomli.load(images)
-    formatted = format(parsed)
+
+    imagefile = read_file(filename)
+    image_gallery = tomli.load(imagefile)
+    formatted = format(image_gallery)
+
     print("\n".join(formatted))
