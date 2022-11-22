@@ -1,4 +1,5 @@
 import tomli, sys
+import argparse
 
 def read_file(path):
     return open(path, 'rb')
@@ -45,23 +46,21 @@ def format(gallery):
         rows.append("")
     return rows
 
-def main():
-    if len(sys.argv) > 1:
-        filename = sys.argv[1]
-    else:
-        print("Give a .toml gallery filename")
-        exit(0)
-
-    imagefile = read_file(filename)
+def main(args):
+    imagefile = read_file(args.filename)
     image_gallery = tomli.load(imagefile)
-    formatted = format(image_gallery)
-    tag_list = tags(image_gallery)
-    print(
-        "This gallery has following {} tags: {}"
-        .format(len(tag_list), tag_list)
-          )
+    formatted = format(filter_by_tag(image_gallery, args.tag))
     print("\n".join(formatted))
 
+parser = argparse.ArgumentParser(
+    description="Lists image gallery information into console",
+    epilog="This software is unfinished. Please send comments and ideas."
+)
+
+parser.add_argument('filename',
+                    metavar="filename.toml",
+                    help="A path to toml file")
+parser.add_argument('-t', '--tag')
 
 if __name__ == "__main__":
-    main()
+    main(parser.parse_args())

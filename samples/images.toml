@@ -14,4 +14,4 @@ tags = ['foo']
 hash = 7890123
 title = "My third image"
 description = "Image description like others"
-tags = ['foo']
+tags = ['foo', 'baz']
