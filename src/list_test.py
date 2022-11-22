@@ -1,7 +1,7 @@
 import list, pytest
 
 singleimage = """
-[image-1]
+["path/to/image1.jpg"]
 hash = 123456
 title = "My first image"
 description = "Image description"
@@ -9,13 +9,13 @@ tags = ['foo', 'bar', 'baz']
 """
 
 many_images = """
-[image-1]
+["path/to/image1.jpg"]
 hash = 123456
 title = "My first image"
 description = "Image description"
 tags = ['foo', 'bar', 'baz']
 
-[image-2]
+["path/to/image2.jpg"]
 hash = 7890123
 title = "My second image"
 description = "Image description as well"
@@ -30,13 +30,25 @@ def complex_gallery():
     return list.parse_to_gallery(many_images)
 
 def test_parse_to_gallery(simple_gallery):
-    assert "image-1" in simple_gallery
-    assert simple_gallery['image-1']['hash'] == 123456
+    assert "path/to/image1.jpg" in simple_gallery
+    assert simple_gallery['path/to/image1.jpg']['hash'] == 123456
 
 def test_list_single_image(simple_gallery):
     formatted = list.format(simple_gallery)
-    assert formatted == ["My first image", "Image description", ""]
+    assert formatted == [
+        "[path/to/image1.jpg]:",
+        "My first image",
+        "Image description",
+        ""]
 
 def test_list_many_images(complex_gallery):
     formatted = list.format(complex_gallery)
-    assert formatted == ["My first image", "Image description", "", "My second image", "Image description as well", ""]
+    assert formatted == [
+        "[path/to/image1.jpg]:",
+        "My first image",
+        "Image description",
+        "",
+        "[path/to/image2.jpg]:",
+        "My second image",
+        "Image description as well",
+        ""]

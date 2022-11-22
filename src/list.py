@@ -8,7 +8,8 @@ def parse_to_gallery(file_contents):
 
 def format(gallery):
     rows = []
-    for image in gallery.values():
+    for path, image in gallery.items():
+        rows.append("[" + path + "]:")
         rows.append(image["title"])
         rows.append(image["description"])
         rows.append("")
