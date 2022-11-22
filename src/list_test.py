@@ -1,4 +1,6 @@
-import list, pytest
+import pytest
+
+import list
 
 singleimage = """
 ["path/to/image1.jpg"]

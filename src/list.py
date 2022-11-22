@@ -1,10 +1,21 @@
 import tomli, sys
 
+## Throw this if the gallery dictionary is not in a right format
+class InvalidGalleryFormat(Exception):
+    pass
+
 def read_file(path):
     return open(path, 'rb')
 
 def parse_to_gallery(file_contents):
     return tomli.loads(file_contents)
+
+# Takes an image_gallery and returns a set containing all tags in the gallery
+def tags(gallery):
+    tags = set()
+    for image in gallery.values():
+        tags.update(image['tags'])
+    return tags
 
 def format(gallery):
     rows = []
