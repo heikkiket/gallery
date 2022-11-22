@@ -17,6 +17,17 @@ def tags(gallery):
         tags.update(image['tags'])
     return tags
 
+def filter_by_tag(gallery, tag):
+    results = {}
+
+    if tag == "":
+        return gallery
+    for path, image in gallery.items():
+        if tag in image["tags"]:
+            results[path] = image
+
+    return results
+
 def format(gallery):
     rows = []
     for path, image in gallery.items():
