@@ -1,4 +1,4 @@
-[image-1]
+["path/to/image.jpg"]
 hash = 123456
 title = "My first image"
 description = "Image description"
