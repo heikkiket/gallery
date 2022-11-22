@@ -1,21 +1,6 @@
 import pytest
 
 import list
-from list import InvalidGalleryFormat
-
-many_images = """
-["path/to/image1.jpg"]
-hash = 123456
-title = "My first image"
-description = "Image description"
-tags = ['foo', 'bar', 'baz']
-
-["path/to/image2.jpg"]
-hash = 7890123
-title = "My second image"
-description = "Image description as well"
-tags = ['foo']
-"""
 
 def test_needs_argument():
     with pytest.raises(TypeError):

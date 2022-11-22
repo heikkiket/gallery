@@ -1,9 +1,5 @@
 import tomli, sys
 
-## Throw this if the gallery dictionary is not in a right format
-class InvalidGalleryFormat(Exception):
-    pass
-
 def read_file(path):
     return open(path, 'rb')
 
