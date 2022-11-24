@@ -1,5 +1,6 @@
 import tomli, sys
-import argparse
+
+from .parser import subparsers
 
 def read_file(path):
     return open(path, 'rb')
@@ -46,21 +47,19 @@ def format(gallery):
         rows.append("")
     return rows
 
-def main(args):
+def list_main(args):
     imagefile = read_file(args.filename)
     image_gallery = tomli.load(imagefile)
     formatted = format(filter_by_tag(image_gallery, args.tag))
     print("\n".join(formatted))
 
-parser = argparse.ArgumentParser(
-    description="Lists image gallery information into console",
-    epilog="This software is unfinished. Please send comments and ideas."
-)
 
+parser = subparsers.add_parser('list',
+    description="Lists image gallery information into console",
+                               )
 parser.add_argument('filename',
                     metavar="filename.toml",
                     help="A path to toml file")
 parser.add_argument('-t', '--tag')
+parser.set_defaults(func=list_main)
 
-if __name__ == "__main__":
-    main(parser.parse_args())
