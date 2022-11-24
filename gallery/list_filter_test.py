@@ -14,6 +14,10 @@ def test_empty_tag_returns_all():
     filtered = list.filter_by_tag(test_gallery, "")
     assert filtered == test_gallery
 
+def test_tag_None_returns_all():
+    filtered = list.filter_by_tag(test_gallery, None)
+    assert filtered == test_gallery
+
 def test_unmathed_tag_returns_empty():
     filtered = list.filter_by_tag(test_gallery, "nonexisting_tag")
     assert filtered == {}

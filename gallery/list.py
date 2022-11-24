@@ -29,7 +29,7 @@ def filter_by_tag(gallery, tag):
     """
     results = {}
 
-    if tag == "":
+    if tag == "" or tag == None:
         return gallery
     for path, image in gallery.items():
         if tag in image["tags"]:
