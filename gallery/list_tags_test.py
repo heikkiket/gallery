@@ -1,6 +1,6 @@
 import pytest
 
-import list
+from . import list
 
 def test_needs_argument():
     with pytest.raises(TypeError):

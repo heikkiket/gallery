@@ -1,7 +1,7 @@
 import sys
 
 from .parser import parser
-from .list import list_main
+from . import list
 
 def main():
     try:

@@ -1,6 +1,6 @@
 import pytest
-import list
-from test_gallery import test_gallery
+from . import list
+from .test_gallery import test_gallery
 
 def test_filter_raises_when_no_arguments():
     with pytest.raises(TypeError):
