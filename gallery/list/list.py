@@ -1,6 +1,6 @@
 import tomli, sys
 
-from .parser import subparsers
+from ..parser import subparsers
 
 def read_file(path):
     return open(path, 'rb')
@@ -47,7 +47,7 @@ def format(gallery):
         rows.append("")
     return rows
 
-def list_main(args):
+def main(args):
     imagefile = read_file(args.filename)
     image_gallery = tomli.load(imagefile)
     formatted = format(filter_by_tag(image_gallery, args.tag))
@@ -61,5 +61,5 @@ parser.add_argument('filename',
                     metavar="filename.toml",
                     help="A path to toml file")
 parser.add_argument('-t', '--tag')
-parser.set_defaults(func=list_main)
+parser.set_defaults(func=main)
 
