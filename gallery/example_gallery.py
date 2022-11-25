@@ -1,4 +1,4 @@
-test_gallery = {
+example_gallery = {
     "path/to/image1.jpg":
     {
         "hash": 123456,
