@@ -1,6 +1,6 @@
 import pytest
 
-from . import list
+from gallery.list import list
 
 def test_needs_argument():
     with pytest.raises(TypeError):

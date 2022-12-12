@@ -1,6 +1,6 @@
 import pytest
 
-from . import list
+from gallery.list import list
 
 singleimage = """
 ["path/to/image1.jpg"]
