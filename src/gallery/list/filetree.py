@@ -13,6 +13,16 @@ class Filetree():
     def add_image(self, name, type):
         self.entries.append(Image(name, type))
 
+    def find(self, path):
+        components = path.split("/")
+        component = components.pop(0)
+        for entry in self.entries:
+            if entry.name == component:
+                if isinstance(entry, Filetree):
+                    return entry.find("/".join(components))
+                else:
+                    return entry
+
     def next(self):
         index = self.current
         self.current += 1
