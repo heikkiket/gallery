@@ -1,5 +1,5 @@
 from gallery.list import Filetree
-from gallery.list import File
+from gallery.list import Image
 
 def test_new_filetree_is_empty():
     tree = Filetree()
@@ -12,10 +12,17 @@ def test_add_dir():
 
 def test_add_image():
     tree = Filetree()
-    tree.add_image("foo.jpg", File.JPG)
+    tree.add_image("foo.jpg", "jpg")
     assert tree.is_empty() == False
 
 def test_image_is_right_type():
     tree = Filetree()
-    tree.add_image("foo.jpg", File.JPG)
-    assert tree.next().type == File.JPG
+    tree.add_image("foo.jpg", "jpg")
+    assert tree.next().type == "jpg"
+
+def test_dir_can_contain_img():
+    tree = Filetree()
+    tree.add_dir("test_dir")
+    dir = tree.next()
+    dir.add_image("test.jpg", "jpg")
+    assert dir.is_empty() == False

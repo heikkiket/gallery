@@ -1,25 +1,23 @@
 class Filetree():
-    def __init__(self):
+    def __init__(self, name="."):
         super().__init__()
+        self.name = name,
         self.entries = []
 
     def add_dir(self, name):
-        self.entries.append(File(name, File.DIR))
+        self.entries.append(Filetree(name))
 
     def is_empty(self):
         return self.entries == []
 
     def add_image(self, name, type):
-        self.entries.append(File(name, type))
+        self.entries.append(Image(name, type))
 
     def next(self):
         return self.entries[0]
 
-class File():
-    DIR = 1
-    JPG = 2
+class Image():
 
     def __init__(self, name, type):
-        super().__init__()
-        self.name = name,
+        self.name = name
         self.type = type

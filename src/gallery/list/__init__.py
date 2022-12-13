@@ -1,2 +1,2 @@
 from .list import main
-from .filetree import Filetree, File
+from .filetree import Filetree, Image
