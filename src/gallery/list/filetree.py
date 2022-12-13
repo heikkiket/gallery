@@ -1,8 +1,8 @@
 class Filetree():
     def __init__(self, name="."):
-        super().__init__()
-        self.name = name,
+        self.name = name
         self.entries = []
+        self.reset()
 
     def add_dir(self, name):
         self.entries.append(Filetree(name))
@@ -14,7 +14,12 @@ class Filetree():
         self.entries.append(Image(name, type))
 
     def next(self):
-        return self.entries[0]
+        index = self.current
+        self.current += 1
+        return self.entries[index]
+
+    def reset(self):
+        self.current = 0
 
 class Image():
 
