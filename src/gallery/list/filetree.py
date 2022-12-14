@@ -5,7 +5,9 @@ class Filetree():
         self.reset()
 
     def add_dir(self, name):
-        self.entries.append(Filetree(name))
+        dir = Filetree(name)
+        self.entries.append(dir)
+        return dir
 
     def is_empty(self):
         return self.entries == []
