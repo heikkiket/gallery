@@ -1,6 +1,13 @@
 from pathlib import Path
 
 class Filetree():
+    """
+    @brief      Filetree is a representation of a tree or subtree of directories.
+
+    @details    Filetree can contain other filetrees or images. It is a mutable data structure where one can add new directories (in practise filetrees) or images. It can be iterated using next() method.
+
+    Filetree is created by giving it an optional path. It defaults to "." as a path. Internally it uses pathlib for all Path manipulation.
+    """
     def __init__(self, path: Path = Path(".")):
         self.name = path.name
         self.path = path
@@ -8,17 +15,44 @@ class Filetree():
         self.reset()
 
     def add_dir(self, name):
+        """Adds a dir into current filetree
+
+        Arguments:
+        name -- A name for dir, (str)
+
+        Return: Filetree, a sub filetree representing added dir
+        """
         dir = Filetree(self.path / name)
         self.entries.append(dir)
         return dir
 
     def is_empty(self):
+        """
+        Return: boolean"""
         return self.entries == []
 
     def add_image(self, name :str, type):
+        """
+        @brief      Adds an image into current filetree
+
+        @details    Internally creates a representation of Image
+
+        @param      name (str) a filename for image
+        @param      type (str) a type of file. Just a short suffix
+
+        """
         self.entries.append(Image(self.path / name, type))
 
     def find(self, path):
+        """
+        @brief      Find path from filetree
+
+        @details    Finds a given path inside the filetree and returns item if found.
+
+        @param      path (str) -- path to search for
+
+        @return     return Image or None
+        """
         components = path.split("/")
         component = components.pop(0)
         for entry in self.entries:
