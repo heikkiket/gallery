@@ -8,6 +8,14 @@ def read_file(path):
 def parse_to_gallery(file_contents):
     return tomli.loads(file_contents)
 
+def diff(gallery, filetree):
+    print(gallery)
+    for path, image in gallery.items():
+        if not filetree.find(path):
+            image["missing"] = True
+
+    return gallery
+
 def tags(gallery):
     """Takes an image_gallery and returns a Set
     containing all tags in the gallery
