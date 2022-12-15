@@ -13,7 +13,7 @@ class Galleryreader():
                 dir = tree.add_dir(file.name)
                 self.read_dir(file, dir)
             else:
-                tree.add_image(file.name, "")
+                tree.add_image(file.name, "", "")
 
         return tree
 
