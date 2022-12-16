@@ -1,0 +1,16 @@
+[project]
+name = "mypackage"
+version = "0.1.0"
+dependencies = [
+    "tomli",
+]
+
+[project.scripts]
+gallery = "gallery:main"
+
+[pytest]
+testpaths = "test"
+
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
