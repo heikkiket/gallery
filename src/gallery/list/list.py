@@ -8,8 +8,7 @@ def read_file(path):
 def parse_to_gallery(file_contents):
     return tomli.loads(file_contents)
 
-def diff(gallery, filetree):
-    print(gallery)
+def flag_missing(gallery, filetree):
     for path, image in gallery.items():
         if not filetree.find(path):
             image["missing"] = True

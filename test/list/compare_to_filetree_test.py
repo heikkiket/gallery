@@ -17,15 +17,15 @@ def filetree():
     return tree
 
 def test_with_empty_returns_empty():
-    assert list.diff({}, Filetree()) == {}
+    assert list.flag_missing({}, Filetree()) == {}
 
 def test_with_empty_filetree_all_missing(test_gallery):
 
-    result = list.diff(test_gallery, Filetree())
+    list.flag_missing(test_gallery, Filetree())
 
-    assert "missing" in result["path/to/image1.jpg"]
+    assert "missing" in test_gallery["path/to/image1.jpg"]
 
 def test_not_all_missing(test_gallery, filetree):
-    result = list.diff(test_gallery, filetree)
+    list.flag_missing(test_gallery, filetree)
 
-    assert not "missing" in result["path/to/image1.jpg"]
+    assert not "missing" in test_gallery["path/to/image1.jpg"]
