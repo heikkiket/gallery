@@ -1,5 +1,7 @@
 import tomli, sys
 
+from copy import deepcopy
+
 from ..parser import subparsers
 
 def read_file(path):
@@ -9,11 +11,12 @@ def parse_to_gallery(file_contents):
     return tomli.loads(file_contents)
 
 def flag_missing(gallery, filetree):
-    for path, image in gallery.items():
+    result_gallery = deepcopy(gallery)
+    for path, image in result_gallery.items():
         if not filetree.find(path):
             image["missing"] = True
 
-    return gallery
+    return result_gallery
 
 def tags(gallery):
     """Takes an image_gallery and returns a Set
