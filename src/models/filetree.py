@@ -1,5 +1,7 @@
 from pathlib import Path
 
+from models.image import Image
+
 class Filetree():
     """
     @brief      Filetree is a representation of a tree or subtree of directories.
@@ -70,9 +72,3 @@ class Filetree():
     def reset(self):
         self.current = 0
 
-class Image():
-
-    def __init__(self, path :Path, type :str):
-        self.name = path.name
-        self.type = type
-        self.path = path

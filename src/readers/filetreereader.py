@@ -1,8 +1,8 @@
 import os
 
-from gallery.list import Filetree
+from models.filetree import Filetree
 
-class Galleryreader():
+class Filetreereader():
 
     def read(self, path):
         return self.read_dir(Filetree(path))
