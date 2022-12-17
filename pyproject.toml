@@ -2,7 +2,10 @@
 name = "mypackage"
 version = "0.1.0"
 dependencies = [
+    # To read Toml
     "tomli",
+    # To check if file is image
+    "filetype"
 ]
 
 [project.scripts]

@@ -13,6 +13,9 @@ def mkimg(path):
     img = Image.new('RGB', (1, 1))
     img.save(path)
 
+def mkfile(path):
+    open(path, "x")
+
 def test_filetreereader_returns_filetree(tmp_path):
     reader = Filetreereader()
     tree = reader.read(tmp_path)
@@ -22,7 +25,9 @@ def test_filetreereader_reads_image_file(tmp_path):
     mkimg(tmp_path / "test1.png")
 
     tree = Filetreereader().read(tmp_path)
-    assert tree.next().name == "test1.png"
+    image = tree.next()
+    assert image.name == "test1.png"
+    assert image.type == "png"
 
 def test_filetreereader_reads_several_image_files(tmp_path):
     mkimg(tmp_path / "test1.png")
@@ -40,3 +45,8 @@ def test_filetreereader_recurses_to_dirs(tmp_path):
     tree_dir = tree.next()
     assert tree_dir.name == "sub"
     assert tree_dir.next().name == "test1.png"
+
+def test_filereader_reads_only_images(tmp_path):
+    mkfile(tmp_path / "foo")
+    tree = Filetreereader().read(tmp_path)
+    assert tree.is_empty()

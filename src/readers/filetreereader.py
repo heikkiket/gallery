@@ -1,4 +1,5 @@
 import os
+import filetype
 
 from models.filetree import Filetree
 
@@ -12,8 +13,9 @@ class Filetreereader():
             if file.is_dir():
                 dir = tree.add_dir(file.name)
                 self.read_dir(dir)
-            else:
-                tree.add_image(file.name, "")
+            elif filetype.is_image(file.path):
+                type = filetype.guess(file.path)
+                tree.add_image(file.name, type.extension)
 
         return tree
 
