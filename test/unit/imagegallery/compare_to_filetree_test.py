@@ -4,7 +4,7 @@ from copy import deepcopy
 from models.filetree import Filetree
 from models import gallery_toml
 
-from .data.example_gallery import example_gallery
+from ..data.example_gallery import example_gallery
 
 @pytest.fixture
 def test_gallery():
