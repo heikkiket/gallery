@@ -4,6 +4,8 @@ version = "0.1.0"
 dependencies = [
     # To read Toml
     "tomli",
+    #To write it sometimes
+    "tomli_w",
     # To check if file is image
     "filetype"
 ]
