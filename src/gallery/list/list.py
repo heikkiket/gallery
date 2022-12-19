@@ -1,13 +1,8 @@
 import tomli, sys
 
+from Imagegallery import Imagegallery
 from gallery.parser import subparsers
 from models.gallery_toml import filter_by_tag
-
-def read_file(path):
-    return open(path, 'rb')
-
-def parse_to_gallery(file_contents):
-    return tomli.loads(file_contents)
 
 def format(gallery):
     """Formats image gallery for printing out into console"""
@@ -20,18 +15,19 @@ def format(gallery):
     return rows
 
 def main(args):
-    imagefile = read_file(args.filename)
-    image_gallery = tomli.load(imagefile)
-    formatted = format(filter_by_tag(image_gallery, args.tag))
+    try:
+        gallery = Imagegallery()
+    except FileNotFoundError:
+        print("No gallery.toml file found in this directory.")
+        exit(0)
+
+    formatted = format(filter_by_tag(gallery.gallery_toml, args.tag))
     print("\n".join(formatted))
 
 
 parser = subparsers.add_parser('list',
     description="Lists image gallery information into console",
                                )
-parser.add_argument('filename',
-                    metavar="filename.toml",
-                    help="A path to toml file")
 parser.add_argument('-t', '--tag')
 parser.set_defaults(func=main)
 
