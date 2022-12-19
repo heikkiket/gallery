@@ -36,6 +36,7 @@ def test_multiple_levels():
 
     result = tree.flatten()
     assert len(result) == 3
+    assert "sub/img3.png" in result
 
 def test_flattened_body():
     tree = Filetree()
