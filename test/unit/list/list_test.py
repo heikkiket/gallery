@@ -32,10 +32,6 @@ def simple_gallery():
 def complex_gallery():
     return tomli.loads(many_images)
 
-def test_parse_to_gallery(simple_gallery):
-    assert "path/to/image1.jpg" in simple_gallery
-    assert simple_gallery['path/to/image1.jpg']['hash'] == 123456
-
 def test_list_single_image(simple_gallery):
     formatted = list.format(simple_gallery)
     assert formatted == [
