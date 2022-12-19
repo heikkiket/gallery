@@ -1,20 +1,8 @@
 import pytest
 
-from PIL import Image
 from readers.filetreereader import Filetreereader
 from models.filetree import Filetree
-
-def mkdir(path, sub):
-    dir = path / sub
-    dir.mkdir()
-    return dir
-
-def mkimg(path):
-    img = Image.new('RGB', (1, 1))
-    img.save(path)
-
-def mkfile(path):
-    open(path, "x")
+from test.integration.filesystem_helpers import mkdir, mkimg, mkfile
 
 def test_filetreereader_returns_filetree(tmp_path):
     reader = Filetreereader()
