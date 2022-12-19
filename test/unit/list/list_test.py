@@ -1,4 +1,5 @@
 import pytest
+import tomli
 
 from gallery.list import list
 
@@ -26,10 +27,10 @@ tags = ['foo']
 
 @pytest.fixture
 def simple_gallery():
-    return list.parse_to_gallery(singleimage)
+    return tomli.loads(singleimage)
 @pytest.fixture
 def complex_gallery():
-    return list.parse_to_gallery(many_images)
+    return tomli.loads(many_images)
 
 def test_parse_to_gallery(simple_gallery):
     assert "path/to/image1.jpg" in simple_gallery
