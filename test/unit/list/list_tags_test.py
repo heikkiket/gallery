@@ -1,6 +1,6 @@
 import pytest
 
-from models import gallery_toml
+from Imagegallery import gallery_toml
 
 def test_needs_argument():
     with pytest.raises(TypeError):

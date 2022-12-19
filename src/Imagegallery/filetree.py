@@ -1,6 +1,6 @@
 from pathlib import Path
 
-from models.image import Image
+from Imagegallery.image import Image
 
 class Filetree():
     """

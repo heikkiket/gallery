@@ -1,8 +1,8 @@
 import tomli, sys
 
 from Imagegallery import Imagegallery
-from gallery.parser import subparsers
-from models.gallery_toml import filter_by_tag
+from gallerycmd.parser import subparsers
+from Imagegallery.gallery_toml import filter_by_tag
 
 def format(gallery):
     """Formats image gallery for printing out into console"""
@@ -17,6 +17,7 @@ def format(gallery):
 def main(args):
     try:
         gallery = Imagegallery()
+        gallery.load()
     except FileNotFoundError:
         print("No gallery.toml file found in this directory.")
         exit(0)

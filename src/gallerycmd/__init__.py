@@ -1,0 +1,1 @@
+from .gallerycmd import main

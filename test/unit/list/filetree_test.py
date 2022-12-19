@@ -2,8 +2,8 @@ import pytest
 
 from pathlib import Path
 
-from models.filetree import Filetree
-from models.image import Image
+from Imagegallery.filetree import Filetree
+from Imagegallery.image import Image
 
 @pytest.fixture
 def tree():

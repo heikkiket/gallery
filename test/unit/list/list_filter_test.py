@@ -1,5 +1,5 @@
 import pytest
-from gallery.list import list
+from gallerycmd.list import list
 from ..data.example_gallery import example_gallery
 
 def test_filter_raises_when_no_arguments():

@@ -1,7 +1,7 @@
 import os
 import filetype
 
-from models.filetree import Filetree
+from Imagegallery.filetree import Filetree
 
 class Filetreereader():
 

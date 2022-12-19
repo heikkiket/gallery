@@ -9,7 +9,7 @@ dependencies = [
 ]
 
 [project.scripts]
-gallery = "gallery:main"
+gallery = "gallerycmd:main"
 
 [pytest]
 testpaths = "test"

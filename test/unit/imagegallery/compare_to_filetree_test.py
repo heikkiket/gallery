@@ -1,8 +1,8 @@
 import pytest
 from copy import deepcopy
 
-from models.filetree import Filetree
-from models import gallery_toml
+from Imagegallery.filetree import Filetree
+from Imagegallery import gallery_toml
 
 from ..data.example_gallery import example_gallery
 
