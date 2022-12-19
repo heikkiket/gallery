@@ -15,10 +15,11 @@ class Imagegallery():
         "Loads an image gallery. Both processes gallery.toml file and reads the filetree."
         self.gallery_toml = load_gallery("gallery.toml")
         self.filetree = Filetreereader().read(Path("."))
+        self._init_metadata()
 
     def flag_missing(self):
         self.metadata = flag_missing(self.gallery_toml, self.filetree, self.metadata)
 
-    def init_metadata(self):
+    def _init_metadata(self):
         for key, value in self.gallery_toml.items():
             self.metadata[key] = {}
