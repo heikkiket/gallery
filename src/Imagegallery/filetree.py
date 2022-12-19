@@ -64,6 +64,20 @@ class Filetree():
                 else:
                     return entry
 
+    def flatten(self):
+        result = {}
+        for entry in self.entries:
+            if isinstance(entry, Filetree):
+                result.update(entry.flatten())
+            else:
+                result[str(entry.path)] = {
+                    "title": "",
+                    "description": "",
+                    "tags": []
+                }
+
+        return result
+
     def next(self):
         index = self.current
         self.current += 1
