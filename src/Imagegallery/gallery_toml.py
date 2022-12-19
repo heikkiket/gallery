@@ -1,12 +1,21 @@
 from copy import deepcopy
 
-def flag_missing(gallery, filetree):
-    result_gallery = deepcopy(gallery)
-    for path, image in result_gallery.items():
-        if not filetree.find(path):
-            image["missing"] = True
+def flag_missing(gallery, filetree, metadata):
+    """Flags missing files
 
-    return result_gallery
+    Arguments:
+    gallery -- an Image Gallery (dict),
+    filetree -- a Filetree object
+
+    Returns:
+    metadata dict with "missing" key true for every missing image
+    """
+    return_metadata = deepcopy(metadata)
+    for path in gallery.keys():
+        if not filetree.find(path):
+            return_metadata[path]["missing"] = True
+
+    return return_metadata
 
 def tags(gallery):
     """Takes an image_gallery and returns a Set

@@ -35,4 +35,6 @@ def test_flag_missing():
     gallery = Imagegallery()
     gallery.filetree = Filetree()
     gallery.gallery_toml = { "path/to/image1.png": {}}
+    gallery.init_metadata()
     gallery.flag_missing()
+    assert gallery.metadata["path/to/image1.png"]["missing"]== True
