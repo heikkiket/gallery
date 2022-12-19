@@ -14,3 +14,6 @@ class Imagegallery():
         "Loads an image gallery. Both processes gallery.toml file and reads the filetree."
         self.gallery_toml = load_gallery("gallery.toml")
         self.filetree = Filetreereader().read(Path("."))
+    def init_metadata(self):
+        for key, value in self.gallery_toml.items():
+            self.metadata[key] = {}
