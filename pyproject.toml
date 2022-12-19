@@ -1,5 +1,5 @@
 [project]
-name = "mypackage"
+name = "gallery"
 version = "0.1.0"
 dependencies = [
     # To read Toml
