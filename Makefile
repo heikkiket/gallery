@@ -1,2 +1,2 @@
 bundle:
-	shiv -c gallery -o ~/bin/glr .
+	shiv -c gallery -o ~/bin/gallery .
