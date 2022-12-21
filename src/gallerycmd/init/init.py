@@ -9,7 +9,7 @@ def main(args):
     tree = reader.read(Path("."))
     print(tomli_w.dumps(tree.flatten()))
 
-parser = subparsers.add_parser('build',
+parser = subparsers.add_parser('init',
     description="Create a new gallery.toml based on files in the directory",
                                )
 
