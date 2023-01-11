@@ -12,7 +12,7 @@ dependencies = [
 
 [project.scripts]
 gallery = "gallerycmd:main"
-viewer = "viewer:main"
+viewer = "viewer.ui.app:main"
 
 [pytest]
 testpaths = "test"
