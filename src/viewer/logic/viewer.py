@@ -9,6 +9,9 @@ class Viewer:
     def add_images(self, images):
         self.images = images
 
+    def empty(self):
+        self.images = []
+
     def count(self):
         return len(self.images)
 

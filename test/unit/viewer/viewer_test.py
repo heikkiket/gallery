@@ -46,3 +46,7 @@ def test_next_cant_go_out_of_bounds(viewer):
     viewer.go_next()
     viewer.go_next()
     assert viewer.go_next().current_image().name == "img3"
+
+def test_can_empty_viewer(viewer):
+    viewer.empty()
+    assert not viewer.has_images()
