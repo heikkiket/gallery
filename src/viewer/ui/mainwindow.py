@@ -16,7 +16,8 @@ class Mainwindow(Gtk.ApplicationWindow):
     def __init__(self):
         super().__init__()
 
-        self.add(ImageViewerWidget())
+        self.imageviewerwidget = ImageViewerWidget()
+        self.add(self.imageviewerwidget)
         self.show_all()
         self.connect("destroy", Gtk.main_quit)
 

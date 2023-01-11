@@ -1,5 +1,6 @@
-import gi
 import os
+import gi
+
 
 gi.require_version("Gtk", "3.0")
 from gi.repository import Gtk
@@ -12,12 +13,23 @@ class ImageViewerWidget(Gtk.Box):
 
     image = Gtk.Template.Child("image")
 
+    def __init__(self):
+        super().__init__()
+
+    def set_viewer(self, viewer):
+        self.viewer = viewer
+        filename = viewer.current_image()
+        self.image.set_from_file(filename)
+
     @Gtk.Template.Callback()
     def next_button_clicked(self, *args):
         print("next clicked")
-        self.image.set_from_file("../../samples/eugene-golovesov-8otR7UVe2h0-unsplash.jpg")
+        filename = self.viewer.go_next().current_image()
+        self.image.set_from_file(filename)
 
     @Gtk.Template.Callback()
     def prev_button_clicked(self, *args):
         print("prev clicked")
+        filename = self.viewer.go_prev().current_image()
+        self.image.set_from_file(filename)
 
