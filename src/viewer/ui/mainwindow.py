@@ -4,7 +4,7 @@ import os
 gi.require_version("Gtk", "3.0")
 from gi.repository import Gtk
 
-from .widgets.imageviewer import ImageViewerWidget
+from viewer.ui.widgets.imageviewer import ImageViewerWidget
 
 template = os.path.dirname(__file__) + "/mainwindow.ui"
 
