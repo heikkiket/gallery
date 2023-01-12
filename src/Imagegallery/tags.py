@@ -1,6 +1,6 @@
 
 
-def tags(gallery):
+def list_tags(gallery):
     """Takes an image_gallery and returns a Set
     containing all tags in the gallery
 

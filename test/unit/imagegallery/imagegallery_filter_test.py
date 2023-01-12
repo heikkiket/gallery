@@ -1,5 +1,5 @@
 import pytest
-from Imagegallery.gallery_toml import filter_by_tag
+from Imagegallery.tags import filter_by_tag
 from Imagegallery import Imagegallery
 from ..data.example_gallery import example_gallery
 
