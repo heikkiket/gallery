@@ -1,8 +1,8 @@
 from pathlib import Path
+from copy import deepcopy
 
 from readers.galleryreader import load_gallery
 from readers.filetreereader import Filetreereader
-from Imagegallery.gallery_toml import flag_missing
 
 class Imagegallery():
     def __init__(self):
@@ -29,8 +29,11 @@ class Imagegallery():
         return instance
 
     def flag_missing(self):
-        self.metadata = flag_missing(self.gallery_toml, self.filetree, self.metadata)
+        """Flags missing files
+        """
+        for path in self.gallery_toml.keys():
+            if not self.filetree.find(path):
+                self.metadata[path]["missing"] = True
 
     def _init_metadata(self):
-        for key, value in self.gallery_toml.items():
-            self.metadata[key] = {}
+        self.metadata = {key : {} for key in self.gallery_toml.keys()}
