@@ -2,6 +2,8 @@ from viewer.ui.mainwindow import Mainwindow
 from viewer.logic.viewer import Viewer
 from Imagegallery import Imagegallery
 
+from viewer.ui.widgets.imageviewer import ImageViewerWidget
+
 def main():
 
     imagegallery = Imagegallery()
@@ -13,8 +15,12 @@ def main():
     for path in paths:
         images.append(path)
 
-    app = Mainwindow()
     viewer = Viewer()
     viewer.add_images(images)
-    app.imageviewerwidget.set_viewer(viewer)
+
+    app = Mainwindow(
+        ImageViewerWidget(
+            model=viewer
+        )
+    )
     app.start()
