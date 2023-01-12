@@ -28,17 +28,17 @@ tags = ['foo']
 
 @pytest.fixture
 def simple_gallery():
-    gallery = Imagegallery()
-    gallery.gallery_toml = tomli.loads(singleimage)
-    gallery._init_metadata()
-    return gallery
+    return Imagegallery.from_vars(
+        tomli.loads(singleimage),
+        None
+    )
 
 @pytest.fixture
 def complex_gallery():
-    gallery = Imagegallery()
-    gallery.gallery_toml = tomli.loads(many_images)
-    gallery._init_metadata()
-    return gallery
+    return Imagegallery.from_vars(
+        tomli.loads(many_images),
+        None
+        )
 
 def test_list_single_image(simple_gallery):
     formatted = list.format(simple_gallery)
@@ -48,13 +48,18 @@ def test_list_single_image(simple_gallery):
         "Image description",
         ""]
 
-def test_list_many_images(simple_gallery, complex_gallery):
-    formatted = list.format(complex_gallery, simple_gallery.gallery_toml)
+def test_list_many_images(complex_gallery):
+    formatted = list.format(complex_gallery)
     assert formatted == [
         "[path/to/image1.jpg]:",
         "My first image",
         "Image description",
-        ""]
+        "",
+        "[path/to/image2.jpg]:",
+        "My second image",
+        "Image description as well",
+        ""
+    ]
 
 def test_missing_file(simple_gallery):
     simple_gallery.metadata["path/to/image1.jpg"]["missing"] = True

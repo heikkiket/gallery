@@ -33,15 +33,15 @@ def filter_by_tag(gallery, tag):
     """Filters an image gallery by tag
 
     Arguments:
-    gallery -- an Image Gallery (dict)
+    gallery -- an Imagegallery object
     tag -- a whole tag as a string
     """
     results = {}
 
     if tag == "" or tag == None:
         return gallery
-    for path, image in gallery.items():
+    for path, image in gallery.gallery_toml.items():
         if tag in image["tags"]:
             results[path] = image
 
-    return results
+    return gallery.from_vars(results, None)
