@@ -6,8 +6,7 @@ from viewer.ui.widgets.imageviewer import ImageViewerWidget
 
 def main():
 
-    imagegallery = Imagegallery()
-    imagegallery.load()
+    imagegallery = Imagegallery.from_disk()
 
     images = []
     paths = imagegallery.filetree.flatten().keys()

@@ -25,8 +25,7 @@ def format(gallery, gallery_toml=None):
 
 def main(args):
     try:
-        gallery = Imagegallery()
-        gallery.load()
+        gallery = Imagegallery.from_disk()
         gallery.flag_missing()
     except FileNotFoundError:
         print("No gallery.toml file found in this directory.")

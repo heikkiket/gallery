@@ -13,17 +13,20 @@ class Imagegallery():
 
     @classmethod
     def from_vars(cls, gallery_toml, filetree):
-        my_cls = cls()
-        my_cls.gallery_toml = gallery_toml
-        my_cls.filetree = filetree
-        my_cls._init_metadata()
-        return my_cls
+        instance = cls()
+        instance.gallery_toml = gallery_toml
+        instance.filetree = filetree
+        instance._init_metadata()
+        return instance
 
-    def load(self):
+    @classmethod
+    def from_disk(cls):
         "Loads an image gallery. Both processes gallery.toml file and reads the filetree."
-        self.gallery_toml = load_gallery("gallery.toml")
-        self.filetree = Filetreereader().read(Path("."))
-        self._init_metadata()
+        instance = cls()
+        instance.gallery_toml = load_gallery("gallery.toml")
+        instance.filetree = Filetreereader().read(Path("."))
+        instance._init_metadata()
+        return instance
 
     def flag_missing(self):
         self.metadata = flag_missing(self.gallery_toml, self.filetree, self.metadata)
