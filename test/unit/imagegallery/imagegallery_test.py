@@ -8,34 +8,28 @@ def test_empty():
     assert gallery.metadata == {}
 
 def test_init_metadata_copies_a_key():
-    gallery = Imagegallery()
-    gallery.gallery_toml = { "path/to/image" : {}}
+    gallery = Imagegallery.from_vars({ "path/to/image" : {}}, filetree=None)
 
-    gallery._init_metadata()
     assert gallery.metadata["path/to/image"] == {}
 
 def test_init_metadata_copies_every_key():
-    gallery = Imagegallery()
-    gallery.gallery_toml = { "path/to/image" : {},
+    gallery_toml = { "path/to/image" : {},
                              "path/to/image2" : {}}
 
-    gallery._init_metadata()
+    gallery = Imagegallery.from_vars(gallery_toml, filetree=None)
     assert len(gallery.metadata) == 2
 
 def test_init_metadata_only_copies_keys():
-    gallery = Imagegallery()
-    gallery.gallery_toml = { "path/to/image" : {"foo": "bar"},
+    gallery_toml = { "path/to/image" : {"foo": "bar"},
                              "path/to/image2" : {}}
+    gallery = Imagegallery.from_vars(gallery_toml, filetree=None)
 
-    gallery._init_metadata()
     assert gallery.metadata["path/to/image"] == {}
 
 
 def test_flag_missing():
-    gallery = Imagegallery()
-    gallery.filetree = Filetree()
-    gallery.gallery_toml = { "path/to/image1.png": {}}
+    gallery_toml = { "path/to/image1.png": {}}
+    gallery = Imagegallery.from_vars(gallery_toml, Filetree())
 
-    gallery._init_metadata()
     gallery.flag_missing()
     assert gallery.metadata["path/to/image1.png"]["missing"]== True

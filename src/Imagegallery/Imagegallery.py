@@ -11,6 +11,14 @@ class Imagegallery():
         self.filetree = None
         self.metadata = {}
 
+    @classmethod
+    def from_vars(cls, gallery_toml, filetree):
+        my_cls = cls()
+        my_cls.gallery_toml = gallery_toml
+        my_cls.filetree = filetree
+        my_cls._init_metadata()
+        return my_cls
+
     def load(self):
         "Loads an image gallery. Both processes gallery.toml file and reads the filetree."
         self.gallery_toml = load_gallery("gallery.toml")
