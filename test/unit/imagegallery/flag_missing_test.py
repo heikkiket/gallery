@@ -1,7 +1,7 @@
 import pytest
 from copy import deepcopy
 
-from Imagegallery.filetree import Filetree
+from Imagegallery import Filetree
 from Imagegallery import Imagegallery
 
 from ..data.example_gallery import example_gallery

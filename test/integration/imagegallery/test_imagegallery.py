@@ -4,7 +4,7 @@ import os
 from argparse import Namespace
 
 from Imagegallery import Imagegallery
-from Imagegallery.filetree import Filetree
+from Imagegallery import Filetree
 
 from test.integration.filesystem_helpers import mkdir, mkimg, mkfile
 
