@@ -1,14 +1,14 @@
 
 
-def list_tags(gallery):
+def list_tags(gallery_toml):
     """Takes an image_gallery and returns a Set
     containing all tags in the gallery
 
     Arguments:
-    gallery -- an Image Gallery (dict)
+    gallery_toml -- a gallery_toml (dict)
     """
     tags = set()
-    for image in gallery.values():
+    for image in gallery_toml.values():
         tags.update(image['tags'])
     return tags
 
