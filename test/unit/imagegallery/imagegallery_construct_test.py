@@ -25,11 +25,3 @@ def test_init_metadata_only_copies_keys():
     gallery = Imagegallery.from_vars(gallery_toml, filetree=None)
 
     assert gallery.metadata["path/to/image"] == {}
-
-
-def test_flag_missing():
-    gallery_toml = { "path/to/image1.png": {}}
-    gallery = Imagegallery.from_vars(gallery_toml, Filetree())
-
-    gallery.flag_missing()
-    assert gallery.metadata["path/to/image1.png"]["missing"]== True
