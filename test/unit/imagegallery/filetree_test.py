@@ -74,3 +74,28 @@ def test_reset_works(complex_tree):
     complex_tree.next()
     complex_tree.reset()
     assert complex_tree.next().name == "test_dir"
+
+def test_iter(complex_tree):
+    item = next(complex_tree)
+    assert item.name == "test_dir"
+
+def test_iter_stop(tree):
+    with pytest.raises(StopIteration):
+        next(tree)
+
+def test_for_loop(complex_tree):
+    result = []
+    for item in complex_tree:
+        result.append(item.name)
+
+    assert result == ["test_dir", "test_dir2"]
+
+def test_iterates_images(tree):
+    tree.add_dir("test_dir")
+    tree.add_image("test.jpg", "jpg")
+
+    result = []
+    for item in tree:
+        result.append(item.name)
+
+    assert result == ["test_dir", "test.jpg"]

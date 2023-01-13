@@ -1,3 +1,4 @@
+import pytest
 
 from Imagegallery.collections import make_collections, Collection
 from Imagegallery import Imagegallery, Filetree
@@ -16,3 +17,13 @@ def test_filetree_with_one_member_returns_its_path():
 
     assert len(result) == 1
     assert result[0].name == "foo"
+
+@pytest.mark.skip
+def test_deep_filetree_path_as_collection_id():
+    filetree = Filetree()
+    filetree.add_dir("foo").add_dir("bar").add_image("img1.jpg", "jpg")
+    imagegallery = Imagegallery.from_vars({}, filetree)
+
+    result = make_collections(imagegallery)
+
+    assert result[0].name == "bar"

@@ -16,6 +16,12 @@ class Filetree():
         self.entries = []
         self.reset()
 
+    def __iter__(self):
+        return self
+
+    def __next__(self):
+        return self.next()
+
     def add_dir(self, name):
         """Adds a dir into current filetree
 
@@ -84,9 +90,12 @@ class Filetree():
         return result
 
     def next(self):
-        index = self.current
-        self.current += 1
-        return self.entries[index]
+        if self.current < len(self.entries):
+            index = self.current
+            self.current += 1
+            return self.entries[index]
+        else:
+            raise StopIteration
 
     def reset(self):
         self.current = 0
