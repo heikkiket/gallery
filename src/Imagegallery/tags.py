@@ -1,5 +1,4 @@
 
-
 def list_tags(gallery_toml):
     """Takes an image_gallery and returns a Set
     containing all tags in the gallery
@@ -23,8 +22,9 @@ def filter_by_tag(gallery, tag):
 
     if tag == "" or tag == None:
         return gallery
+
     for path, image in gallery.gallery_toml.items():
         if tag in image["tags"]:
             results[path] = image
 
-    return gallery.from_vars(results, None)
+    return gallery.from_vars(results, gallery.filetree)

@@ -31,3 +31,8 @@ def test_matching_tag_returns_all_hits(imagegallery):
     filtered = filter_by_tag(imagegallery, "baz")
     assert len(filtered.gallery_toml) == 2
     assert filtered.gallery_toml["path/to/image3.jpg"]["title"] == "My Third image"
+
+def test_copies_filetree(imagegallery):
+    imagegallery.filetree = "a fake filetree, really just a string"
+    filtered = filter_by_tag(imagegallery, "foo")
+    assert filtered.filetree == imagegallery.filetree
