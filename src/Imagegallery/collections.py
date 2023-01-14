@@ -1,10 +1,12 @@
+from pathlib import Path
+from viewer.logic import Collection
+
 def make_collections(gallery):
-    if gallery.filetree.is_empty():
-        return []
+    collections_dict = {}
 
-    return [Collection(gallery.filetree.next().name)]
+    for entry in gallery.gallery_toml.keys():
+        hash = Path(entry).parent
+        name = hash.name
+        collections_dict[str(hash)] = name
 
-class Collection():
-    def __init__(self, name):
-        super().__init__()
-        self.name = name
+    return [Collection(name, hash) for hash, name in collections_dict.items()]

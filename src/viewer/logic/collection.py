@@ -2,7 +2,9 @@ class Collection:
 
     images = None
 
-    def __init__(self):
+    def __init__(self, name, hash):
+        self.name = name
+        self.hash = hash
         self.images = []
 
     def is_empty(self):

@@ -1,29 +1,58 @@
 import pytest
 
-from Imagegallery.collections import make_collections, Collection
+from Imagegallery.collections import make_collections
+from viewer.logic import Collection
 from Imagegallery import Imagegallery, Filetree
 
-def test_empty_filetree_returns_empty_list():
+@pytest.fixture()
+def imagegallery():
+    return Imagegallery.from_vars({"foo/bar/img1.jpg": {}}, Filetree())
+
+def test_empty_gallery_toml_returns_empty_list():
     imagegallery = Imagegallery.from_vars({}, Filetree())
     assert make_collections(imagegallery) == []
 
-def test_filetree_with_one_member_returns_its_path():
-    filetree = Filetree()
-    filetree.add_dir("foo").add_image("img1.jpg", "jpg")
-    imagegallery = Imagegallery.from_vars({}, filetree)
+def test_gallery_toml_with_one_member_returns_its_path():
+    imagegallery = Imagegallery.from_vars({"foo/img1.jpg": {}}, Filetree())
 
     result = make_collections(imagegallery)
-
 
     assert len(result) == 1
     assert result[0].name == "foo"
 
-@pytest.mark.skip
-def test_deep_filetree_path_as_collection_id():
-    filetree = Filetree()
-    filetree.add_dir("foo").add_dir("bar").add_image("img1.jpg", "jpg")
-    imagegallery = Imagegallery.from_vars({}, filetree)
+def test_deep_gallery_toml_name(imagegallery):
 
     result = make_collections(imagegallery)
 
     assert result[0].name == "bar"
+
+def test_collection_has_path_as_hash(imagegallery):
+
+    result = make_collections(imagegallery)
+
+    assert result[0].hash == "foo/bar"
+
+def test_adds_several_paths_as_collections(imagegallery):
+    gallery_toml = {
+        "foo/bar/img1.jpg": {},
+        "baz/bar/img2.jpg": {},
+    }
+
+    imagegallery = Imagegallery.from_vars(gallery_toml, Filetree())
+
+    result = make_collections(imagegallery)
+
+    assert len(result) == 2
+    assert result[1].hash == "baz/bar"
+
+def test_adds_one_path_only_once():
+    gallery_toml = {
+        "foo/bar/img1.jpg": {},
+        "foo/bar/img2.jpg": {},
+    }
+
+    imagegallery = Imagegallery.from_vars(gallery_toml, Filetree())
+
+    result = make_collections(imagegallery)
+
+    assert len(result) == 1

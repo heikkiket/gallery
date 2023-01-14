@@ -99,3 +99,11 @@ def test_iterates_images(tree):
         result.append(item.name)
 
     assert result == ["test_dir", "test.jpg"]
+
+def test_is_tree(tree):
+    assert tree.is_tree()
+
+def test_image_is_not_tree(tree):
+    tree.add_image("test.jpg", "jpg")
+    image = tree.next()
+    assert not image.is_tree()

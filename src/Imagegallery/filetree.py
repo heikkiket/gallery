@@ -100,3 +100,11 @@ class Filetree():
     def reset(self):
         self.current = 0
 
+    def is_tree(self):
+        """
+        Tells if this filetree node is a tree or image.
+        This method is a counterpart to Image.is_tree()
+
+        return boolean -- always True
+        """
+        return True
