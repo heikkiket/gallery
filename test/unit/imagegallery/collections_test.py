@@ -9,29 +9,33 @@ from viewer.logic import Collection
 def imagegallery():
     return Imagegallery.from_vars({"foo/bar/img1.jpg": {}}, Filetree())
 
+def create_gallery(gallery_toml):
+    return Imagegallery.from_vars(gallery_toml, Filetree())
+
 def test_empty_gallery_toml_returns_empty_list():
-    imagegallery = Imagegallery.from_vars({}, Filetree())
+    imagegallery = create_gallery({})
+
     assert make_collections(imagegallery) == []
 
 def test_gallery_toml_with_one_member_returns_its_path():
-    imagegallery = Imagegallery.from_vars({"foo/img1.jpg": {}}, Filetree())
+    imagegallery = create_gallery({"foo/img1.jpg": {}})
 
-    result = make_collections(imagegallery)
+    collections = make_collections(imagegallery)
 
-    assert len(result) == 1
-    assert result[0].name == "foo"
+    assert len(collections) == 1
+    assert collections[0].name == "foo"
 
 def test_deep_gallery_toml_name(imagegallery):
 
-    result = make_collections(imagegallery)
+    collections = make_collections(imagegallery)
 
-    assert result[0].name == "bar"
+    assert collections[0].name == "bar"
 
 def test_collection_has_path_as_hash(imagegallery):
 
-    result = make_collections(imagegallery)
+    collections = make_collections(imagegallery)
 
-    assert result[0].hash == "foo/bar"
+    assert collections[0].hash == "foo/bar"
 
 def test_adds_several_paths_as_collections(imagegallery):
     gallery_toml = {
@@ -39,12 +43,12 @@ def test_adds_several_paths_as_collections(imagegallery):
         "baz/bar/img2.jpg": {},
     }
 
-    imagegallery = Imagegallery.from_vars(gallery_toml, Filetree())
+    imagegallery = create_gallery(gallery_toml)
 
-    result = make_collections(imagegallery)
+    collections = make_collections(imagegallery)
 
-    assert len(result) == 2
-    assert result[1].hash == "baz/bar"
+    assert len(collections) == 2
+    assert collections[1].hash == "baz/bar"
 
 def test_adds_one_path_only_once():
     gallery_toml = {
@@ -52,7 +56,12 @@ def test_adds_one_path_only_once():
         "foo/bar/img2.jpg": {},
     }
 
-    imagegallery = Imagegallery.from_vars(gallery_toml, Filetree())
+    imagegallery = create_gallery(gallery_toml)
+
+    collections = make_collections(imagegallery)
+
+    assert len(collections) == 1
+
 
     result = make_collections(imagegallery)
 
