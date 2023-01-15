@@ -1,7 +1,8 @@
+from Imagegallery.collections import make_collections
+
 import pytest
 
-from Imagegallery import Filetree, Imagegallery
-from Imagegallery.collections import make_collections
+from Imagegallery import Filetree, Imagegallery, Image
 from viewer.logic import Collection
 
 
@@ -68,3 +69,18 @@ def test_collection_contains_image():
     collections = make_collections(imagegallery)
 
     assert not collections[0].is_empty()
+
+def test_collection_contains_all_images():
+    imagegallery = create_gallery({"foo/img1.jpg": {},
+                                   "foo/img2.jpg": {}})
+
+    collection = make_collections(imagegallery)[0]
+
+    assert len(collection.images) == 2
+
+def test_collection_really_contains_images():
+    imagegallery = create_gallery({"foo/img1.jpg": {}})
+
+    collections = make_collections(imagegallery)
+
+    assert isinstance(collections[0].images[0], Image)
