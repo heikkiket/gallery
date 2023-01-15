@@ -1,7 +1,10 @@
 import pytest
-from Imagegallery.tags import filter_by_tag
+
 from Imagegallery import Imagegallery
+from Imagegallery.tags import filter_by_tag
+
 from ..data.example_gallery import example_gallery
+
 
 @pytest.fixture()
 def imagegallery():

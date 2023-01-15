@@ -2,6 +2,7 @@ from pathlib import Path
 
 from Imagegallery.image import Image
 
+
 class Filetree():
     """
     @brief      Filetree is a representation of a tree or subtree of directories.

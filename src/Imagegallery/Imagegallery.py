@@ -1,8 +1,9 @@
-from pathlib import Path
 from copy import deepcopy
+from pathlib import Path
 
-from readers.galleryreader import load_gallery
 from readers.filetreereader import Filetreereader
+from readers.galleryreader import load_gallery
+
 
 class Imagegallery():
     def __init__(self):

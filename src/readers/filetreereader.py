@@ -1,7 +1,9 @@
 import os
+
 import filetype
 
 from Imagegallery.filetree import Filetree
+
 
 class Filetreereader():
 

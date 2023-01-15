@@ -2,6 +2,7 @@ import pytest
 
 from Imagegallery import tags
 
+
 def test_needs_argument():
     with pytest.raises(TypeError):
         tags.list_tags()

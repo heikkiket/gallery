@@ -1,10 +1,11 @@
-import pytest
 from copy import deepcopy
 
-from Imagegallery import Filetree
-from Imagegallery import Imagegallery
+import pytest
+
+from Imagegallery import Filetree, Imagegallery
 
 from ..data.example_gallery import example_gallery
+
 
 @pytest.fixture
 def test_gallery_toml():

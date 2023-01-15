@@ -1,5 +1,5 @@
-from Imagegallery import Imagegallery
-from Imagegallery import Filetree
+from Imagegallery import Filetree, Imagegallery
+
 
 def test_empty():
     gallery = Imagegallery()

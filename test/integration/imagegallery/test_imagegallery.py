@@ -1,12 +1,11 @@
-import pytest
 import os
-
 from argparse import Namespace
+from test.integration.filesystem_helpers import mkdir, mkfile, mkimg
 
-from Imagegallery import Imagegallery
-from Imagegallery import Filetree
+import pytest
 
-from test.integration.filesystem_helpers import mkdir, mkimg, mkfile
+from Imagegallery import Filetree, Imagegallery
+
 
 @pytest.fixture()
 def environment(tmp_path):

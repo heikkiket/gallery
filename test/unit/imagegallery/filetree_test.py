@@ -1,9 +1,10 @@
-import pytest
-
 from pathlib import Path
+
+import pytest
 
 from Imagegallery import Filetree
 from Imagegallery.image import Image
+
 
 @pytest.fixture
 def tree():

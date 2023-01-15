@@ -1,8 +1,11 @@
-import tomli, sys
+import sys
 
-from Imagegallery import Imagegallery
+import tomli
+
 from gallerycmd.parser import subparsers
+from Imagegallery import Imagegallery
 from Imagegallery.tags import filter_by_tag
+
 
 def format(gallery):
     """Formats image gallery for printing out into console

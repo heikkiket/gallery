@@ -1,7 +1,8 @@
 import sys
 
+from . import init, list
 from .parser import parser
-from . import list, init
+
 
 def main():
     try:

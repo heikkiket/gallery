@@ -2,6 +2,7 @@ from pathlib import Path
 
 from Imagegallery import Image
 
+
 def test_image_has_filename():
     image = Image(Path("foo.img"), "jpg")
     assert image.name == "foo.img"

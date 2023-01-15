@@ -1,8 +1,10 @@
+from test.integration.filesystem_helpers import mkdir, mkfile, mkimg
+
 import pytest
 
-from readers.filetreereader import Filetreereader
 from Imagegallery import Filetree
-from test.integration.filesystem_helpers import mkdir, mkimg, mkfile
+from readers.filetreereader import Filetreereader
+
 
 def test_filetreereader_returns_filetree(tmp_path):
     reader = Filetreereader()

@@ -1,8 +1,9 @@
 import pytest
 
+from Imagegallery import Filetree, Imagegallery
 from Imagegallery.collections import make_collections
 from viewer.logic import Collection
-from Imagegallery import Imagegallery, Filetree
+
 
 @pytest.fixture()
 def imagegallery():

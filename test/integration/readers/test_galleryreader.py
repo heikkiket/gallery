@@ -1,8 +1,8 @@
 import pytest
-
 import tomli
 
 from readers.galleryreader import load_gallery
+
 
 def test_load_gallery_fails_without_filename():
     with pytest.raises(TypeError, match="missing 1 required positional argument"):

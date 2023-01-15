@@ -2,6 +2,7 @@ import pytest
 
 from Imagegallery import Filetree
 
+
 def test_empty_filetree_returns_empty_dict():
     assert Filetree().flatten() == {}
 

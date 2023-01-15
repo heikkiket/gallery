@@ -1,8 +1,8 @@
 import pytest
 import tomli
 
-from Imagegallery import Imagegallery
 from gallerycmd.list import list
+from Imagegallery import Imagegallery
 
 singleimage = """
 ["path/to/image1.jpg"]

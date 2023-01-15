@@ -1,6 +1,7 @@
 
 from PIL import Image
 
+
 def mkdir(path, sub):
     dir = path / sub
     dir.mkdir()

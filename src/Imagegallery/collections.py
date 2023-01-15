@@ -1,5 +1,7 @@
 from pathlib import Path
+
 from viewer.logic import Collection
+
 
 def make_collections(gallery):
     collections_dict = {}

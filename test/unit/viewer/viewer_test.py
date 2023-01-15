@@ -1,9 +1,10 @@
 from pathlib import Path
 
-from viewer.logic import Viewer
-from Imagegallery import Image
-
 import pytest
+
+from Imagegallery import Image
+from viewer.logic import Viewer
+
 
 @pytest.fixture
 def viewer():

@@ -1,8 +1,10 @@
 from pathlib import Path
+
 import tomli_w
 
-from readers.filetreereader import Filetreereader
 from gallerycmd.parser import subparsers
+from readers.filetreereader import Filetreereader
+
 
 def main(args):
     reader = Filetreereader()
