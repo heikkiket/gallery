@@ -62,7 +62,9 @@ def test_adds_one_path_only_once():
 
     assert len(collections) == 1
 
+def test_collection_contains_image():
+    imagegallery = create_gallery({"foo/img1.jpg": {}})
 
-    result = make_collections(imagegallery)
+    collections = make_collections(imagegallery)
 
-    assert len(result) == 1
+    assert not collections[0].is_empty()
