@@ -16,3 +16,6 @@ class Image():
         return boolean -- always False
         """
         return False
+
+    def path_as_bytes(self):
+        return str(self.path)
