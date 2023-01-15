@@ -20,16 +20,16 @@ class ImageViewerWidget(Gtk.Box):
 
     def set_viewer(self, viewer):
         self.viewer = viewer
-        filename = viewer.current_image()
+        filename = viewer.current_image().path_as_bytes()
         self.image.set_from_file(filename)
 
     @Gtk.Template.Callback()
     def next_button_clicked(self, *args):
-        filename = self.viewer.go_next().current_image()
+        filename = self.viewer.go_next().current_image().path_as_bytes()
         self.image.set_from_file(filename)
 
     @Gtk.Template.Callback()
     def prev_button_clicked(self, *args):
-        filename = self.viewer.go_prev().current_image()
+        filename = self.viewer.go_next().current_image().path_as_bytes()
         self.image.set_from_file(filename)
 
