@@ -1,11 +1,10 @@
 import os
 
 import gi
-from viewer.ui.signal import signal
-
 
 gi.require_version("Gtk", "3.0")
 from gi.repository import Gtk
+from gi.repository import GObject
 
 template = os.path.dirname(__file__) + "/mainwindow.ui"
 
@@ -20,16 +19,17 @@ class Mainwindow(Gtk.ApplicationWindow):
 
         self.imageviewer = imageviewerwidget
         self.galleryviewer = galleryviewwidget
+        self.galleryviewer.ref_parent(self)
+        self.imageviewer.ref_parent(self)
 
         self.stack.add_named(imageviewerwidget, "imageviewer")
         self.stack.add_named(galleryviewwidget, "galleryviewer")
-        signal.connect(signal.switch_to_gallery_view, self.switch_to_gallery_view)
 
         self.show_all()
         self.connect("destroy", Gtk.main_quit)
 
-    def switch_to_gallery_view(self, obj):
-        print(obj)
+    @GObject.Signal
+    def switch_to_gallery_view(self):
         self.stack.set_visible_child(self.galleryviewer)
 
 

@@ -4,9 +4,6 @@ import gi
 
 gi.require_version("Gtk", "3.0")
 from gi.repository import Gtk
-from gi.repository import GObject
-
-from viewer.ui.signal import signal
 
 template = os.path.dirname(__file__) + "/imageviewer.ui"
 
@@ -21,6 +18,9 @@ class ImageViewerWidget(Gtk.Box):
         super().__init__()
 
         self.set_viewer(model)
+
+    def ref_parent(self, parent):
+        self.logical_parent = parent
 
     def set_viewer(self, viewer):
         self.viewer = viewer
@@ -37,7 +37,6 @@ class ImageViewerWidget(Gtk.Box):
         filename = self.viewer.go_prev().current_image().path_as_bytes()
         self.image.set_from_file(filename)
 
-
     @Gtk.Template.Callback()
     def back_button_clicked(self, *args):
-        signal.emit(signal.switch_to_gallery_view)
+        self.logical_parent.emit("switch_to_gallery_view")

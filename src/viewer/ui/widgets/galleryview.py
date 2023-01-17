@@ -13,3 +13,6 @@ class GalleryViewWidget(Gtk.FlowBox):
 
     def __init__(self):
         super().__init__()
+
+    def ref_parent(self, parent):
+        self.logical_parent = parent
