@@ -15,6 +15,8 @@ def main():
     viewer = Viewer()
     viewer.add_images(collection.images)
 
+
+
     app = Mainwindow(
         GalleryViewWidget(),
         ImageViewerWidget(
