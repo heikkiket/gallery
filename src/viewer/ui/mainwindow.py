@@ -18,20 +18,19 @@ class Mainwindow(Gtk.ApplicationWindow):
         super().__init__()
 
         self.imageviewer = imageviewerwidget
-        self.galleryviewer = galleryviewwidget
-        self.galleryviewer.ref_parent(self)
+        self.galleryview = galleryviewwidget
+        self.galleryview.ref_parent(self)
         self.imageviewer.ref_parent(self)
 
         self.stack.add_named(imageviewerwidget, "imageviewer")
-        self.stack.add_named(galleryviewwidget, "galleryviewer")
+        self.stack.add_named(galleryviewwidget, "galleryview")
 
         self.show_all()
         self.connect("destroy", Gtk.main_quit)
 
     @GObject.Signal
     def switch_to_gallery_view(self):
-        self.stack.set_visible_child(self.galleryviewer)
-
+        self.stack.set_visible_child(self.galleryview)
 
     def start(self):
         Gtk.main()
