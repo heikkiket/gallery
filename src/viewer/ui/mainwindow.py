@@ -22,8 +22,8 @@ class Mainwindow(Gtk.ApplicationWindow):
         self.galleryview.ref_parent(self)
         self.imageviewer.ref_parent(self)
 
-        self.stack.add_named(imageviewerwidget, "imageviewer")
         self.stack.add_named(galleryviewwidget, "galleryview")
+        self.stack.add_named(imageviewerwidget, "imageviewer")
 
         self.show_all()
         self.connect("destroy", Gtk.main_quit)
