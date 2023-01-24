@@ -5,31 +5,20 @@ import gi
 gi.require_version("Gtk", "3.0")
 from gi.repository import Gtk
 
-template = os.path.dirname(__file__) + "/galleryview.ui"
+from viewer.ui.widgets.collection import CollectionWidget
+
+template = os.path.dirname(__file__) + "/collectiongrid.ui"
 
 @Gtk.Template(filename=template)
-class GalleryViewWidget(Gtk.Box):
-    __gtype_name__ = "galleryviewer"
+class CollectionGridWidget(Gtk.Box):
+    __gtype_name__ = "collectiongrid"
 
-    galleries = Gtk.Template.Child("galleries")
+    collections = Gtk.Template.Child("collections")
 
     def __init__(self):
         super().__init__()
-        # self.set_valign(Gtk.Align.START)
-        # self.set_max_children_per_line(30)
-        # self.set_selection_mode(Gtk.SelectionMode.NONE)
-        self.galleries.add(self.make_box())
-        self.galleries.add(self.make_box())
-        self.galleries.add(self.make_box())
-        self.galleries.add(self.make_box())
-        self.galleries.add(self.make_box())
-        self.galleries.add(self.make_box())
-        self.galleries.add(self.make_box())
-        self.galleries.add(self.make_box())
-        self.galleries.add(self.make_box())
-        self.galleries.add(self.make_box())
-        self.galleries.add(self.make_box())
-        self.galleries.add(self.make_box())
+        for i in range(10):
+            self.collections.add(CollectionWidget())
 
     def ref_parent(self, parent):
         self.logical_parent = parent
