@@ -22,8 +22,3 @@ class CollectionGridWidget(Gtk.Box):
 
     def ref_parent(self, parent):
         self.logical_parent = parent
-
-    def make_box(self):
-        button = Gtk.Button.new_with_mnemonic("_Goodbye")
-        button.set_halign(Gtk.Align.CENTER)
-        return button
