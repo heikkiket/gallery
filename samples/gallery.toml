@@ -4,17 +4,17 @@ title = "My first image"
 description = "Image description"
 tags = ['foo', 'bar', 'baz']
 
-["tetiana-shadrina-X4YjqVCn7xI-unsplash.jpg"]
+["nature/tetiana-shadrina-X4YjqVCn7xI-unsplash.jpg"]
 title = "Forest"
 description = "A picture of Forest from Unsplash"
 tags = ['forest', 'tree', 'nature']
 
-["eugene-golovesov-8otR7UVe2h0-unsplash.jpg"]
+["nature/eugene-golovesov-8otR7UVe2h0-unsplash.jpg"]
 title = "Flowers"
 description = "Flowers that look so red"
 tags = ['nature', 'flowers']
 
-["michal-bielejewski-HO3VoVO5iK0-unsplash.jpg"]
+["nature/michal-bielejewski-HO3VoVO5iK0-unsplash.jpg"]
 title = "Tree branch"
 description = "A branch from pine tree, I assume"
 tags = ['tree', 'nature']
