@@ -10,17 +10,9 @@ def main():
 
     imagegallery = Imagegallery.from_disk()
     collections = make_collections(imagegallery)
-    collection = collections[1]
-
-    viewer = Viewer()
-    viewer.add_images(collection.images)
-
-
 
     app = Mainwindow(
         CollectionGridWidget(model=collections),
-        ImageViewerWidget(
-            model=viewer
-        )
+        ImageViewerWidget()
     )
     app.start()

@@ -25,7 +25,8 @@ class ImageViewerWidget(Gtk.Box):
 
     def set_model(self, viewer):
         self.model = viewer
-        self.update_image()
+        if self.model:
+            self.update_image()
 
     def update_image(self):
         filename = self.model.current_image().path_as_bytes()
@@ -43,4 +44,4 @@ class ImageViewerWidget(Gtk.Box):
 
     @Gtk.Template.Callback()
     def back_button_clicked(self, *args):
-        self.logical_parent.emit("switch_to_gallery_view")
+        self.logical_parent.emit("switch_to_collectiongrid_view")

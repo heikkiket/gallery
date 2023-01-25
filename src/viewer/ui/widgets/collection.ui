@@ -51,5 +51,19 @@
         <property name="position">2</property>
       </packing>
     </child>
+    <child>
+      <object class="GtkButton" id="open_button">
+        <property name="label" translatable="yes">Open</property>
+        <property name="visible">True</property>
+        <property name="can_focus">True</property>
+        <property name="receives_default">True</property>
+        <signal name="clicked" handler="open_collection" swapped="no"/>
+      </object>
+      <packing>
+        <property name="expand">False</property>
+        <property name="fill">True</property>
+        <property name="position">3</property>
+      </packing>
+    </child>
   </template>
 </interface>

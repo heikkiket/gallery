@@ -13,16 +13,21 @@ template = os.path.dirname(__file__) + "/collectiongrid.ui"
 class CollectionGridWidget(Gtk.Box):
     __gtype_name__ = "collectiongrid"
 
-    collections = Gtk.Template.Child("collections")
+    collections_grid = Gtk.Template.Child("collections")
     model = None
 
     def __init__(self, model=None):
         super().__init__()
 
         self.model = model
+        self.collections = []
 
-        for i in range(10):
-            self.collections.add(CollectionWidget())
+        for collection in self.model:
+            collection = CollectionWidget(collection)
+            self.collections.append(collection)
+            self.collections_grid.add(collection)
 
     def ref_parent(self, parent):
         self.logical_parent = parent
+        for collection in self.collections:
+            collection.ref_parent(parent)
