@@ -18,7 +18,7 @@ def main():
 
 
     app = Mainwindow(
-        CollectionGridWidget(),
+        CollectionGridWidget(model=collections),
         ImageViewerWidget(
             model=viewer
         )

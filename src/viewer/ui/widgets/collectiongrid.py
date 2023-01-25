@@ -14,9 +14,13 @@ class CollectionGridWidget(Gtk.Box):
     __gtype_name__ = "collectiongrid"
 
     collections = Gtk.Template.Child("collections")
+    model = None
 
-    def __init__(self):
+    def __init__(self, model=None):
         super().__init__()
+
+        self.model = model
+
         for i in range(10):
             self.collections.add(CollectionWidget())
 
