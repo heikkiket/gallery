@@ -17,4 +17,4 @@ def make_collections(gallery):
 
         collections_dict[hash].add_image(image)
 
-    return [collection for hash, collection in collections_dict.items()]
+    return collections_dict
