@@ -16,6 +16,13 @@ class Imagegallery():
 
     @classmethod
     def from_vars(cls, gallery_toml, filetree):
+        """Creates an Imagegallery from variables
+
+        :param gallery_toml: a dictionary constructed from gallery.toml file
+        :param filetree: A Filetree object
+        :returns: Imagegallery
+
+        """
         instance = cls()
         instance.gallery_toml = gallery_toml
         instance.filetree = filetree
@@ -24,7 +31,7 @@ class Imagegallery():
 
     @classmethod
     def from_disk(cls):
-        "Loads an image gallery. Both processes gallery.toml file and reads the filetree."
+        "Loads an image gallery from current work dir. Both processes gallery.toml file and reads the filetree."
         instance = cls()
         instance.gallery_toml = load_gallery("gallery.toml")
         instance.filetree = Filetreereader().read(Path("."))
