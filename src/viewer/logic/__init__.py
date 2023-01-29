@@ -1,2 +1,4 @@
 from .collection import Collection
-from .viewer import Viewer
+from .collectionviewer import CollectionViewer
+from .galleryviewer import GalleryViewer
+

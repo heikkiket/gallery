@@ -1,6 +1,6 @@
 import os
 
-from viewer.logic import Viewer
+from viewer.logic import CollectionViewer
 
 import gi
 
@@ -36,7 +36,7 @@ class Mainwindow(Gtk.ApplicationWindow):
 
     @GObject.Signal(arg_types=(object,))
     def switch_to_image_view(self, collection):
-        viewer = Viewer()
+        viewer = CollectionViewer()
         viewer.add_images(collection.images)
         self.imageviewer.set_model(viewer)
         self.stack.set_visible_child(self.imageviewer)

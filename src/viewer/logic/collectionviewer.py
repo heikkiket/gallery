@@ -1,4 +1,4 @@
-class Viewer:
+class CollectionViewer:
 
     images = []
     current_index = 0

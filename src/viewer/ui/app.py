@@ -1,6 +1,6 @@
 from Imagegallery import Imagegallery
 from Imagegallery.collections import make_collections
-from viewer.logic.viewer import Viewer
+from viewer.logic.viewer import CollectionViewertionViewer
 from viewer.ui.mainwindow import Mainwindow
 from viewer.ui.widgets.imageviewer import ImageViewerWidget
 from viewer.ui.widgets.collectiongrid import CollectionGridWidget

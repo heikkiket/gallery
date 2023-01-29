@@ -3,12 +3,12 @@ from pathlib import Path
 import pytest
 
 from Imagegallery import Image
-from viewer.logic import Viewer
+from viewer.logic import CollectionViewer
 
 
 @pytest.fixture
 def viewer():
-    viewer = Viewer()
+    viewer = CollectionViewer()
     images = [Image(Path("img1"), "jpg"),
               Image(Path("img2"), "jpg"),
               Image(Path("img3"), "jpg")]
@@ -17,7 +17,7 @@ def viewer():
 
 
 def test_viewer_is_empty():
-    viewer = Viewer()
+    viewer = CollectionViewer()
     assert not viewer.has_images()
 
 def test_after_load_is_not_empty(viewer):
