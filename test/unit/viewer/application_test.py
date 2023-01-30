@@ -25,6 +25,10 @@ def test_list_collections_returns_empty_list_for_empty_imagegallery():
     app = GalleryViewer()
     assert app.list_collections() == []
 
+def test_list_collections_returns_a_list_of_colletions(app):
+    assert len(app.list_collections()) == 1
+    assert app.list_collections().pop().name == "Holiday"
+
 def test_loads_gallery(empty_imagegallery):
     app = GalleryViewer(gallery=empty_imagegallery)
     assert app.imagegallery == empty_imagegallery
