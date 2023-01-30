@@ -52,3 +52,6 @@ def test_switch_to_collection_alters_state(app):
     app.switch_to_collection("2022/Holiday")
     assert app.state == GalleryViewer.VIEWING
 
+def test_switch_to_collection_fills_viewer(app):
+    app.switch_to_collection("2022/Holiday")
+    assert app.collection_viewer.has_images()

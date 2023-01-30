@@ -21,3 +21,4 @@ class GalleryViewer:
     def switch_to_collection(self, hash):
         if self.imagegallery and hash in self.imagegallery.collections:
             self.state = self.VIEWING
+            self.collection_viewer.load_collection(self.imagegallery.collections[hash])
