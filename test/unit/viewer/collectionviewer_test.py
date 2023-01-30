@@ -3,7 +3,7 @@ from pathlib import Path
 import pytest
 
 from Imagegallery import Image
-from viewer.logic import CollectionViewer
+from viewer.logic import Collection, CollectionViewer
 
 
 @pytest.fixture
@@ -14,6 +14,14 @@ def viewer():
               Image(Path("img3"), "jpg")]
     viewer.add_images(images)
     return viewer
+
+@pytest.fixture
+def collection():
+    collection = Collection("random collection", "")
+    collection.add_images([Image(Path("bar.jpg"), "jpg"),
+                           Image(Path("foo.jpg"), "jpg"),
+                           Image(Path("image3.jpg"), "jpg")])
+    return collection
 
 
 def test_viewer_is_empty():
@@ -51,3 +59,11 @@ def test_next_cant_go_out_of_bounds(viewer):
 def test_can_empty_viewer(viewer):
     viewer.empty()
     assert not viewer.has_images()
+
+def test_can_load_empty_collection(viewer):
+    viewer.load_collection(Collection("Foo", "bar/foo"))
+    assert not viewer.has_images()
+
+def test_can_load_collection(viewer, collection):
+    viewer.load_collection(collection)
+    assert viewer.has_images()

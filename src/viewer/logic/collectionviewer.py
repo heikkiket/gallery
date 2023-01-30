@@ -27,3 +27,7 @@ class CollectionViewer:
         if self.current_index > 0:
             self.current_index = self.current_index - 1
         return self
+
+    def load_collection(self, collection):
+        self.empty()
+        self.add_images(collection.images)
