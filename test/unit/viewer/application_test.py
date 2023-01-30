@@ -23,7 +23,7 @@ def test_has_active_collection_viewer():
 
 def test_lists_collections():
     app = GalleryViewer()
-    assert app.list_collections() == {}
+    assert app.list_collections() == []
 
 def test_loads_gallery(empty_imagegallery):
     app = GalleryViewer(gallery=empty_imagegallery)
@@ -38,16 +38,17 @@ def test_app_has_state():
     app = GalleryViewer()
     assert app.state == GalleryViewer.BROWSING
 
-def test_switch_collection_without_imagegallery():
+def test_switch_collection_without_imagegallery_doesnt_alter_state():
     app = GalleryViewer()
     app.switch_to_collection("2022/Christmas")
     assert not app.collection_viewer.has_images()
     assert app.state == GalleryViewer.BROWSING
 
-def test_switch_to_unexisting_collection(app):
+def test_switch_to_unexisting_collection_doesnt_alter_state(app):
     app.switch_to_collection("2021/Foo")
     assert app.state == GalleryViewer.BROWSING
 
-def test_switch_to_collection(app):
+def test_switch_to_collection_alters_state(app):
     app.switch_to_collection("2022/Holiday")
     assert app.state == GalleryViewer.VIEWING
+

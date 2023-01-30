@@ -16,7 +16,7 @@ class GalleryViewer:
         self.imagegallery = gallery
 
     def list_collections(self):
-        return {}
+        return []
 
     def switch_to_collection(self, hash):
         if self.imagegallery and hash in self.imagegallery.collections:
