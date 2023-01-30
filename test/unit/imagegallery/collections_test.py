@@ -3,7 +3,7 @@ from Imagegallery.collections import make_collections
 import pytest
 
 from Imagegallery import Filetree, Imagegallery, Image
-from viewer.logic import Collection
+from Imagegallery import Collection
 
 
 @pytest.fixture()

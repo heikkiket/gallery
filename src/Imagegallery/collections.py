@@ -1,7 +1,6 @@
 from pathlib import Path
 
-from Imagegallery import Image
-from viewer.logic import Collection
+from Imagegallery import Image, Collection
 
 
 def make_collections(gallery):

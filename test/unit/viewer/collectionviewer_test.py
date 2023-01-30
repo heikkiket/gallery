@@ -2,8 +2,8 @@ from pathlib import Path
 
 import pytest
 
-from Imagegallery import Image
-from viewer.logic import Collection, CollectionViewer
+from Imagegallery import Image, Collection
+from viewer.logic import CollectionViewer
 
 
 @pytest.fixture
