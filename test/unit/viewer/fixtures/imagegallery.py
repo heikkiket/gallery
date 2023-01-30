@@ -36,5 +36,4 @@ def imagegallery():
     subtree.add_image("image3.jpg", "jpg")
 
     gallery = Imagegallery.from_vars(gallery_toml, tree)
-    gallery.make_collections()
     return gallery

@@ -27,6 +27,7 @@ class Imagegallery():
         instance.gallery_toml = gallery_toml
         instance.filetree = filetree
         instance._init_metadata()
+        instance.make_collections()
         return instance
 
     @classmethod
@@ -36,6 +37,7 @@ class Imagegallery():
         instance.gallery_toml = load_gallery("gallery.toml")
         instance.filetree = Filetreereader().read(Path("."))
         instance._init_metadata()
+        instance.make_collections()
         return instance
 
     def flag_missing(self):
