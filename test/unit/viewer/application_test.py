@@ -15,7 +15,7 @@ def app(imagegallery):
 
 def test_application_is_empty():
     app = GalleryViewer()
-    assert app.imagegallery == None
+    assert isinstance(app.imagegallery, Imagegallery)
 
 def test_has_active_collection_viewer():
     app = GalleryViewer()

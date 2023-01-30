@@ -12,7 +12,7 @@ class GalleryViewer:
     imagegallery: Imagegallery = None
     state = BROWSING
 
-    def __init__(self, gallery=None):
+    def __init__(self, gallery=Imagegallery()):
         self.collection_viewer = CollectionViewer()
         self.imagegallery = gallery
 
