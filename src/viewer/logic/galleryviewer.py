@@ -8,7 +8,8 @@ class GalleryViewer:
     BROWSING = 1
     VIEWING = 2
 
-    imagegallery :Imagegallery = None
+    collection_viewer: CollectionViewer
+    imagegallery: Imagegallery = None
     state = BROWSING
 
     def __init__(self, gallery=None):
