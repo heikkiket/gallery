@@ -25,7 +25,8 @@ class ImageViewerWidget(Gtk.Box):
 
     def set_model(self, viewer):
         self.model = viewer
-        if self.model:
+        # TODO retire this check as well
+        if self.model.has_images():
             self.update_image()
 
     def update_image(self):

@@ -24,7 +24,8 @@ class CollectionWidget(Gtk.Box):
 
     @Gtk.Template.Callback()
     def open_collection(self, *args):
-        self.logical_parent.emit("switch_to_image_view", self.collection)
+        self.switch_to_collection(self.collection.hash)
+        self.logical_parent.emit("switch_to_image_view")
 
     def ref_parent(self, parent):
         self.logical_parent = parent

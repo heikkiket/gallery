@@ -34,11 +34,9 @@ class Mainwindow(Gtk.ApplicationWindow):
     def switch_to_collectiongrid_view(self):
         self.stack.set_visible_child(self.collectiongrid)
 
-    @GObject.Signal(arg_types=(object,))
-    def switch_to_image_view(self, collection):
-        viewer = CollectionViewer()
-        viewer.add_images(collection.images)
-        self.imageviewer.set_model(viewer)
+    @GObject.Signal
+    def switch_to_image_view(self):
+        self.imageviewer.update_image()
         self.stack.set_visible_child(self.imageviewer)
 
     def start(self):

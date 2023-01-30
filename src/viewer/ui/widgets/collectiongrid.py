@@ -22,10 +22,12 @@ class CollectionGridWidget(Gtk.Box):
         self.model = model
         self.collections = []
 
-        for collection in self.model:
-            collection = CollectionWidget(collection)
-            self.collections.append(collection)
-            self.collections_grid.add(collection)
+        for collection in self.model.list_collections():
+            collection_wid = CollectionWidget(collection)
+            ## TODO: This is just too ugly monkey patching trick to survive
+            collection_wid.switch_to_collection = self.model.switch_to_collection
+            self.collections.append(collection_wid)
+            self.collections_grid.add(collection_wid)
 
     def ref_parent(self, parent):
         self.logical_parent = parent
