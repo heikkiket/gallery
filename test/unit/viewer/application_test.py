@@ -21,7 +21,7 @@ def test_has_active_collection_viewer():
     app = GalleryViewer()
     assert not app.collection_viewer.has_images()
 
-def test_lists_collections():
+def test_list_collections_returns_empty_list_for_empty_imagegallery():
     app = GalleryViewer()
     assert app.list_collections() == []
 
