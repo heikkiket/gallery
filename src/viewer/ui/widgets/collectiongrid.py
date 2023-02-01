@@ -4,8 +4,10 @@ import gi
 
 gi.require_version("Gtk", "3.0")
 from gi.repository import Gtk
-
+from viewer.logic import GalleryViewer
+from viewer.ui.signal import signal
 from viewer.ui.widgets.collection import CollectionWidget
+
 
 template = os.path.dirname(__file__) + "/collectiongrid.ui"
 
@@ -14,7 +16,7 @@ class CollectionGridWidget(Gtk.Box):
     __gtype_name__ = "collectiongrid"
 
     collections_grid = Gtk.Template.Child("collections")
-    model = None
+    model: GalleryViewer = None
 
     def __init__(self, model=None):
         super().__init__()
@@ -22,14 +24,12 @@ class CollectionGridWidget(Gtk.Box):
         self.model = model
         self.collections = []
 
-        for collection in self.model.list_collections():
-            collection_wid = CollectionWidget(collection)
-            ## TODO: This is just too ugly monkey patching trick to survive
-            collection_wid.switch_to_collection = self.model.switch_to_collection
-            self.collections.append(collection_wid)
-            self.collections_grid.add(collection_wid)
+        signal.connect(signal.SWITCH_TO_COLLECTION, self.switch_to_collection)
 
-    def ref_parent(self, parent):
-        self.logical_parent = parent
-        for collection in self.collections:
-            collection.ref_parent(parent)
+        for collection in self.model.list_collections():
+            collection_widget = CollectionWidget(collection)
+            self.collections.append(collection_widget)
+            self.collections_grid.add(collection_widget)
+
+    def switch_to_collection(self, signal, hash):
+        self.model.switch_to_collection(hash)

@@ -5,6 +5,8 @@ import gi
 gi.require_version("Gtk", "3.0")
 from gi.repository import Gtk
 
+from viewer.ui.signal import signal
+
 template = os.path.dirname(__file__) + "/collection.ui"
 
 @Gtk.Template(filename=template)
@@ -24,8 +26,8 @@ class CollectionWidget(Gtk.Box):
 
     @Gtk.Template.Callback()
     def open_collection(self, *args):
-        self.switch_to_collection(self.collection.hash)
-        self.logical_parent.emit("switch_to_image_view")
+        signal.emit(signal.SWITCH_TO_COLLECTION, self.collection.hash)
+        signal.emit(signal.SWITCH_TO_IMAGE_VIEW)
 
     def ref_parent(self, parent):
         self.logical_parent = parent

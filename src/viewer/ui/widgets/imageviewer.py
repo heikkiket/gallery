@@ -1,6 +1,9 @@
 import os
 
 import gi
+from viewer.logic import CollectionViewer
+from viewer.ui.signal import signal
+
 
 gi.require_version("Gtk", "3.0")
 from gi.repository import Gtk
@@ -13,7 +16,7 @@ class ImageViewerWidget(Gtk.Box):
 
 
     image = Gtk.Template.Child("image")
-    model = None
+    model: CollectionViewer = None
 
     def __init__(self, model=None):
         super().__init__()
@@ -45,4 +48,4 @@ class ImageViewerWidget(Gtk.Box):
 
     @Gtk.Template.Callback()
     def back_button_clicked(self, *args):
-        self.logical_parent.emit("switch_to_collectiongrid_view")
+        signal.emit("switch_to_collectiongrid_view")
