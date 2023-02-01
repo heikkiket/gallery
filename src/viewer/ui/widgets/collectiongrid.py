@@ -23,11 +23,11 @@ class CollectionGridWidget(Gtk.Box):
 
         self.model = model
 
-        signal.connect(signal.SWITCH_TO_COLLECTION, self.switch_to_collection)
+        signal.connect(signal.SWITCH_TO_COLLECTION,
+                       self.switch_to_collection)
 
         for collection in self.model.list_collections():
-            collection_widget = CollectionWidget(collection)
-            self.collections_grid.add(collection_widget)
+            self.collections_grid.add(CollectionWidget(collection))
 
     def switch_to_collection(self, signal, hash):
         self.model.switch_to_collection(hash)
