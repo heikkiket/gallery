@@ -9,7 +9,7 @@ from viewer.logic import CollectionViewer
 @pytest.fixture
 def viewer():
     viewer = CollectionViewer()
-    images = [Image(Path("img1"), "jpg"),
+    images = [Image(Path("img1.jpg"), "jpg"),
               Image(Path("img2"), "jpg"),
               Image(Path("img3"), "jpg")]
     viewer.add_images(images)
@@ -35,7 +35,7 @@ def test_counts_image_amount(viewer):
     assert viewer.count() == 3
 
 def test_has_current_image(viewer):
-    assert viewer.current_image().name == "img1"
+    assert viewer.current_image().name == "img1.jpg"
 
 def test_go_next_returns_viewer(viewer):
     assert viewer.go_next().count() == 3
@@ -45,10 +45,10 @@ def test_go_next_changes_state(viewer):
 
 def test_go_prev_works_as_well(viewer):
     viewer.go_next()
-    assert viewer.go_prev().current_image().name == "img1"
+    assert viewer.go_prev().current_image().name == "img1.jpg"
 
 def test_prev_cant_go_out_of_bounds(viewer):
-    assert viewer.go_prev().current_image().name == "img1"
+    assert viewer.go_prev().current_image().name == "img1.jpg"
 
 def test_next_cant_go_out_of_bounds(viewer):
     viewer.go_next()
@@ -67,3 +67,10 @@ def test_can_load_empty_collection(viewer):
 def test_can_load_collection(viewer, collection):
     viewer.load_collection(collection)
     assert viewer.has_images()
+
+def test_current_image_path_is_empty_when_empty_viewer():
+    viewer = CollectionViewer()
+    assert viewer.current_image_path() == ""
+
+def test_returns_current_image_path(viewer):
+    assert viewer.current_image_path() == "img1.jpg"

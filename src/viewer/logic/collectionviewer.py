@@ -1,6 +1,9 @@
+from Imagegallery import Image
+
+
 class CollectionViewer:
 
-    images = []
+    images: [Image] = []
     current_index = 0
 
     def has_images(self):
@@ -17,6 +20,11 @@ class CollectionViewer:
 
     def current_image(self):
         return self.images[self.current_index]
+
+    def current_image_path(self):
+        if self.has_images():
+            return self.current_image().path_as_bytes()
+        return ""
 
     def go_next(self):
         if self.current_index < len(self.images) - 1:
