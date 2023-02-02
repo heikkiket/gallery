@@ -28,12 +28,10 @@ class ImageViewerWidget(Gtk.Box):
 
     def set_model(self, viewer):
         self.model = viewer
-        # TODO retire this check as well
-        if self.model.has_images():
-            self.update_image()
+        self.update_image()
 
     def update_image(self):
-        filename = self.model.current_image().path_as_bytes()
+        filename = self.model.current_image_path()
         self.image.set_from_file(filename)
 
     @Gtk.Template.Callback()
