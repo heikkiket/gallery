@@ -2,7 +2,7 @@ from pathlib import Path
 
 import pytest
 
-from Imagegallery import Image, Collection
+from Imagegallery import Collection, Image
 from viewer.logic import CollectionViewer
 
 

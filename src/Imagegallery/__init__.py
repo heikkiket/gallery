@@ -1,4 +1,4 @@
 from .collection import Collection
-from .image import Image
 from .filetree import Filetree
+from .image import Image
 from .Imagegallery import Imagegallery

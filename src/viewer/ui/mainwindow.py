@@ -1,13 +1,12 @@
 import os
 
+import gi
+
 from viewer.logic import CollectionViewer
 from viewer.ui.signal import signal
 
-import gi
-
 gi.require_version("Gtk", "3.0")
-from gi.repository import Gtk
-from gi.repository import GObject
+from gi.repository import GObject, Gtk
 
 template = os.path.dirname(__file__) + "/mainwindow.ui"
 

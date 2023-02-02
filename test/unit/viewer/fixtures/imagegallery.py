@@ -1,4 +1,5 @@
 import pytest
+
 from Imagegallery import Filetree, Imagegallery
 
 gallery_toml = {

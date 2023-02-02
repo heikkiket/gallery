@@ -4,10 +4,10 @@ import gi
 
 gi.require_version("Gtk", "3.0")
 from gi.repository import Gtk
+
 from viewer.logic import GalleryViewer
 from viewer.ui.signal import signal
 from viewer.ui.widgets.collection import CollectionWidget
-
 
 template = os.path.dirname(__file__) + "/collectiongrid.ui"
 

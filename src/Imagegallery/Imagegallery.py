@@ -1,9 +1,9 @@
 from copy import deepcopy
 from pathlib import Path
 
+from Imagegallery.collections import make_collections
 from readers.filetreereader import Filetreereader
 from readers.galleryreader import load_gallery
-from Imagegallery.collections import make_collections
 
 
 class Imagegallery():

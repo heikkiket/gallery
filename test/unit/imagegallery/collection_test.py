@@ -1,6 +1,6 @@
 from pathlib import Path
 
-from Imagegallery import Image, Collection
+from Imagegallery import Collection, Image
 
 
 def test_is_empty_by_default():

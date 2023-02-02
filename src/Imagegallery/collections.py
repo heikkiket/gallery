@@ -1,6 +1,6 @@
 from pathlib import Path
 
-from Imagegallery import Image, Collection
+from Imagegallery import Collection, Image
 
 
 def make_collections(gallery):

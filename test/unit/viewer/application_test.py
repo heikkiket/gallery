@@ -1,8 +1,9 @@
+from test.unit.viewer.fixtures.imagegallery import imagegallery
+
 import pytest
 
 from Imagegallery import Filetree, Imagegallery
 from viewer.logic import GalleryViewer
-from test.unit.viewer.fixtures.imagegallery import imagegallery
 
 
 @pytest.fixture

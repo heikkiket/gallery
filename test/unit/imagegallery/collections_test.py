@@ -1,9 +1,7 @@
-from Imagegallery.collections import make_collections
-
 import pytest
 
-from Imagegallery import Filetree, Imagegallery, Image
-from Imagegallery import Collection
+from Imagegallery import Collection, Filetree, Image, Imagegallery
+from Imagegallery.collections import make_collections
 
 
 @pytest.fixture()
