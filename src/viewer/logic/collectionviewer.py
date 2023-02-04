@@ -1,7 +1,11 @@
+import gi
 from Imagegallery import Image
 
+gi.require_version("Gtk", "3.0")
+from gi.repository import GObject
 
-class CollectionViewer:
+
+class CollectionViewer(GObject.Object):
 
     images: [Image] = []
     current_index = 0
@@ -21,6 +25,7 @@ class CollectionViewer:
     def current_image(self):
         return self.images[self.current_index]
 
+    @GObject.Property(type=str)
     def current_image_path(self):
         if self.has_images():
             return self.current_image().path_as_bytes()

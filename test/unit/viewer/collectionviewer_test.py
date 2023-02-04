@@ -70,7 +70,8 @@ def test_can_load_collection(viewer, collection):
 
 def test_current_image_path_is_empty_when_empty_viewer():
     viewer = CollectionViewer()
-    assert viewer.current_image_path() == ""
+    assert viewer.get_property("current_image_path") == ""
 
 def test_returns_current_image_path(viewer):
-    assert viewer.current_image_path() == "img1.jpg"
+    assert viewer.get_property("current_image_path") == "img1.jpg"
+

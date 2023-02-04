@@ -22,7 +22,6 @@ def test_gallery_toml_with_one_member_returns_its_path():
     collections = list(make_collections(imagegallery).values())
 
     assert len(collections) == 1
-    print(collections)
     assert collections[0].name == "foo"
 
 def test_deep_gallery_toml_name(imagegallery):
