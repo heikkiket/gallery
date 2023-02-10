@@ -1,7 +1,6 @@
 import os
 
 import gi
-
 from viewer.logic import CollectionViewer
 from viewer.ui.signal import signal
 
@@ -21,28 +20,23 @@ class ImageViewerWidget(Gtk.Box):
     def __init__(self, model=None):
         super().__init__()
 
-        self.set_model(model)
+        self.model = model
+        self.model.connect("notify::current-image-path", self.update_image)
 
     def ref_parent(self, parent):
         self.logical_parent = parent
 
-    def set_model(self, viewer):
-        self.model = viewer
-        self.update_image()
-
-    def update_image(self):
-        filename = self.model.current_image_path()
+    def update_image(self, instance, param):
+        filename = self.model.get_property(param.name)
         self.image.set_from_file(filename)
 
     @Gtk.Template.Callback()
     def next_button_clicked(self, *args):
-        filename = self.model.go_next()
-        self.update_image()
+        self.model.go_next()
 
     @Gtk.Template.Callback()
     def prev_button_clicked(self, *args):
-        filename = self.model.go_prev()
-        self.update_image()
+        self.model.go_prev()
 
     @Gtk.Template.Callback()
     def back_button_clicked(self, *args):

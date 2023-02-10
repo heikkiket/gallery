@@ -1,7 +1,6 @@
 import os
 
 import gi
-
 from viewer.logic import CollectionViewer
 from viewer.ui.signal import signal
 
@@ -36,7 +35,6 @@ class Mainwindow(Gtk.ApplicationWindow):
         self.stack.set_visible_child(self.collectiongrid)
 
     def switch_to_image_view(self, _):
-        self.imageviewer.update_image()
         self.stack.set_visible_child(self.imageviewer)
 
     def start(self):
