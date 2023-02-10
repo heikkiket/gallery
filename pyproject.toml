@@ -10,6 +10,13 @@ dependencies = [
     "filetype"
 ]
 
+dev-dependencies = [
+ "pytest",
+ # These two are needed in order to run tests for GObjects
+ "pycairo",
+ "pygobject"
+]
+
 [project.scripts]
 gallery = "gallerycmd:main"
 viewer = "viewer.ui.app:main"
