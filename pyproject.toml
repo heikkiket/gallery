@@ -10,7 +10,8 @@ dependencies = [
     "filetype"
 ]
 
-dev-dependencies = [
+[project.optional-dependencies]
+test = [
  "pytest",
  # These two are needed in order to run tests for GObjects
  "pycairo",
