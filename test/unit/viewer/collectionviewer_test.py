@@ -1,5 +1,7 @@
 from pathlib import Path
 
+import unittest.mock as mock
+
 import pytest
 
 from Imagegallery import Collection, Image
@@ -75,3 +77,9 @@ def test_current_image_path_is_empty_when_empty_viewer():
 def test_returns_current_image_path(viewer):
     assert viewer.get_property("current_image_path") == "img1.jpg"
 
+def test_go_next_notifies_property(viewer):
+    callback = mock.Mock()
+    viewer.connect("notify::current-image-path", callback.method)
+    viewer.go_next()
+    viewer.go_prev()
+    assert callback.method.call_count == 2
