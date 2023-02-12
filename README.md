@@ -3,6 +3,14 @@
 
 This image gallery is meant to be a minimalistic, simple and plain-text centric tool for your personal photo management.
 
+This project has three parts:
+
+ * specification for a simple image gallery
+ * command line tool for managing image gallery
+ * simple viewer program
+
+## gallery specification
+
 Your image gallery is just a directory tree containing pictures plus a gallery.toml file. An example directory tree could look like this:
 ```
 ~/Pictures/gallery/
@@ -22,7 +30,7 @@ Your image gallery is just a directory tree containing pictures plus a gallery.t
 
 In this image gallery pictures are organized to `year-month-day` directory structure. You can use whatever structure you want, of course.
 
-## gallery.toml fileformat
+### gallery.toml fileformat
 
 All the metadata is saved to a gallery.toml file. It looks like this:
 
@@ -72,7 +80,24 @@ This command creates a new gallery.toml by collecting all the image files from t
 gallery init > gallery.toml
 ```
 
-## A demo image viewer
-There is a simple image viewer program running inside browser. Just save this gallery.html to the same dir with gallery.toml.
+## gallery-viewer (GTK)
+gallery-viewer is a simple GTK-based program that can be started from command line and used to view images in the gallery. Start the program in the same directory that contains a gallery.toml file.
+
+gallery-viewer currently just lists all collections and allows to view images in each collection.
+
+In order to function gallery-viewer needs python3 installed in the host system as well as PyGobject. 
+
+### Installing PyGObject
+
+**In Ubuntu:**
+Install following packages: `python3-gi python3-gi-cairo gir1.2-gtk-3.0`
+
+**In Fedora:**
+Install following packages: `python3-gobject gtk3`
+
+You can find more information and help about installing PyGObject from their official documentation: https://pygobject.readthedocs.io/en/latest/getting_started.html
+
+## A demo image viewer (in HTML)
+There is a simple image viewer program running inside browser. Just save gallery.html to the same dir with gallery.toml.
 
 Run this program by opening the file in the web browser and then uploading gallery.toml via the form visible. You need to explicitly upload a gallery.toml because a web browser cannot read files from local filesystem by default.
