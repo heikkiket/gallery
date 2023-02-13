@@ -85,11 +85,11 @@ gallery-viewer is a simple GTK-based program that can be started from command li
 
 gallery-viewer currently just lists all collections and allows to view images in each collection.
 
-In order to function gallery-viewer needs python3 installed in the host system as well as PyGobject. 
+In order to function gallery-viewer needs python3 installed in the host system as well as PyGobject library.
 
 ### Installing PyGObject
 
-**In Ubuntu:**
+**In Ubuntu (and hopefully Debian as well):**
 Install following packages: `python3-gi python3-gi-cairo gir1.2-gtk-3.0`
 
 **In Fedora:**
@@ -101,3 +101,7 @@ You can find more information and help about installing PyGObject from their off
 There is a simple image viewer program running inside browser. Just save gallery.html to the same dir with gallery.toml.
 
 Run this program by opening the file in the web browser and then uploading gallery.toml via the form visible. You need to explicitly upload a gallery.toml because a web browser cannot read files from local filesystem by default.
+
+## Technical details
+
+This software is written in Python. Binaries are self-containing and self-extracting python archives. They are made with a tool called `shiv`. When ran, they create a hidden directory `~/.shiv` and download needed dependencies inside that.
