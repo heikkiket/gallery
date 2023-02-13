@@ -97,11 +97,6 @@ Install following packages: `python3-gobject gtk3`
 
 You can find more information and help about installing PyGObject from their official documentation: https://pygobject.readthedocs.io/en/latest/getting_started.html
 
-## A demo image viewer (in HTML)
-There is a simple image viewer program running inside browser. Just save gallery.html to the same dir with gallery.toml.
-
-Run this program by opening the file in the web browser and then uploading gallery.toml via the form visible. You need to explicitly upload a gallery.toml because a web browser cannot read files from local filesystem by default.
-
 ## Technical details
 
 This software is written in Python. Binaries are self-containing and self-extracting python archives. They are made with a tool called `shiv`. When ran, they create a hidden directory `~/.shiv` and download needed dependencies inside that.
