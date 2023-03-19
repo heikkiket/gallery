@@ -10,7 +10,7 @@ I want a simple photo management solution. Photos sit in a directory tree and al
 
 That kind of photo collection is easy to sync with Rsync, Nextcloud or whatever tool.
 
-## How to create a simple photo library?
+## How to create a simple photo library
 
 Create a directory tree containing pictures plus a gallery.toml file. An example directory tree could look like this:
 ```
