@@ -63,6 +63,8 @@ The idea here is that the whole gallery.toml is easily hackable so you (or other
 
 ## gallery command
 
+![Picture of gallery command line tool](./docs/screenshots/gallery-cmd.png)
+
 There is a simple, alpha-level utility called `gallery` that can be used to manipulate this gallery. Currently it has two functions.
 
 ### gallery list
@@ -81,6 +83,9 @@ gallery init > gallery.toml
 ```
 
 ## gallery-viewer (GTK)
+
+![Picture of gallery-viewer](./docs/screenshots/gallery-viewer.png)
+
 gallery-viewer is a simple GTK-based program that can be started from command line and used to view images in the gallery. Start the program in the same directory that contains a gallery.toml file.
 
 gallery-viewer currently just lists all collections and allows to view images in each collection.
