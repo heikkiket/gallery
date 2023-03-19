@@ -62,4 +62,6 @@ Currently this whole thing is pre-alpha state. It would help me tremendously if 
 
 I have two sample programs to manage this gallery: one is a command line utility called `gallery` which currently lets you to list and query your images. Another one is `gallery-viewer`, a really simple GTK 3 application for viewing images.
 
+![Picture of gallery command line tool](./screenshots/gallery-viewer.png)
+
 More info about how to install and use them can be found from [README](../README.md).
