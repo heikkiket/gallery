@@ -1,6 +1,6 @@
 import sys
 
-from . import init, list
+from . import init, list, add
 from .parser import parser
 
 
