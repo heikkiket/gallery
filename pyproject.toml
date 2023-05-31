@@ -15,15 +15,17 @@ test = [
  "pytest",
  # These two are needed in order to run tests for GObjects
  "pycairo",
- "pygobject"
+ "pygobject",
+ # This is to mock images with PIL
+ "Pillow"
 ]
 
 [project.scripts]
 gallery = "gallerycmd:main"
 viewer = "viewer.ui.app:main"
 
-[pytest]
-testpaths = "test"
+[tool.pytest.ini-options]
+testpaths = ["test",]
 
 [build-system]
 requires = ["setuptools"]
