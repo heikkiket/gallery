@@ -105,3 +105,7 @@ You can find more information and help about installing PyGObject from their off
 ## Technical details
 
 This software is written in Python. Binaries are self-containing and self-extracting python archives. They are made with a tool called `shiv`. When ran, they create a hidden directory `~/.shiv` and download needed dependencies inside that.
+
+
+## Want to contribute?
+I value that greatly! Head on to [CONTRIBUTING.md](./CONTRIBUTING.md) to find out how to build the project.
