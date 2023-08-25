@@ -19,6 +19,6 @@ test-all:
 venv:
 	python -m venv .venv
 
-install:
+dev-environment:
 	pip install ".[test]"
 
