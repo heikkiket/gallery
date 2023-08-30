@@ -22,3 +22,5 @@ venv:
 dev-environment:
 	pip install ".[test]"
 
+build:
+	fpm -s python -t deb .

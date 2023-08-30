@@ -1,0 +1,14 @@
+-s python
+--name gallery
+--license gpl3
+--version 0.1.0
+--architecture all
+
+--no-python-dependencies
+--depends python3-tomli
+--depends python3-tomli-w
+--depends python3-filetype
+
+--description "A minimalist gallery application"
+--url "https://github.com/heikkiket/gallery"
+--maintainer "Heikki Ketoharju <heikki.ketoharju@iki.fi>"
