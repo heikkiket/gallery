@@ -38,6 +38,7 @@ def filetree():
     tree.add_dir("path").add_dir("to").add_image("image1.jpg", "jpg")
     tree.add_dir("path").add_dir("to").add_image("image2.jpg", "jpg")
     tree.add_dir("path").add_dir("to").add_image("image3.jpg", "jpg")
+    tree.add_image("image4.jpg", "jpg")
     return tree
 
 @pytest.fixture

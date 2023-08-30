@@ -56,5 +56,6 @@ class Imagegallery():
     def _init_metadata(self):
         self.metadata = {key : {} for key in self.gallery_toml.keys()}
 
-    def add(self):
-        pass
+    def add(self, path):
+        if not self.filetree.find(path):
+            raise FileNotFoundError()
