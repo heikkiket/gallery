@@ -11,6 +11,6 @@ def test_does_not_throw_with_valid_path(imagegallery):
         pytest.fail("File is present. This should not throw an error.")
 
 @pytest.mark.skip
-def test_image_is_added_to_filetree(imagegallery):
+def test_image_is_added_to_gallery(imagegallery):
     imagegallery.add("image4.jpg")
     assert "image4.jpg" in imagegallery.gallery_toml
