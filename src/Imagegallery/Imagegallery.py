@@ -2,6 +2,7 @@ from copy import deepcopy
 from pathlib import Path
 
 from Imagegallery.collections import make_collections
+from Imagegallery.gallery_toml import GalleryToml
 from readers.filetreereader import Filetreereader
 from readers.galleryreader import load_gallery
 
@@ -9,7 +10,7 @@ from readers.galleryreader import load_gallery
 class Imagegallery():
     def __init__(self):
         "Creates an empty Imagegallery. Load needs to be called in order to populate it."
-        self.gallery_toml = {}
+        self.GalleryToml = GalleryToml({})
         self.filetree = None
         self.metadata = {}
         self.collections = {}
@@ -24,7 +25,7 @@ class Imagegallery():
 
         """
         instance = cls()
-        instance.gallery_toml = gallery_toml
+        instance.GalleryToml = GalleryToml(gallery_toml)
         instance.filetree = filetree
         instance._init_metadata()
         instance.make_collections()
@@ -43,7 +44,7 @@ class Imagegallery():
     def flag_missing(self):
         """Flags missing files
         """
-        for path in self.gallery_toml.keys():
+        for path in self.GalleryToml.filenames():
             if not self.filetree.find(path):
                 self.metadata[path]["missing"] = True
 
@@ -54,7 +55,7 @@ class Imagegallery():
         self.collections = make_collections(self)
 
     def _init_metadata(self):
-        self.metadata = {key : {} for key in self.gallery_toml.keys()}
+        self.metadata = {filename : {} for filename in self.GalleryToml.filenames()}
 
     def add(self, path):
         if not self.filetree.find(path):

@@ -3,7 +3,7 @@ from Imagegallery import Filetree, Imagegallery
 
 def test_empty():
     gallery = Imagegallery()
-    assert gallery.gallery_toml == {}
+    assert not gallery.GalleryToml.has_images()
     assert gallery.filetree == None
     assert gallery.metadata == {}
 

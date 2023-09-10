@@ -23,7 +23,7 @@ def filter_by_tag(gallery, tag):
     if tag == "" or tag == None:
         return gallery
 
-    for path, image in gallery.gallery_toml.items():
+    for path, image in gallery.GalleryToml.gallery_toml.items():
         if tag in image["tags"]:
             results[path] = image
 
