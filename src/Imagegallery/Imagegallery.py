@@ -2,7 +2,7 @@ from copy import deepcopy
 from pathlib import Path
 
 from Imagegallery.collections import make_collections
-from Imagegallery.gallery_toml import GalleryToml
+from Imagegallery.GalleryToml import GalleryToml
 from readers.filetreereader import Filetreereader
 from readers.galleryreader import load_gallery
 
