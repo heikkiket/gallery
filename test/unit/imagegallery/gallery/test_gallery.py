@@ -3,26 +3,27 @@ import pytest
 from Imagegallery import GalleryToml
 
 @pytest.fixture
-def gallery(gallery_toml):
+def gallery_data(gallery_toml):
     return GalleryToml(gallery_toml)
 
 def test_gallery():
-    gallery = GalleryToml({})
-    assert gallery.filenames() == []
-    assert not gallery.has_images()
+    gallery_data = GalleryToml({})
+    assert gallery_data.filenames() == []
+    assert not gallery_data.has_images()
 
-def test_initiating(gallery):
-    gallery.has_images()
+def test_initiating(gallery_data):
+    gallery_data.has_images()
 
-def test_list_images(gallery):
-    assert gallery.filenames() == [
+def test_list_images(gallery_data):
+    assert gallery_data.filenames() == [
         "path/to/image1.jpg",
         "path/to/image2.jpg",
         "path/to/image3.jpg"
     ]
 
-def test_has_not_image(gallery):
-    assert not gallery.has("foo.jpg")
+def test_has_not_image(gallery_data):
+    assert not gallery_data.has("foo.jpg")
 
-def test_has_image(gallery):
-    assert gallery.has("path/to/image1.jpg")
+def test_has_image(gallery_data):
+    assert gallery_data.has("path/to/image1.jpg")
+
