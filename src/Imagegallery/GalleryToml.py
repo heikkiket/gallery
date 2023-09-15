@@ -14,3 +14,15 @@ class GalleryToml:
 
     def has(self, filename):
         return filename in self.gallery_toml.keys()
+
+    def add(self, filename, metadata={}):
+        self.gallery_toml[filename] = metadata
+
+    def get(self, filename):
+        if not self.has(filename):
+            raise NoSuchImageError()
+
+        return self.gallery_toml[filename]
+
+class NoSuchImageError(Exception):
+    pass
