@@ -60,3 +60,4 @@ class Imagegallery():
     def add(self, path):
         if not self.filetree.find(path):
             raise FileNotFoundError()
+        self.GalleryToml.add(path)
