@@ -11,3 +11,6 @@ class GalleryToml:
 
     def has_images(self):
         return len(self.filenames()) > 0
+
+    def has(self, filename):
+        return filename in self.gallery_toml.keys()

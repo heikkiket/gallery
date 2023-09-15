@@ -20,3 +20,9 @@ def test_list_images(gallery):
         "path/to/image2.jpg",
         "path/to/image3.jpg"
     ]
+
+def test_has_not_image(gallery):
+    assert not gallery.has("foo.jpg")
+
+def test_has_image(gallery):
+    assert gallery.has("path/to/image1.jpg")
