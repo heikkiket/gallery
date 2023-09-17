@@ -1,6 +1,6 @@
 import sys
 
-from . import init, list, add
+from gallerycmd import init, list, add
 from .parser import parser
 
 

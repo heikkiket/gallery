@@ -1,6 +1,6 @@
-from .collection import Collection
-from .filetree import Filetree
-from .image import Image
-from .GalleryToml import GalleryToml, NoSuchImageError
-from .Imagegallery import Imagegallery
+from Imagegallery.collection import Collection
+from Imagegallery.filetree import Filetree
+from Imagegallery.image import Image
+from Imagegallery.GalleryToml import GalleryToml, NoSuchImageError
+from Imagegallery.Imagegallery import Imagegallery
 
