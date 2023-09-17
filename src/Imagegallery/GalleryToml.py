@@ -1,5 +1,3 @@
-from test.unit.imagegallery.gallery.conftest import gallery_toml
-
 
 class GalleryToml:
 
