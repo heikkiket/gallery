@@ -3,7 +3,6 @@ from pathlib import Path
 
 from Imagegallery.collections import make_collections
 from Imagegallery.GalleryToml import GalleryToml
-from readers.filetreereader import Filetreereader
 from readers.galleryreader import load_gallery
 
 
@@ -34,6 +33,11 @@ class Imagegallery():
     @classmethod
     def from_disk(cls):
         "Loads an image gallery from current work dir. Both processes gallery.toml file and reads the filetree."
+
+        ## This is an HACK to circumvent a situation with circular imports.
+        ## Probably this whole classmethod should reside outside of this class.
+        from readers.filetreereader import Filetreereader
+
         instance = cls()
         instance.gallery_toml = load_gallery("gallery.toml")
         instance.filetree = Filetreereader().read(Path("."))
