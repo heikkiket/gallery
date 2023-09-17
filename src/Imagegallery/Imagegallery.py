@@ -39,7 +39,7 @@ class Imagegallery():
         from readers.filetreereader import Filetreereader
 
         instance = cls()
-        instance.gallery_toml = load_gallery("gallery.toml")
+        instance.GalleryToml = GalleryToml(load_gallery("gallery.toml"))
         instance.filetree = Filetreereader().read(Path("."))
         instance._init_metadata()
         instance.make_collections()
