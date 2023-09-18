@@ -34,7 +34,7 @@ Turns out there is. Of course it's totally unofficial and unmentioned in officia
 
 ## Packages, finally!
 
-So here you go. Install my gallery as a deb package to your Ubuntu box and test it. Come tell me how you liked it.
+So here you go. [Install my gallery as a deb package](https://github.com/heikkiket/gallery/releases/tag/0.2.0) to your beloved Ubuntu box and test it. Come tell me how you liked it.
 
 I wonder why modern package formats don't take command line into account. This is GNU/Linux after all, a system that is famous for its command line. And there's a ton of nice modern command line tools that I have to clone from Github or download random binaries from somewhere.
 
