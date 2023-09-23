@@ -4,7 +4,12 @@ from gallerycmd.parser import subparsers
 from Imagegallery import Imagegallery
 
 def main(args):
-    print("Not implemented yet")
+    try:
+        print(
+            add_image(args.filename)
+        )
+    except(FileNotFoundError):
+        print("No such image:", args.filename)
 
 def add_image(filename):
     gallery = Imagegallery.from_disk()
@@ -14,4 +19,5 @@ def add_image(filename):
 parser = subparsers.add_parser('add',
     description="Adds new image into gallery",
                                )
+parser.add_argument("filename", help="Filename for image added to gallery")
 parser.set_defaults(func=main)
