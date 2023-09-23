@@ -25,3 +25,8 @@ def environment(tmp_path):
 def test_add_cmd(environment):
     imagegallery = add_image("image 4.jpg")
     assert imagegallery.GalleryToml.has("image 4.jpg")
+
+def test_add_no_such_file(environment):
+    with pytest.raises(FileNotFoundError):
+        imagegallery = add_image("foo.jpg")
+
