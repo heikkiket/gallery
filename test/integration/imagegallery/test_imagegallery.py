@@ -21,6 +21,7 @@ def environment(tmp_path):
     os.chdir(tmp_path)
 
 def test_throws_if_no_gallery_toml(tmp_path):
+    os.chdir(tmp_path)
     with pytest.raises(FileNotFoundError):
         gallery = Imagegallery.from_disk()
 
