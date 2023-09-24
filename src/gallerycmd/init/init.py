@@ -3,7 +3,7 @@ from pathlib import Path
 import tomli_w
 
 from gallerycmd.parser import subparsers
-from readers.filetreereader import Filetreereader
+from filesystem_operations.filetreereader import Filetreereader
 
 
 def main(args):

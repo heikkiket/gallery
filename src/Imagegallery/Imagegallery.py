@@ -3,7 +3,7 @@ from pathlib import Path
 
 from Imagegallery.collections import make_collections
 from Imagegallery.GalleryToml import GalleryToml
-from readers.galleryreader import load_gallery
+from filesystem_operations.galleryreader import load_gallery
 
 
 class Imagegallery():
@@ -36,7 +36,7 @@ class Imagegallery():
 
         ## This is an HACK to circumvent a situation with circular imports.
         ## Probably this whole classmethod should reside outside of this class.
-        from readers.filetreereader import Filetreereader
+        from filesystem_operations.filetreereader import Filetreereader
 
         instance = cls()
         instance.GalleryToml = GalleryToml(load_gallery("gallery.toml"))

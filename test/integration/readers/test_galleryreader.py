@@ -1,7 +1,7 @@
 import pytest
 import tomli
 
-from readers.galleryreader import load_gallery
+from filesystem_operations.galleryreader import load_gallery
 
 
 def test_load_gallery_fails_without_filename():

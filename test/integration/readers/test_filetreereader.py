@@ -3,7 +3,7 @@ from test.integration.filesystem_helpers import mkdir, mkfile, mkimg
 import pytest
 
 from Imagegallery import Filetree
-from readers.filetreereader import Filetreereader
+from filesystem_operations.filetreereader import Filetreereader
 
 
 def test_filetreereader_returns_filetree(tmp_path):
