@@ -48,4 +48,4 @@ def test_add(gallery_data):
 
 def test_add_with_metadata(gallery_data):
     gallery_data.add("foo.jpg", metadata={"title": "test title"})
-    assert gallery_data.get("foo.jpg") == {"title": "test title"}
+    assert gallery_data.get("foo.jpg") == {"title": "test title", "description": "", "tags": []}

@@ -13,10 +13,12 @@ class GalleryToml:
     def has(self, filename):
         return filename in self.gallery_toml.keys()
 
-    def add(self, filename, metadata={
+    def add(self, filename, metadata={}):
+        default_metadata = {
             "title": "", "description": "", "tags": []
-    }):
-        self.gallery_toml[filename] = metadata
+        }
+        combined_metadata = default_metadata | metadata
+        self.gallery_toml[filename] = combined_metadata
 
     def get(self, filename):
         if not self.has(filename):
