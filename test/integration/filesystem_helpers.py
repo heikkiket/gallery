@@ -1,4 +1,4 @@
-
+from pathlib import Path
 from PIL import Image
 
 
@@ -13,3 +13,7 @@ def mkimg(path):
 
 def mkfile(path):
     open(path, "x")
+
+def file_exists(path):
+    file = Path(path)
+    return file.is_file()
