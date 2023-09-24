@@ -42,7 +42,9 @@ def test_returns_member_dict(gallery_data):
 def test_add(gallery_data):
     gallery_data.add("foo.jpg")
     assert gallery_data.has("foo.jpg")
-    assert gallery_data.get("foo.jpg") == {}
+    assert gallery_data.get("foo.jpg") == {
+        "title": "", "description": "", "tags": []
+    }
 
 def test_add_with_metadata(gallery_data):
     gallery_data.add("foo.jpg", metadata={"title": "test title"})

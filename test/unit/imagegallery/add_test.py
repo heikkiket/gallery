@@ -13,3 +13,10 @@ def test_does_not_throw_with_valid_path(imagegallery):
 def test_image_is_added_to_gallery(imagegallery):
     imagegallery.add("image4.jpg")
     assert imagegallery.GalleryToml.has("image4.jpg")
+
+def test_image_has_needed_properties(imagegallery):
+    imagegallery.add("image4.jpg")
+    image4 = imagegallery.GalleryToml.get("image4.jpg")
+    assert "title" in image4
+    assert "description" in image4
+    assert "tags" in image4

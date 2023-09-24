@@ -13,7 +13,9 @@ class GalleryToml:
     def has(self, filename):
         return filename in self.gallery_toml.keys()
 
-    def add(self, filename, metadata={}):
+    def add(self, filename, metadata={
+            "title": "", "description": "", "tags": []
+    }):
         self.gallery_toml[filename] = metadata
 
     def get(self, filename):
