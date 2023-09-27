@@ -28,7 +28,7 @@ After this, you might like to do pip install. You need optional-dependency calle
 
 or:
 
-    make install
+    make dev-environment
 
 After this you can run tests:
 
@@ -37,3 +37,18 @@ After this you can run tests:
 or:
 
     make test
+    make integration-test
+
+Makefile has tests divided to two parts: both integration and unit tests. Integration test is something that creates files to disk or does something else that will cause side-effects.
+
+To make a deb package from this program one can do
+
+    make build
+
+A self-containing Python bundle (made with Shiv) can be created with
+
+    make bundle
+
+and
+
+    make viewer
