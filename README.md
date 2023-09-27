@@ -3,17 +3,19 @@
 
 This image gallery is meant to be a minimalistic, simple and plain-text centric tool for your personal photo management.
 
-## Useful links
-
- - [Installation](#installation)
- - [Why a world needs an UNIX-style image collection manager?](docs/why.md)
- - [Blog](docs/blog)
-
 This project has three parts:
 
  * specification for a simple image gallery
  * command line tool for managing image gallery
  * simple viewer program
+
+## Useful links
+Before we hop to all that, here's some links that give you a quick jump to other parts of documentation
+
+ - [Installation](#installation)
+ - [Why a world needs an UNIX-style image collection manager?](docs/why.md)
+ - [Blog](docs/blog)
+
 
 ## gallery specification
 
@@ -104,7 +106,7 @@ You can install this program by just downloading a binary file from releases and
 
 If you don't know how to do that, there's also an deb-installation package for Ubuntu and probably other Debian-like operating systems.
 
-[Head to releases and download this!](releases)
+[Head to releases and download this!](https://github.com/heikkiket/gallery/releases)
 
 ### Installing PyGObject
 
