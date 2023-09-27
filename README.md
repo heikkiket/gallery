@@ -3,6 +3,12 @@
 
 This image gallery is meant to be a minimalistic, simple and plain-text centric tool for your personal photo management.
 
+## Useful links
+
+ - [Installation](#installation)
+ - [Why a world needs an UNIX-style image collection manager?](docs/why.md)
+ - [Blog](docs/blog)
+
 This project has three parts:
 
  * specification for a simple image gallery
@@ -91,6 +97,14 @@ gallery-viewer is a simple GTK-based program that can be started from command li
 gallery-viewer currently just lists all collections and allows to view images in each collection.
 
 In order to function gallery-viewer needs python3 installed in the host system as well as PyGobject library.
+
+## <a name="installation"></a>Installation
+
+You can install this program by just downloading a binary file from releases and running it on your computer.
+
+If you don't know how to do that, there's also an deb-installation package for Ubuntu and probably other Debian-like operating systems.
+
+[Head to releases and download this!](releases)
 
 ### Installing PyGObject
 
