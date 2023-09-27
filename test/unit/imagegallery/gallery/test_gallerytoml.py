@@ -1,6 +1,6 @@
 import pytest
 
-from Imagegallery import GalleryToml, NoSuchImageError
+from Imagegallery import GalleryToml, ImageMetadata, NoSuchImageError
 
 @pytest.fixture
 def gallery_data(gallery_toml):
@@ -47,5 +47,5 @@ def test_add(gallery_data):
     }
 
 def test_add_with_metadata(gallery_data):
-    gallery_data.add("foo.jpg", metadata={"title": "test title"})
+    gallery_data.add("foo.jpg", ImageMetadata(title="test title"))
     assert gallery_data.get("foo.jpg") == {"title": "test title", "description": "", "tags": []}

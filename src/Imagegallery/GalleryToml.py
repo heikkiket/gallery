@@ -1,3 +1,5 @@
+from Imagegallery.imagemetadata import ImageMetadata
+
 
 class GalleryToml:
 
@@ -13,11 +15,11 @@ class GalleryToml:
     def has(self, filename):
         return filename in self.gallery_toml.keys()
 
-    def add(self, filename, metadata={}):
+    def add(self, filename, metadata=ImageMetadata()):
         default_metadata = {
             "title": "", "description": "", "tags": []
         }
-        combined_metadata = default_metadata | metadata
+        combined_metadata = default_metadata | metadata.as_dict()
         self.gallery_toml[filename] = combined_metadata
 
     def get(self, filename):

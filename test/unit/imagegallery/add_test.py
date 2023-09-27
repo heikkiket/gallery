@@ -20,3 +20,4 @@ def test_image_has_needed_properties(imagegallery):
     assert "title" in image4
     assert "description" in image4
     assert "tags" in image4
+
