@@ -6,20 +6,27 @@ from Imagegallery import Imagegallery
 
 def main(args):
     try:
-        imagegallery = add_image(args.filename)
+        imagegallery = add_image(args.filename,
+                                 title = args.title,
+                                 description = args.description,
+                                 tags = args.tags
+                                 )
         save_gallery(imagegallery.GalleryToml)
     except(FileNotFoundError):
         print("No such image:", args.filename)
     except(GallerySaveError):
         print("Saving gallery.toml file failed for some weird reason. This is probably an internal bug.")
 
-def add_image(filename):
+def add_image(filename, title="", description="", tags=[]):
     gallery = Imagegallery.from_disk()
-    gallery.add(filename)
+    gallery.add(filename, title, description, tags)
     return gallery
 
 parser = subparsers.add_parser('add',
     description="Adds new image into gallery",
                                )
 parser.add_argument("filename", help="Filename for image added to gallery")
+parser.add_argument("-t", "--title", help="Image title")
+parser.add_argument("-d", "--description", help="Image description")
+parser.add_argument("--tags", nargs="+", help="Tags describing this image, separated by space")
 parser.set_defaults(func=main)
