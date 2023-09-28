@@ -3,6 +3,7 @@ from pathlib import Path
 
 from Imagegallery.collections import make_collections
 from Imagegallery.GalleryToml import GalleryToml
+from Imagegallery.imagemetadata import ImageMetadata
 from filesystem_operations.galleryreader import load_gallery
 
 
@@ -61,7 +62,11 @@ class Imagegallery():
     def _init_metadata(self):
         self.metadata = {filename : {} for filename in self.GalleryToml.filenames()}
 
-    def add(self, path):
+    def add(self, path, title="", description="", tags=[]):
         if not self.filetree.find(path):
             raise FileNotFoundError()
-        self.GalleryToml.add(path)
+        self.GalleryToml.add(path,
+                             ImageMetadata(title,
+                                           description,
+                                           tags)
+                             )
