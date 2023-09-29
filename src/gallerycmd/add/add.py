@@ -14,8 +14,11 @@ def main(args):
         save_gallery(imagegallery.GalleryToml)
     except(FileNotFoundError):
         print("No such image:", args.filename)
+        exit(1)
     except(GallerySaveError):
         print("Saving gallery.toml file failed for some weird reason. This is probably an internal bug.")
+        exit(1)
+
 
 def add_image(filename, title="", description="", tags=[]):
     gallery = Imagegallery.from_disk()
