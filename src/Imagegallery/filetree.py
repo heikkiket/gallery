@@ -1,6 +1,7 @@
 from pathlib import Path
 
 from Imagegallery.image import Image
+from Imagegallery.imagemetadata import ImageMetadata
 
 
 class Filetree():
@@ -82,11 +83,7 @@ class Filetree():
             if isinstance(entry, Filetree):
                 result.update(entry.flatten())
             else:
-                result[str(entry.path)] = {
-                    "title": "",
-                    "description": "",
-                    "tags": []
-                }
+                result[str(entry.path)] = ImageMetadata().as_dict()
 
         return result
 
