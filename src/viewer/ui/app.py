@@ -8,7 +8,12 @@ from viewer.ui.widgets.imageviewer import ImageViewerWidget
 
 def main():
 
-    imagegallery = Imagegallery.from_disk()
+    try:
+        imagegallery = Imagegallery.from_disk()
+    except FileNotFoundError:
+        print("No gallery.toml found from current working directory. Move to a directory containing a gallery.toml file or create one by issuing a following command:")
+        print("\n   gallery init\n")
+        exit(1)
     gallery_viewer = GalleryViewer(gallery=imagegallery)
 
     app = Mainwindow(
