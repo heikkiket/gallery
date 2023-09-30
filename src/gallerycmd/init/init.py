@@ -14,5 +14,11 @@ def main(args):
 parser = subparsers.add_parser('init',
     description="Create a new gallery.toml based on files in the directory",
                                )
+def init_gallery():
+    if Path("gallery.toml").is_file():
+        raise LibraryExistsError()
 
 parser.set_defaults(func=main)
+
+class LibraryExistsError(Exception):
+    pass
