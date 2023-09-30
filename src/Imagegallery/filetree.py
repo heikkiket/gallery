@@ -1,10 +1,11 @@
 from pathlib import Path
+from Imagegallery.file import File
 
 from Imagegallery.image import Image
 from Imagegallery.imagemetadata import ImageMetadata
 
 
-class Filetree():
+class Filetree(File):
     """
     @brief      Filetree is a representation of a tree or subtree of directories.
 
@@ -16,7 +17,7 @@ class Filetree():
         self.name = path.name
         self.path = path
         self.entries = []
-        self.reset()
+        self.current = 0
 
     def __iter__(self):
         return self
@@ -97,12 +98,3 @@ class Filetree():
 
     def reset(self):
         self.current = 0
-
-    def is_tree(self):
-        """
-        Tells if this filetree node is a tree or image.
-        This method is a counterpart to Image.is_tree()
-
-        return boolean -- always True
-        """
-        return True
