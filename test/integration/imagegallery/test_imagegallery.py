@@ -1,26 +1,8 @@
-import os
-from argparse import Namespace
-
-from _pytest import monkeypatch
-from test.integration.filesystem_helpers import mkdir, mkfile, mkimg
-
 import pytest
+from _pytest import monkeypatch
 
+from test.integration.filesystem_helpers import mkdir
 from Imagegallery import Filetree, GalleryToml, Imagegallery
-
-
-@pytest.fixture()
-def environment(tmp_path, monkeypatch):
-    file = open(tmp_path / "gallery.toml", "w")
-    file.writelines([
-        '["path/to/image.jpg"]\n',
-        'hash = 123456\n',
-        'title = "My first image"\n',
-        'description = "Image description"\n',
-        "tags = ['foo', 'bar', 'baz']\n"
-    ])
-    file.close()
-    monkeypatch.chdir(tmp_path)
 
 def test_throws_if_no_gallery_toml(tmp_path, monkeypatch):
     monkeypatch.chdir(tmp_path)
