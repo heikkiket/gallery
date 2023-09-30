@@ -1,13 +1,13 @@
 import pytest
 
-from Imagegallery import GalleryToml, ImageMetadata, NoSuchImageError
+from Imagegallery import LibraryToml, ImageMetadata, NoSuchImageError
 
 @pytest.fixture
-def gallery_data(gallery_toml):
-    return GalleryToml(gallery_toml)
+def gallery_data(library_toml):
+    return LibraryToml(library_toml)
 
 def test_gallery():
-    gallery_data = GalleryToml({})
+    gallery_data = LibraryToml({})
     assert gallery_data.filenames() == []
     assert not gallery_data.has_images()
 

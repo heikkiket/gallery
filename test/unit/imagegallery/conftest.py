@@ -5,7 +5,7 @@ from Imagegallery import Imagegallery
 
 
 @pytest.fixture
-def gallery_toml():
+def library_toml():
     return {
         "path/to/image1.jpg":
         {
@@ -42,5 +42,5 @@ def filetree():
     return tree
 
 @pytest.fixture
-def imagegallery(gallery_toml, filetree):
-    return Imagegallery.from_vars(gallery_toml, filetree)
+def imagegallery(library_toml, filetree):
+    return Imagegallery.from_vars(library_toml, filetree)

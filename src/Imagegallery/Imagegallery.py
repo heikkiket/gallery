@@ -2,7 +2,7 @@ from copy import deepcopy
 from pathlib import Path
 
 from Imagegallery.collections import make_collections
-from Imagegallery.GalleryToml import GalleryToml
+from Imagegallery.LibraryToml import LibraryToml
 from Imagegallery.imagemetadata import ImageMetadata
 from filesystem_operations.libraryreader import load_library
 
@@ -10,22 +10,22 @@ from filesystem_operations.libraryreader import load_library
 class Imagegallery():
     def __init__(self):
         "Creates an empty Imagegallery. Load needs to be called in order to populate it."
-        self.GalleryToml = GalleryToml({})
+        self.LibraryToml = LibraryToml({})
         self.filetree = None
         self.metadata = {}
         self.collections = {}
 
     @classmethod
-    def from_vars(cls, gallery_toml, filetree):
+    def from_vars(cls, library_toml, filetree):
         """Creates an Imagegallery from variables
 
-        :param gallery_toml: a dictionary constructed from gallery.toml file
+        :param library_toml: a dictionary constructed from gallery.toml file
         :param filetree: A Filetree object
         :returns: Imagegallery
 
         """
         instance = cls()
-        instance.GalleryToml = GalleryToml(gallery_toml)
+        instance.LibraryToml = LibraryToml(library_toml)
         instance.filetree = filetree
         instance._init_metadata()
         instance.make_collections()
@@ -40,7 +40,7 @@ class Imagegallery():
         from filesystem_operations.filetreereader import Filetreereader
 
         instance = cls()
-        instance.GalleryToml = GalleryToml(load_library("gallery.toml"))
+        instance.LibraryToml = LibraryToml(load_library("gallery.toml"))
         instance.filetree = Filetreereader().read(Path("."))
         instance._init_metadata()
         instance.make_collections()
@@ -49,7 +49,7 @@ class Imagegallery():
     def flag_missing(self):
         """Flags missing files
         """
-        for path in self.GalleryToml.filenames():
+        for path in self.LibraryToml.filenames():
             if not self.filetree.find(path):
                 self.metadata[path]["missing"] = True
 
@@ -60,12 +60,12 @@ class Imagegallery():
         self.collections = make_collections(self)
 
     def _init_metadata(self):
-        self.metadata = {filename : {} for filename in self.GalleryToml.filenames()}
+        self.metadata = {filename : {} for filename in self.LibraryToml.filenames()}
 
     def add(self, path, title="", description="", tags=[]):
         if not self.filetree.find(path):
             raise FileNotFoundError()
-        self.GalleryToml.add(path,
+        self.LibraryToml.add(path,
                              ImageMetadata(title,
                                            description,
                                            tags)

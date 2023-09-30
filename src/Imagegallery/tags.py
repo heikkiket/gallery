@@ -1,13 +1,13 @@
 
-def list_tags(gallery_toml):
+def list_tags(library_toml):
     """Takes an image_gallery and returns a Set
     containing all tags in the gallery
 
     Arguments:
-    gallery_toml -- a gallery_toml (dict)
+    library_toml -- a library_toml (dict)
     """
     tags = set()
-    for image in gallery_toml.values():
+    for image in library_toml.values():
         tags.update(image['tags'])
     return tags
 
@@ -23,7 +23,7 @@ def filter_by_tag(gallery, tag):
     if tag == "" or tag == None:
         return gallery
 
-    for path, image in gallery.GalleryToml.gallery_toml.items():
+    for path, image in gallery.LibraryToml.library_toml.items():
         if tag in image["tags"]:
             results[path] = image
 

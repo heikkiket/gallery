@@ -2,7 +2,7 @@ import pytest
 
 from Imagegallery import Filetree, Imagegallery
 
-gallery_toml = {
+library_toml = {
     "2022/Holiday/image1.jpg":
     {
         "hash": 123456,
@@ -36,5 +36,5 @@ def imagegallery():
     subtree.add_image("image2.jpg", "jpg")
     subtree.add_image("image3.jpg", "jpg")
 
-    gallery = Imagegallery.from_vars(gallery_toml, tree)
+    gallery = Imagegallery.from_vars(library_toml, tree)
     return gallery

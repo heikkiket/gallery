@@ -13,7 +13,7 @@ def format(gallery):
     Arguments:
     gallery - an Imagegallery object
     """
-    toml = gallery.GalleryToml.gallery_toml
+    toml = gallery.LibraryToml.library_toml
     rows = []
     for path, image in toml.items():
         rows.append("[" + path + "]:")

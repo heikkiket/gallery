@@ -6,7 +6,7 @@ from Imagegallery import Collection, Image
 def make_collections(gallery):
     collections_dict = {}
 
-    for image_path in gallery.GalleryToml.filenames():
+    for image_path in gallery.LibraryToml.filenames():
         image = Image(Path(image_path), "footype")
         name = image.path.parent.name
         hash = str(image.path.parent)

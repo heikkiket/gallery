@@ -11,7 +11,7 @@ def main(args):
                                  description = args.description,
                                  tags = args.tags
                                  )
-        save_library(imagegallery.GalleryToml)
+        save_library(imagegallery.LibraryToml)
     except(FileNotFoundError):
         print("No such image:", args.filename)
         exit(1)

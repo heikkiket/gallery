@@ -8,8 +8,8 @@ from Imagegallery.collections import make_collections
 def imagegallery():
     return Imagegallery.from_vars({"foo/bar/img1.jpg": {}}, Filetree())
 
-def create_gallery(gallery_toml):
-    return Imagegallery.from_vars(gallery_toml, Filetree())
+def create_gallery(library_toml):
+    return Imagegallery.from_vars(library_toml, Filetree())
 
 def test_empty_gallery_toml_returns_empty_list():
     imagegallery = create_gallery({})
@@ -37,12 +37,12 @@ def test_collection_has_path_as_hash(imagegallery):
     assert collections[0].hash == "foo/bar"
 
 def test_adds_several_paths_as_collections(imagegallery):
-    gallery_toml = {
+    library_toml = {
         "foo/bar/img1.jpg": {},
         "baz/bar/img2.jpg": {},
     }
 
-    imagegallery = create_gallery(gallery_toml)
+    imagegallery = create_gallery(library_toml)
 
     collections = list(make_collections(imagegallery).values())
 
@@ -50,12 +50,12 @@ def test_adds_several_paths_as_collections(imagegallery):
     assert collections[1].hash == "baz/bar"
 
 def test_adds_one_path_only_once():
-    gallery_toml = {
+    library_toml = {
         "foo/bar/img1.jpg": {},
         "foo/bar/img2.jpg": {},
     }
 
-    imagegallery = create_gallery(gallery_toml)
+    imagegallery = create_gallery(library_toml)
 
     collections = list(make_collections(imagegallery).values())
 

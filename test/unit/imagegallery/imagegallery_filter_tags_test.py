@@ -16,24 +16,24 @@ def test_filter_raises_when_no_arguments():
 
 def test_empty_tag_returns_all(imagegallery):
     filtered = filter_by_tag(imagegallery, "")
-    assert filtered.GalleryToml.gallery_toml == example_gallery
+    assert filtered.LibraryToml.library_toml == example_gallery
 
 def test_tag_None_returns_all(imagegallery):
     filtered = filter_by_tag(imagegallery, None)
-    assert filtered.GalleryToml.gallery_toml == example_gallery
+    assert filtered.LibraryToml.library_toml == example_gallery
 
 def test_unmathed_tag_returns_empty(imagegallery):
     filtered = filter_by_tag(imagegallery, "nonexisting_tag")
-    assert filtered.GalleryToml.gallery_toml == {}
+    assert filtered.LibraryToml.library_toml == {}
 
 def test_matching_tag_returns_nonempty_result(imagegallery):
     filtered = filter_by_tag(imagegallery, "bar")
-    assert len(filtered.GalleryToml.gallery_toml) > 0
+    assert len(filtered.LibraryToml.library_toml) > 0
 
 def test_matching_tag_returns_all_hits(imagegallery):
     filtered = filter_by_tag(imagegallery, "baz")
-    assert len(filtered.GalleryToml.gallery_toml) == 2
-    assert filtered.GalleryToml.gallery_toml["path/to/image3.jpg"]["title"] == "My Third image"
+    assert len(filtered.LibraryToml.library_toml) == 2
+    assert filtered.LibraryToml.library_toml["path/to/image3.jpg"]["title"] == "My Third image"
 
 def test_copies_filetree(imagegallery):
     imagegallery.filetree = "a fake filetree, really just a string"
