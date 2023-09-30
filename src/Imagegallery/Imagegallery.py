@@ -4,7 +4,7 @@ from pathlib import Path
 from Imagegallery.collections import make_collections
 from Imagegallery.GalleryToml import GalleryToml
 from Imagegallery.imagemetadata import ImageMetadata
-from filesystem_operations.galleryreader import load_gallery
+from filesystem_operations.libraryreader import load_library
 
 
 class Imagegallery():
@@ -40,7 +40,7 @@ class Imagegallery():
         from filesystem_operations.filetreereader import Filetreereader
 
         instance = cls()
-        instance.GalleryToml = GalleryToml(load_gallery("gallery.toml"))
+        instance.GalleryToml = GalleryToml(load_library("gallery.toml"))
         instance.filetree = Filetreereader().read(Path("."))
         instance._init_metadata()
         instance.make_collections()

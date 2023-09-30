@@ -2,7 +2,7 @@ from _pytest import monkeypatch
 from _pytest.config import parse_warning_filter
 import pytest
 import os
-from filesystem_operations.galleryreader import load_gallery
+from filesystem_operations.libraryreader import load_library
 
 from filesystem_operations.gallerysaver import save_gallery, GallerySaveError
 
@@ -15,7 +15,7 @@ def test_directory(tmp_path, monkeypatch):
     return tmp_path
 
 def read_saved_gallery():
-    return load_gallery("gallery.toml")
+    return load_library("gallery.toml")
 
 
 def test_throws_an_exception_with_empty_object():
