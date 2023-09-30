@@ -9,7 +9,7 @@ from test.integration.filesystem_helpers import mkimg
 def environment(tmp_path, monkeypatch):
     file = open(tmp_path / "gallery.toml", "w")
     file.writelines([
-        '["path/to/image.jpg"]\n',
+        '["path/to/image1.jpg"]\n',
         'hash = 123456\n',
         'title = "My first image"\n',
         'description = "Image description"\n',
