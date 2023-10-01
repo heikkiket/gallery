@@ -3,7 +3,7 @@ import pytest
 
 from _pytest import monkeypatch
 
-from test.integration.filesystem_helpers import mkimg
+from test.integration.filesystem_helpers import mkimg, mkdir
 
 @pytest.fixture()
 def environment(tmp_path, monkeypatch):
@@ -15,6 +15,9 @@ def environment(tmp_path, monkeypatch):
         'description = "Image description"\n',
         "tags = ['foo', 'bar', 'baz']\n"
     ])
-    file.close()
+    mkdir(tmp_path, "path")
+    mkdir(tmp_path / "path", "to")
+    mkimg(tmp_path / "path" / "to" / "image1.jpg")
+
     mkimg(tmp_path / "image 4.jpg")
     monkeypatch.chdir(tmp_path)
