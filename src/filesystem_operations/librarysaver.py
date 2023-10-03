@@ -6,7 +6,12 @@ def save_library(galleryToml):
         raise LibrarySaveError("Should be LibraryToml object but was ", type(galleryToml))
 
     file = open("library.toml", "wb")
-    tomli_w.dump(galleryToml.library_toml, file)
+    try:
+        tomli_w.dump(galleryToml.library_toml, file)
+    except Exception as error:
+        print("Error saving library to library.toml:", error)
+        print("Here's what we tried to save:\n")
+        print(galleryToml.library_toml)
 
 class LibrarySaveError(Exception):
     pass
