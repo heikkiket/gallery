@@ -12,7 +12,7 @@ That kind of photo collection is easy to sync with Rsync, Nextcloud or whatever 
 
 ## How to create a simple photo library
 
-Create a directory tree containing pictures plus a gallery.toml file. An example directory tree could look like this:
+Create a directory tree containing pictures plus a library.toml file. An example directory tree could look like this:
 ```
 ~/Pictures/gallery/
 ├── 2021
@@ -26,12 +26,12 @@ Create a directory tree containing pictures plus a gallery.toml file. An example
 │   └── 03
 │       └── 02
 │           └── image3.jpg
-└── gallery.toml
+└── library.toml
 ```
 
 In this image gallery pictures are organized to `year/month/day` directory structure. You can use whatever structure you want, of course.
 
-All the metadata is saved to a gallery.toml file. It looks like this:
+All the metadata is saved to a library.toml file. It looks like this:
 
 ```
 ["2021/12/15/image1.png"]

@@ -19,7 +19,7 @@ class Imagegallery():
     def from_vars(cls, library_toml, filetree):
         """Creates an Imagegallery from variables
 
-        :param library_toml: a dictionary constructed from gallery.toml file
+        :param library_toml: a dictionary constructed from library.toml file
         :param filetree: A Filetree object
         :returns: Imagegallery
 
@@ -33,14 +33,14 @@ class Imagegallery():
 
     @classmethod
     def from_disk(cls):
-        "Loads an image gallery from current work dir. Both processes gallery.toml file and reads the filetree."
+        "Loads an image gallery from current work dir. Both processes library.toml file and reads the filetree."
 
         ## This is an HACK to circumvent a situation with circular imports.
         ## Probably this whole classmethod should reside outside of this class.
         from filesystem_operations.filetreereader import Filetreereader
 
         instance = cls()
-        instance.LibraryToml = LibraryToml(load_library("gallery.toml"))
+        instance.LibraryToml = LibraryToml(load_library("library.toml"))
         instance.filetree = Filetreereader().read(Path("."))
         instance._init_metadata()
         instance.make_collections()

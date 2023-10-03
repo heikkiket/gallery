@@ -15,7 +15,7 @@ def test_directory(tmp_path, monkeypatch):
     return tmp_path
 
 def read_saved_library():
-    return load_library("gallery.toml")
+    return load_library("library.toml")
 
 
 def test_throws_an_exception_with_empty_object():
@@ -32,11 +32,11 @@ def test_doesn_t_create_gallery_toml_with_wrong_argument(test_directory):
     except LibrarySaveError:
         pass
 
-    assert not file_exists(test_directory / "gallery.toml")
+    assert not file_exists(test_directory / "library.toml")
 
 def test_creates_a_gallery_toml_file(test_directory):
     save_library(LibraryToml({}))
-    assert file_exists(test_directory / "gallery.toml")
+    assert file_exists(test_directory / "library.toml")
 
 def test_file_has_right_content(test_directory):
     example_gallery = {

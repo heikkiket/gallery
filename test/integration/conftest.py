@@ -7,7 +7,7 @@ from test.integration.filesystem_helpers import mkimg, mkdir
 
 @pytest.fixture()
 def environment(tmp_path, monkeypatch):
-    file = open(tmp_path / "gallery.toml", "w")
+    file = open(tmp_path / "library.toml", "w")
     file.writelines([
         '["path/to/image1.jpg"]\n',
         'hash = 123456\n',

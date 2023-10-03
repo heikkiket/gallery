@@ -19,7 +19,7 @@ Before we hop to all that, here's some links that give you a quick jump to other
 
 ## gallery specification
 
-Your image gallery is just a directory tree containing pictures plus a gallery.toml file. An example directory tree could look like this:
+Your image gallery is just a directory tree containing pictures plus a library.toml file. An example directory tree could look like this:
 ```
 ~/Pictures/gallery/
 ├── 2021
@@ -33,14 +33,14 @@ Your image gallery is just a directory tree containing pictures plus a gallery.t
 │   └── 03
 │       └── 02
 │           └── image3.jpg
-└── gallery.toml
+└── library.toml
 ```
 
 In this image gallery pictures are organized to `year-month-day` directory structure. You can use whatever structure you want, of course.
 
-### gallery.toml fileformat
+### library.toml fileformat
 
-All the metadata is saved to a gallery.toml file. It looks like this:
+All the metadata is saved to a library.toml file. It looks like this:
 
 ```
 ["Wallpapers/Studio_Ghibli_Laputa_Laputa_Castle_in_the_Sky_Movie_Screenshots_far_view_anime_animated_movies-1845525.jpg"]
@@ -67,7 +67,7 @@ tags = ['nature', 'rock']
 
 Basically you just reference every image with its path and then give it title, description and tags. This file is easy to write by hand and pretty human-readable as well, but you can also generate and handle it automatically.
 
-The idea here is that the whole gallery.toml is easily hackable so you (or others) can extend the system however you like.
+The idea here is that the whole library.toml is easily hackable so you (or others) can extend the system however you like.
 
 ## gallery command
 
@@ -76,7 +76,7 @@ The idea here is that the whole gallery.toml is easily hackable so you (or other
 There is a simple, alpha-level utility called `gallery` that can be used to manipulate this gallery. Currently it has two functions.
 
 ### gallery list
-This command lists all the pictures in the gallery.toml. It checks that every image really exists on the disk and prints out *** FILE MISSING *** for ones that don't exist. Just go to the directory where gallery.toml sits and issue this command there.
+This command lists all the pictures in the library.toml. It checks that every image really exists on the disk and prints out *** FILE MISSING *** for ones that don't exist. Just go to the directory where library.toml sits and issue this command there.
 
 You can also filter pictures by tag:
 
@@ -84,17 +84,17 @@ You can also filter pictures by tag:
 This gives you a list of all pictures tagged "nature".
 
 ### gallery init
-This command creates a new gallery.toml by collecting all the image files from the current work directory and its subdirectories. It does not save the file anywhere but only prints its contents out. You can easily create a gallery.toml file by piping results into file. Following command overwrites an earlier gallery.toml.
+This command creates a new library.toml by collecting all the image files from the current work directory and its subdirectories. It does not save the file anywhere but only prints its contents out. You can easily create a library.toml file by piping results into file. Following command overwrites an earlier library.toml.
 
 ```
-gallery init > gallery.toml
+gallery init > library.toml
 ```
 
 ## gallery-viewer (GTK)
 
 ![Picture of gallery-viewer](./docs/screenshots/gallery-viewer.png)
 
-gallery-viewer is a simple GTK-based program that can be started from command line and used to view images in the gallery. Start the program in the same directory that contains a gallery.toml file.
+gallery-viewer is a simple GTK-based program that can be started from command line and used to view images in the gallery. Start the program in the same directory that contains a library.toml file.
 
 gallery-viewer currently just lists all collections and allows to view images in each collection.
 

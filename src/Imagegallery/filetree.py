@@ -77,7 +77,7 @@ class Filetree(File):
         """
         @brief Transfom a filetree to a simple dictionary of images
 
-        @details Transform a filetree to a simple dictionary containing all images found in a tree, keyed with a full path and containing placehoders for image metadata. The output of this method is basically identical with a gallery.toml file structure.
+        @details Transform a filetree to a simple dictionary containing all images found in a tree, keyed with a full path and containing placehoders for image metadata. The output of this method is basically identical with a library.toml file structure.
         """
         result = {}
         for entry in self.entries:

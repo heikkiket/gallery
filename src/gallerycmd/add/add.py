@@ -16,7 +16,7 @@ def main(args):
         print("No such image:", args.filename)
         exit(1)
     except (LibrarySaveError):
-        print("Saving gallery.toml file failed for some weird reason. This is probably an internal bug.")
+        print("Saving library.toml file failed for some weird reason. This is probably an internal bug.")
         exit(1)
 
 

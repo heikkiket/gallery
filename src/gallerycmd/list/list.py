@@ -30,7 +30,7 @@ def main(args):
         gallery = Imagegallery.from_disk()
         gallery.flag_missing()
     except FileNotFoundError:
-        print("No gallery.toml file found in this directory.")
+        print("No library.toml file found in this directory.")
         exit(0)
 
     formatted = format(filter_by_tag(gallery, args.tag))

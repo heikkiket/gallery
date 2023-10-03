@@ -21,9 +21,9 @@ def test_file_not_toml(tmp_path):
         load_library(tmp_path / "foo.toml")
 
 def test_loads_toml_file(tmp_path):
-    toml = open(tmp_path / "gallery.toml", 'w')
+    toml = open(tmp_path / "library.toml", 'w')
     toml.write('this="a test"')
     toml.close()
 
-    result = load_library(tmp_path / "gallery.toml")
+    result = load_library(tmp_path / "library.toml")
     assert result["this"] == "a test"
