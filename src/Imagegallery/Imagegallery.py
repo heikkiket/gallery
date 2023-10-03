@@ -70,3 +70,7 @@ class Imagegallery():
                                            description,
                                            tags)
                              )
+
+    def edit(self, path):
+        if not self.filetree.find(path):
+            raise FileNotFoundError
