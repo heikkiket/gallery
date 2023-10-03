@@ -22,11 +22,11 @@ def test_throws_an_exception_with_empty_object():
     with pytest.raises(LibrarySaveError):
         save_library(None)
 
-def test_only_accepts_gallery_toml_object():
+def test_only_accepts_library_toml_object():
     with pytest.raises(LibrarySaveError):
         save_library(Imagegallery())
 
-def test_doesn_t_create_gallery_toml_with_wrong_argument(test_directory):
+def test_doesn_t_create_library_toml_with_wrong_argument(test_directory):
     try:
         save_library(None)
     except LibrarySaveError:
@@ -34,7 +34,7 @@ def test_doesn_t_create_gallery_toml_with_wrong_argument(test_directory):
 
     assert not file_exists(test_directory / "library.toml")
 
-def test_creates_a_gallery_toml_file(test_directory):
+def test_creates_a_library_toml_file(test_directory):
     save_library(LibraryToml({}))
     assert file_exists(test_directory / "library.toml")
 

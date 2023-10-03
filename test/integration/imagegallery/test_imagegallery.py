@@ -4,7 +4,7 @@ from _pytest import monkeypatch
 from test.integration.filesystem_helpers import mkdir
 from Imagegallery import Filetree, LibraryToml, Imagegallery
 
-def test_throws_if_no_gallery_toml(tmp_path, monkeypatch):
+def test_throws_if_no_library_toml(tmp_path, monkeypatch):
     monkeypatch.chdir(tmp_path)
     with pytest.raises(FileNotFoundError):
         gallery = Imagegallery.from_disk()
@@ -13,11 +13,11 @@ def test_works_if_file_present(environment):
     gallery = Imagegallery.from_disk()
 
 
-def test_has_gallery_toml_object(environment):
+def test_has_library_toml_object(environment):
     gallery = Imagegallery.from_disk()
     assert isinstance(gallery.LibraryToml, LibraryToml)
 
-def test_populates_gallery_toml_object(environment):
+def test_populates_library_toml_object(environment):
     gallery = Imagegallery.from_disk()
     assert gallery.LibraryToml.has_images()
 

@@ -11,12 +11,12 @@ def imagegallery():
 def create_gallery(library_toml):
     return Imagegallery.from_vars(library_toml, Filetree())
 
-def test_empty_gallery_toml_returns_empty_list():
+def test_empty_library_toml_returns_empty_list():
     imagegallery = create_gallery({})
 
     assert make_collections(imagegallery) == {}
 
-def test_gallery_toml_with_one_member_returns_its_path():
+def test_library_toml_with_one_member_returns_its_path():
     imagegallery = create_gallery({"foo/img1.jpg": {}})
 
     collections = list(make_collections(imagegallery).values())
@@ -24,7 +24,7 @@ def test_gallery_toml_with_one_member_returns_its_path():
     assert len(collections) == 1
     assert collections[0].name == "foo"
 
-def test_deep_gallery_toml_name(imagegallery):
+def test_deep_library_toml_name(imagegallery):
 
     collections = list(make_collections(imagegallery).values())
 
