@@ -6,7 +6,7 @@ from Imagegallery import LibraryToml, ImageMetadata, NoSuchImageError
 def library_data(library_toml):
     return LibraryToml(library_toml)
 
-def test_gallery():
+def test_library_toml_is_empty():
     library_data = LibraryToml({})
     assert library_data.filenames() == []
     assert not library_data.has_images()
