@@ -1,3 +1,5 @@
+from argparse import ArgumentError
+import pytest
 from Imagegallery import ImageMetadata
 
 def test_empty_metadata_has_some_defaults():
@@ -25,3 +27,15 @@ def test_metadata_create_at_constructor():
     assert metadata.title == "foo"
     assert metadata.description == "bar"
     assert metadata.tags == ["test1", "test2"]
+
+def test_named_arguments():
+    metadata = ImageMetadata(title="")
+    assert metadata.title == ""
+
+def test_metadata_none_converts_to_empty():
+    metadata = ImageMetadata(None, None, None)
+    assert metadata.as_dict() == {
+        "title": "",
+        "description": "",
+        "tags": []
+    }

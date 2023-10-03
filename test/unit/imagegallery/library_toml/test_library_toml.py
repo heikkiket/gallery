@@ -49,3 +49,7 @@ def test_add(library_data):
 def test_add_with_metadata(library_data):
     library_data.add("foo.jpg", ImageMetadata(title="test title"))
     assert library_data.get("foo.jpg") == {"title": "test title", "description": "", "tags": []}
+
+def test_add_with_metadata_as_none(library_data):
+    library_data.add("foo.jpg", ImageMetadata(title=None))
+    assert library_data.get("foo.jpg") == {"title": "", "description": "", "tags": []}
