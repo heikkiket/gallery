@@ -39,3 +39,54 @@ def test_metadata_none_converts_to_empty():
         "description": "",
         "tags": []
     }
+
+def test_from_dict_fails_with_empty_dict():
+    with pytest.raises(AttributeError):
+        ImageMetadata.from_dict({})
+
+def test_from_dict_fails_with_wrong_keys():
+    with pytest.raises(AttributeError):
+        ImageMetadata.from_dict({
+            "foo": "",
+            "bar": "",
+            "baz": "",
+        })
+
+def test_from_dict_fails_with_partial_keys():
+    with pytest.raises(AttributeError):
+        ImageMetadata.from_dict({
+            "title": "",
+            "description": "",
+        })
+
+
+def test_from_dict_returns_empty_with_right_keys():
+    result = ImageMetadata.from_dict({
+        "title": "",
+        "description": "",
+        "tags": []
+    })
+
+    assert result.title == ""
+    assert result.description == ""
+    assert result.tags == []
+
+
+def test_from_dict_checks_tags_type():
+    with pytest.raises(AttributeError, match="ImageMetadata tags was something else than list"):
+        ImageMetadata.from_dict({
+            "title": "",
+            "description": "",
+            "tags": ""
+        })
+
+def test_from_dict_returns_with_right_content():
+    result = ImageMetadata.from_dict({
+        "title": "FooBar",
+        "description": "My 69 test",
+        "tags": ["test", "test2"]
+    })
+
+    assert result.title == "FooBar"
+    assert result.description == "My 69 test"
+    assert result.tags == ["test", "test2"]
