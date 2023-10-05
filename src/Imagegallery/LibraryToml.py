@@ -26,7 +26,7 @@ class LibraryToml:
         if not self.has(filename):
             raise NoSuchImageError()
 
-        return self.library_toml[filename]
+        return ImageMetadata.from_dict(self.library_toml[filename])
 
 class NoSuchImageError(Exception):
     pass

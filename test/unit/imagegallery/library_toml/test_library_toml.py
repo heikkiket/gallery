@@ -32,24 +32,24 @@ def test_get_throws_when_no_image(library_data):
         library_data.get("foo.jpg")
 
 def test_returns_member_dict(library_data):
-    assert library_data.get("path/to/image1.jpg") == {
-            "hash": 123456,
-            "title": "My first image",
-            "description" : "Image description",
-            "tags" : ['foo', 'bar', 'baz']
-        }
+    result = library_data.get("path/to/image1.jpg")
+
+    assert result.title == "My first image"
+    assert result.description == "Image description"
+    assert result.tags ==[ 'foo', 'bar', 'baz']
+
 
 def test_add(library_data):
     library_data.add("foo.jpg")
     assert library_data.has("foo.jpg")
-    assert library_data.get("foo.jpg") == {
+    assert library_data.get("foo.jpg").as_dict() == {
         "title": "", "description": "", "tags": []
     }
 
 def test_add_with_metadata(library_data):
     library_data.add("foo.jpg", ImageMetadata(title="test title"))
-    assert library_data.get("foo.jpg") == {"title": "test title", "description": "", "tags": []}
+    assert library_data.get("foo.jpg").as_dict() == {"title": "test title", "description": "", "tags": []}
 
 def test_add_with_metadata_as_none(library_data):
     library_data.add("foo.jpg", ImageMetadata(title=None))
-    assert library_data.get("foo.jpg") == {"title": "", "description": "", "tags": []}
+    assert library_data.get("foo.jpg").as_dict() == {"title": "", "description": "", "tags": []}
