@@ -53,3 +53,25 @@ def test_add_with_metadata(library_data):
 def test_add_with_metadata_as_none(library_data):
     library_data.add("foo.jpg", ImageMetadata(title=None))
     assert library_data.get("foo.jpg").as_dict() == {"title": "", "description": "", "tags": []}
+
+def test_edit_non_image_raises(library_data):
+    with pytest.raises(NoSuchImageError):
+        library_data.edit("foo")
+
+def test_edit_with_no_metadata_doesn_t_change_anything(library_data):
+    original_image = library_data.get("path/to/image1.jpg").as_dict()
+    library_data.edit("path/to/image1.jpg")
+    edited_image = library_data.get("path/to/image1.jpg").as_dict()
+    assert edited_image == original_image
+
+def test_edit_changes_title(library_data):
+    library_data.edit("path/to/image1.jpg", title="My new test")
+    assert library_data.get("path/to/image1.jpg").title == "My new test"
+
+def test_edit_changes_description(library_data):
+    library_data.edit("path/to/image1.jpg", description="My description")
+    assert library_data.get("path/to/image1.jpg").description == "My description"
+
+def test_edit_changes_tags(library_data):
+    library_data.edit("path/to/image1.jpg", tags=["my", "new", "test"])
+    assert library_data.get("path/to/image1.jpg").tags == ["my", "new", "test"]

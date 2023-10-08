@@ -22,6 +22,17 @@ class LibraryToml:
         combined_metadata = default_metadata | metadata.as_dict()
         self.library_toml[filename] = combined_metadata
 
+    def edit(self, filename, title=None, description=None, tags=None):
+        if not self.has(filename):
+            raise NoSuchImageError()
+
+        if title:
+            self.library_toml[filename]["title"] = title
+        if description:
+            self.library_toml[filename]["description"] = description
+        if tags:
+            self.library_toml[filename]["tags"] = tags
+
     def get(self, filename):
         if not self.has(filename):
             raise NoSuchImageError()
