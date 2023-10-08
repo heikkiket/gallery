@@ -1,5 +1,5 @@
 import sys
-from filesystem_operations.librarysaver import LibrarySaveError, save_library
+from filesystem_operations.librarysaver import save_library
 
 from gallerycmd.parser import subparsers
 from Imagegallery import Imagegallery
@@ -14,9 +14,6 @@ def main(args):
         save_library(imagegallery.LibraryToml)
     except(FileNotFoundError):
         print("No such image:", args.filename)
-        exit(1)
-    except (LibrarySaveError):
-        print("Saving library.toml file failed for some weird reason. This is probably an internal bug.")
         exit(1)
 
 
