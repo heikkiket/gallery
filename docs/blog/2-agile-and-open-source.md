@@ -16,16 +16,22 @@ Another agile principle is developing good enough code. The idea here is you wil
 
 Does this sound familiar? I know several free software projects that were in a version zero-dot-something for a better part of a decade. I think DosBOX still hasn't released an 1.0 version! That means their code is good enough to use. No one cares they are planning to add something. It is already useful in its present state.
 
-But same goes other way around. There are many closed source, proprietary, non-free software projects that are done in "agile" way. I think all those projects lack certain benefits that the open source development method gives. To be truly agile you must be open.
+# Open source projects have a lot of agility
 
-First and foremost, you are connected to a free software ecosystem. It's no small thing that all (or at least most of) your tools are non-proprietary. Non-proprietary tools give you more freedom to do whatever you want as a developer. Open tool doesn't force you to do anything.
+Agility also means ability to change when requirements change or situation changes. Open source development team can alter its size and structure when needed. Communication structure is often pretty flexible one, when discussions have been had in mailing lists, forums or chats.
 
-I also do believe proprietaryness allows you to keep shitty stuff hidden. In a free software people notice these things. It's not just backdoors and other nasty stuff. It's also about your configuration file format, your commit message style... Agile development means creating quality software. Quality software does not have shitty stuff in it.
+# Proprietary agility is missing features
+
+There are many closed source, proprietary, non-free software projects that are done in "agile" way. I think all those projects lack certain benefits that the open source development method gives. To be truly agile you must be open.
+
+First and foremost, you are connected to a free software ecosystem. It's no small thing that all (or at least most of) your tools are non-proprietary. Non-proprietary tools give you more freedom to do whatever you want as a developer. Open tool doesn't force you to do anything. Think about proprietary IDE:s, libraries and platforms.
+
+I also do believe proprietaryness allows you to have shitty stuff. In a free software project people notice these things. It's not just backdoors and other nasty stuff. It's also about your cumbersome configuration file format, your commit message style... Agile development means creating quality software. Quality software does not include shitty stuff.
 
 What is my point here? Well, I just think free software is tightly coupled with agile way of thinking. I personally believe agile method is the best method create a good software. Free software is sometimes great in quality because it was made in an agile way.
 
-Linus Torvalds, Richard Stallman, Dennis Ritchie and many others found an agile development method by accident, and started to do that before anyone even knew what agile is. The free software community has some good, agile DNA on it because of that. We should be proud about that. And release early, release often.
+Linus Torvalds, Richard Stallman, Dennis Ritchie and numerous others found an agile development method by accident and started to use that before anyone else even knew what agile was. Free software community has some good, agile DNA on us. We should be proud about that. And release early, release often.
 
 Notice I didn't say a word about JIRA or estimation. That's because this text was about agility ;)
 
-By the way, I'm creating my own photo library management tool. It's just an hobby, won't be anything big and professional :) Check it out!
+By the way, I'm creating my own photo library management tool. It's just a hobby, won't be big and professional :) Check it out!
