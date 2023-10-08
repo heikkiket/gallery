@@ -3,6 +3,7 @@ from pathlib import Path
 
 from Imagegallery.collections import make_collections
 from Imagegallery.LibraryToml import LibraryToml
+from Imagegallery.filetree import Filetree
 from Imagegallery.imagemetadata import ImageMetadata
 from filesystem_operations.libraryreader import load_library
 
@@ -71,6 +72,9 @@ class Imagegallery():
                                            tags)
                              )
 
-    def edit(self, path):
+    def edit(self, path, title=None,
+             description=None, tags=None):
         if not self.filetree.find(path):
             raise FileNotFoundError
+
+        self.LibraryToml.edit(path, title, description, tags)
