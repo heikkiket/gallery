@@ -1,0 +1,2 @@
+* TODO put add and edit commands to readme
+* TODO package new version of the software
