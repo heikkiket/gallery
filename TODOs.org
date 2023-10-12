@@ -1,2 +1,2 @@
-* TODO put add and edit commands to readme
-* TODO package new version of the software
+* TODO put add and edit commands to readme [2023-10-12 to] 
+* TODO package new version of the software [2023-10-05 to] 
