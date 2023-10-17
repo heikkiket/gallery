@@ -12,7 +12,7 @@ class Imagegallery():
     def __init__(self):
         "Creates an empty Imagegallery. Load needs to be called in order to populate it."
         self.LibraryToml = LibraryToml({})
-        self.filetree = None
+        self.filetree = Filetree()
         self.metadata = {}
         self.collections = {}
 

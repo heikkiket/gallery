@@ -4,7 +4,7 @@ from Imagegallery import Filetree, Imagegallery
 def test_empty():
     gallery = Imagegallery()
     assert not gallery.LibraryToml.has_images()
-    assert gallery.filetree == None
+    assert gallery.filetree.is_empty()
     assert gallery.metadata == {}
 
 def test_init_metadata_copies_a_key():
