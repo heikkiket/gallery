@@ -9,6 +9,11 @@ Currently this document mainly involves a short form developer documentation.
  * make
  * git
 
+And for packaging
+
+ * shiv
+ * fpm
+
 In Debian-based systems you can install these by issuing
 
     sudo apt install python3 python3-pip make git
