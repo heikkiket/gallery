@@ -7,7 +7,7 @@ from gi.repository import GObject
 
 class CollectionViewer(GObject.Object):
 
-    images: [Image] = []
+    images: list[Image] = []
     current_index = 0
     _current_image_path = ""
 
