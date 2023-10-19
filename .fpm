@@ -1,7 +1,7 @@
 -s python
 --name gallery
 --license gpl3
---version 0.2.0
+--version 0.3.0
 --architecture all
 
 --no-python-dependencies
