@@ -15,9 +15,9 @@ class ImageViewerWidget(Gtk.Box):
 
 
     image = Gtk.Template.Child("image")
-    model: CollectionViewer = None
+    model: CollectionViewer
 
-    def __init__(self, model=None):
+    def __init__(self, model=CollectionViewer()):
         super().__init__()
 
         self.model = model
@@ -26,18 +26,18 @@ class ImageViewerWidget(Gtk.Box):
     def ref_parent(self, parent):
         self.logical_parent = parent
 
-    def update_image(self, instance, param):
+    def update_image(self, _, param):
         filename = self.model.get_property(param.name)
         self.image.set_from_file(filename)
 
     @Gtk.Template.Callback()
-    def next_button_clicked(self, *args):
+    def next_button_clicked(self, _):
         self.model.go_next()
 
     @Gtk.Template.Callback()
-    def prev_button_clicked(self, *args):
+    def prev_button_clicked(self, _):
         self.model.go_prev()
 
     @Gtk.Template.Callback()
-    def back_button_clicked(self, *args):
+    def back_button_clicked(self, _):
         signal.emit("switch_to_collectiongrid_view")
