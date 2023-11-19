@@ -3,7 +3,7 @@ import os
 import gi
 from viewer.logic import CollectionViewer
 from viewer.ui.signal import signal
-from viewer.ui.widgets.imagedetails import ImageDetails
+from viewer.ui.widgets.imagedetails import ImageDetailsWidget
 
 gi.require_version("Gtk", "3.0")
 from gi.repository import Gtk
@@ -23,7 +23,7 @@ class ImageViewerWidget(Gtk.Box):
         super().__init__()
 
         self.model = model
-        self.image_area.add(ImageDetails())
+        self.image_area.add(ImageDetailsWidget())
         self.model.connect("notify::current-image-path", self.update_image)
 
     def ref_parent(self, parent):
