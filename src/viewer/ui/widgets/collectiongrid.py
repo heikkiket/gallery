@@ -18,7 +18,7 @@ class CollectionGridWidget(Gtk.Box):
     collections_grid = Gtk.Template.Child("collections")
     model: GalleryViewer = None
 
-    def __init__(self, model=None):
+    def __init__(self, model :GalleryViewer):
         super().__init__()
 
         self.model = model
