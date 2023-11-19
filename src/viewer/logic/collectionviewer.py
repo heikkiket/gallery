@@ -1,5 +1,5 @@
 import gi
-from Imagegallery import Image, Collection
+from Imagegallery import ImageFile, Collection
 
 gi.require_version("Gtk", "3.0")
 from gi.repository import GObject
@@ -7,7 +7,7 @@ from gi.repository import GObject
 
 class CollectionViewer(GObject.Object):
 
-    images: list[Image] = []
+    images: list[ImageFile] = []
     current_index = 0
     _current_image_path = ""
 
@@ -24,7 +24,7 @@ class CollectionViewer(GObject.Object):
     def count(self):
         return len(self.images)
 
-    def current_image(self) -> Image:
+    def current_image(self) -> ImageFile:
         return self.images[self.current_index]
 
     @GObject.Property(type=str)

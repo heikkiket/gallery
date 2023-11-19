@@ -1,7 +1,7 @@
 from pathlib import Path
 from Imagegallery.file import File
 
-from Imagegallery.image import Image
+from Imagegallery.image import ImageFile
 from Imagegallery.imagemetadata import ImageMetadata
 
 
@@ -52,7 +52,7 @@ class Filetree(File):
         @param      type (str) a type of file. Just a short suffix
 
         """
-        self.entries.append(Image(self.path / name, type))
+        self.entries.append(ImageFile(self.path / name, type))
 
     def find(self, path):
         """

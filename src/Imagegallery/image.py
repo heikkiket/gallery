@@ -3,7 +3,7 @@ from pathlib import Path
 from Imagegallery.file import File
 
 
-class Image(File):
+class ImageFile(File):
     """
     @brief Image represents a image file at the Filetree.
 

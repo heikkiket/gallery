@@ -1,6 +1,6 @@
 import pytest
 
-from Imagegallery import Collection, Filetree, Image, Imagegallery
+from Imagegallery import Collection, Filetree, ImageFile, Imagegallery
 from Imagegallery.collections import make_collections
 
 
@@ -81,7 +81,7 @@ def test_collection_really_contains_images():
 
     collections = list(make_collections(imagegallery).values())
 
-    assert isinstance(collections[0].images[0], Image)
+    assert isinstance(collections[0].images[0], ImageFile)
 
 def test_creates_collections_inside_gallery(imagegallery):
     assert imagegallery.has_collections()
