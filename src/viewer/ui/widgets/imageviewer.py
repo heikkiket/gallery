@@ -7,6 +7,7 @@ from viewer.ui.widgets.imagedetails import ImageDetails
 
 gi.require_version("Gtk", "3.0")
 from gi.repository import Gtk
+from gi.repository import GdkPixbuf
 
 template = os.path.dirname(__file__) + "/imageviewer.ui"
 
@@ -30,7 +31,8 @@ class ImageViewerWidget(Gtk.Box):
 
     def update_image(self, _, param):
         filename = self.model.get_property(param.name)
-        self.image.set_from_file(filename)
+        pixbuf = GdkPixbuf.Pixbuf.new_from_file_at_scale(filename, 600, 600, True)
+        self.image.set_from_pixbuf(pixbuf)
 
     @Gtk.Template.Callback()
     def next_button_clicked(self, _):
