@@ -90,21 +90,35 @@
       </packing>
     </child>
     <child>
-      <object class="GtkOverlay" id="image_display">
+      <object class="GtkBox" id="image_area">
         <property name="visible">True</property>
         <property name="can-focus">False</property>
         <child>
-          <object class="GtkImage" id="image">
+          <object class="GtkOverlay" id="image_display">
             <property name="visible">True</property>
             <property name="can-focus">False</property>
-            <property name="hexpand">True</property>
-            <property name="vexpand">True</property>
-            <property name="stock">gtk-missing-image</property>
-            <property name="icon_size">6</property>
+            <child>
+              <object class="GtkImage" id="image">
+                <property name="visible">True</property>
+                <property name="can-focus">False</property>
+                <property name="hexpand">True</property>
+                <property name="vexpand">True</property>
+                <property name="stock">gtk-missing-image</property>
+                <property name="icon_size">6</property>
+              </object>
+              <packing>
+                <property name="index">-1</property>
+              </packing>
+            </child>
           </object>
           <packing>
-            <property name="index">-1</property>
+            <property name="expand">False</property>
+            <property name="fill">True</property>
+            <property name="position">0</property>
           </packing>
+        </child>
+        <child>
+          <placeholder/>
         </child>
       </object>
       <packing>
@@ -114,7 +128,16 @@
       </packing>
     </child>
     <child>
-      <placeholder/>
+      <object class="GtkLabel">
+        <property name="visible">True</property>
+        <property name="can-focus">False</property>
+        <property name="label" translatable="yes">This software is pre-alpha. Don't expect too much!</property>
+      </object>
+      <packing>
+        <property name="expand">False</property>
+        <property name="fill">True</property>
+        <property name="position">3</property>
+      </packing>
     </child>
   </template>
 </interface>

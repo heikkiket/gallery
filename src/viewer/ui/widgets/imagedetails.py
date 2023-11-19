@@ -8,7 +8,7 @@ from gi.repository import Gtk
 template = os.path.dirname(__file__) + "/imagedetails.ui"
 
 @Gtk.Template(filename=template)
-class ImageDetails(Gtk.Grid):
+class ImageDetails(Gtk.Box):
     __gtype_name__ = "imagedetails"
 
     def __init__(self):

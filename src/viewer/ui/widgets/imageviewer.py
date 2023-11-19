@@ -15,15 +15,15 @@ template = os.path.dirname(__file__) + "/imageviewer.ui"
 class ImageViewerWidget(Gtk.Box):
     __gtype_name__ = "imageviewer"
 
-
     image = Gtk.Template.Child("image")
+    image_area = Gtk.Template.Child("image_area")
     model: CollectionViewer
 
     def __init__(self, model=CollectionViewer()):
         super().__init__()
 
         self.model = model
-        self.add(ImageDetails())
+        self.image_area.add(ImageDetails())
         self.model.connect("notify::current-image-path", self.update_image)
 
     def ref_parent(self, parent):
