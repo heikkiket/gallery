@@ -1,4 +1,4 @@
-from Imagegallery.image import ImageFile
+from Imagegallery.imagefile import ImageFile
 
 class Collection:
 

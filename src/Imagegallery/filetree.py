@@ -1,7 +1,7 @@
 from pathlib import Path
 from Imagegallery.file import File
 
-from Imagegallery.image import ImageFile
+from Imagegallery.imagefile import ImageFile
 from Imagegallery.imagemetadata import ImageMetadata
 
 

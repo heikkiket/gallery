@@ -3,7 +3,7 @@ from pathlib import Path
 import pytest
 
 from Imagegallery import Filetree
-from Imagegallery.image import ImageFile
+from Imagegallery.imagefile import ImageFile
 
 
 @pytest.fixture
