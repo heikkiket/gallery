@@ -19,7 +19,7 @@ class ImageViewerWidget(Gtk.Box):
     image_area = Gtk.Template.Child("image_area")
     model: CollectionViewer
 
-    def __init__(self, model=CollectionViewer()):
+    def __init__(self, model :CollectionViewer):
         super().__init__()
 
         self.model = model
@@ -29,8 +29,8 @@ class ImageViewerWidget(Gtk.Box):
     def ref_parent(self, parent):
         self.logical_parent = parent
 
-    def update_image(self, _, param):
-        filename = self.model.get_property(param.name)
+    def update_image(self, _, prop):
+        filename = self.model.get_property(prop.name)
         pixbuf = GdkPixbuf.Pixbuf.new_from_file_at_scale(filename, 600, 600, True)
         self.image.set_from_pixbuf(pixbuf)
 
