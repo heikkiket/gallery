@@ -5,9 +5,9 @@ from Imagegallery.file import File
 
 class ImageFile(File):
     """
-    @brief Image represents a image file at the Filetree.
+    @brief ImageFile represents a image file at the Filetree.
 
-    @details Image has a type (eg. JPG or PNG), a name and a path from the root of the image library.
+    @details ImageFile has a type (eg. JPG or PNG), a name and a path from the root of the image library.
 
     """
     def __init__(self, path :Path, type :str):

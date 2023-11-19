@@ -46,7 +46,7 @@ class Filetree(File):
         """
         @brief      Adds an image into current filetree
 
-        @details    Internally creates a representation of Image
+        @details    Internally creates a representation of image as ImageFile class
 
         @param      name (str) a filename for image
         @param      type (str) a type of file. Just a short suffix
@@ -62,7 +62,7 @@ class Filetree(File):
 
         @param      path (str) -- path to search for
 
-        @return     return Image or None
+        @return     return ImageFile or None
         """
         components = path.split("/")
         component = components.pop(0)
