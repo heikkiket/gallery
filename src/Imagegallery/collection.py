@@ -2,7 +2,7 @@ from Imagegallery.imagefile import ImageFile
 
 class Collection:
 
-    images = []
+    images: list[ImageFile] = []
 
     def __init__(self, name, hash):
         self.name = name
