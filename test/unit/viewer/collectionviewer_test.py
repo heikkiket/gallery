@@ -83,3 +83,6 @@ def test_go_next_notifies_property(viewer):
     viewer.go_next()
     viewer.go_prev()
     assert callback.method.call_count == 2
+
+def test_current_image_details(viewer):
+    assert viewer.current_image_details.title == ""

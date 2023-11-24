@@ -1,5 +1,6 @@
 import gi
 from Imagegallery import ImageFile, Collection
+from viewer.logic.imagedetails import ImageDetails
 
 gi.require_version("Gtk", "3.0")
 from gi.repository import GObject
@@ -9,6 +10,7 @@ class CollectionViewer(GObject.Object):
 
     images: list[ImageFile] = []
     current_index = 0
+    current_image_details = ImageDetails()
     _current_image_path = ""
 
     def has_images(self):
