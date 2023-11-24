@@ -1,4 +1,7 @@
 class ImageMetadata():
+    """
+    @brief Represents metadata from LibraryToml for one image.
+    """
 
     def __init__(self, title="", description="", tags=[]):
         self.title = title or ""
