@@ -5,24 +5,37 @@ import unittest.mock as mock
 import pytest
 
 from Imagegallery import Collection, ImageFile
+from Imagegallery.image import Image
 from viewer.logic import CollectionViewer
-
+from viewer.logic.imagedetails import ImageDetails
 
 @pytest.fixture
-def viewer():
+def images():
+    return [
+        Image(
+            ImageFile(Path("img1.jpg"), "jpg"),
+            ImageDetails()
+        ),
+        Image(
+            ImageFile(Path("img2"), "jpg"),
+            ImageDetails()
+        ),
+        Image(
+            ImageFile(Path("img3"), "jpg"),
+            ImageDetails()
+        )
+    ]
+
+@pytest.fixture
+def viewer(images):
     viewer = CollectionViewer()
-    images = [ImageFile(Path("img1.jpg"), "jpg"),
-              ImageFile(Path("img2"), "jpg"),
-              ImageFile(Path("img3"), "jpg")]
     viewer.add_images(images)
     return viewer
 
 @pytest.fixture
-def collection():
+def collection(images):
     collection = Collection("random collection", "")
-    collection.add_images([ImageFile(Path("bar.jpg"), "jpg"),
-                           ImageFile(Path("foo.jpg"), "jpg"),
-                           ImageFile(Path("image3.jpg"), "jpg")])
+    collection.add_images(images)
     return collection
 
 

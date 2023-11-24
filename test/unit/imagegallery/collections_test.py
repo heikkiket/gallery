@@ -81,7 +81,7 @@ def test_collection_really_contains_images():
 
     collections = list(make_collections(imagegallery).values())
 
-    assert isinstance(collections[0].images[0], ImageFile)
+    assert isinstance(collections[0].images[0].file, ImageFile)
 
 def test_creates_collections_inside_gallery(imagegallery):
     assert imagegallery.has_collections()
