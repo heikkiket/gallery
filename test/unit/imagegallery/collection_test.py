@@ -1,6 +1,9 @@
 from pathlib import Path
 
 from Imagegallery import Collection, ImageFile
+from Imagegallery.image import Image
+from Imagegallery.imagemetadata import ImageMetadata
+from viewer.logic.imagedetails import ImageDetails
 
 
 def test_is_empty_by_default():
@@ -14,13 +17,14 @@ def test_images_fill_collection():
 
 def test_add_single_image():
     collection = Collection("random collection", "")
-    collection.add_image(ImageFile(Path("foo"), "jpg"))
+    collection.add_image(Image(ImageFile(Path("foo"), "jpg"),
+                         ImageMetadata(title="foo")))
     assert not collection.is_empty()
-
 
 def test_add_images_retains_others():
     collection = Collection("random collection", "")
-    collection.add_image(ImageFile(Path("foo"), "jpg"))
+    collection.add_image(Image(ImageFile(Path("foo"), "jpg"),
+                               ImageMetadata()))
     collection.add_images([ImageFile(Path("bar"), "jpg")])
 
     assert len(collection.images) == 2

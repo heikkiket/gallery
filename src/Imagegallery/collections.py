@@ -1,6 +1,8 @@
 from pathlib import Path
 
 from Imagegallery import Collection, ImageFile
+from Imagegallery.image import Image
+from Imagegallery.imagemetadata import ImageMetadata
 
 
 def make_collections(gallery):
@@ -14,6 +16,7 @@ def make_collections(gallery):
         if not hash in collections_dict:
             collections_dict[hash] = Collection(name, hash)
 
-        collections_dict[hash].add_image(image)
+        collections_dict[hash].add_image(Image(image,
+                                               ImageMetadata()))
 
     return collections_dict
