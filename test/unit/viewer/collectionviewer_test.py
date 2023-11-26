@@ -14,15 +14,17 @@ def images():
     return [
         Image(
             ImageFile(Path("img1.jpg"), "jpg"),
-            ImageDetails()
+            ImageDetails(title="image 1",
+                         description="image 1 desc",
+                         tags=["foo", "bar", "baz"])
         ),
         Image(
             ImageFile(Path("img2"), "jpg"),
-            ImageDetails()
+            ImageDetails(title="image 2")
         ),
         Image(
             ImageFile(Path("img3"), "jpg"),
-            ImageDetails()
+            ImageDetails(title="image 3")
         )
     ]
 
@@ -50,26 +52,26 @@ def test_counts_image_amount(viewer):
     assert viewer.count() == 3
 
 def test_has_current_image(viewer):
-    assert viewer.current_image().name == "img1.jpg"
+    assert viewer.current_image().file.name == "img1.jpg"
 
 def test_go_next_returns_viewer(viewer):
     assert viewer.go_next().count() == 3
 
 def test_go_next_changes_state(viewer):
-    assert viewer.go_next().current_image().name == "img2"
+    assert viewer.go_next().current_image().file.name == "img2"
 
 def test_go_prev_works_as_well(viewer):
     viewer.go_next()
-    assert viewer.go_prev().current_image().name == "img1.jpg"
+    assert viewer.go_prev().current_image().file.name == "img1.jpg"
 
 def test_prev_cant_go_out_of_bounds(viewer):
-    assert viewer.go_prev().current_image().name == "img1.jpg"
+    assert viewer.go_prev().current_image().file.name == "img1.jpg"
 
 def test_next_cant_go_out_of_bounds(viewer):
     viewer.go_next()
     viewer.go_next()
     viewer.go_next()
-    assert viewer.go_next().current_image().name == "img3"
+    assert viewer.go_next().current_image().file.name == "img3"
 
 def test_can_empty_viewer(viewer):
     viewer.empty()
@@ -98,4 +100,4 @@ def test_go_next_notifies_property(viewer):
     assert callback.method.call_count == 2
 
 def test_current_image_details(viewer):
-    assert viewer.current_image_details.title == ""
+    assert viewer.current_image_details.title == "image 1"

@@ -8,17 +8,20 @@ from gi.repository import GObject
 
 class CollectionViewer(GObject.Object):
 
-    images: list[Image] = []
     current_index = 0
-    current_image_details = ImageDetails()
     _current_image_path = ""
+
+    def __init__(self) -> None:
+        super().__init__()
+        self.images: list[Image] = []
+        self.current_image_details = ImageDetails()
 
     def has_images(self):
         return len(self.images) > 0
 
     def add_images(self, images: list[Image]):
         self.images = images
-        self._update_current_image_path()
+        self._update_current_image()
 
     def empty(self):
         self.images = []
@@ -26,8 +29,8 @@ class CollectionViewer(GObject.Object):
     def count(self):
         return len(self.images)
 
-    def current_image(self) -> ImageFile:
-        return self.images[self.current_index].file
+    def current_image(self) -> Image:
+        return self.images[self.current_index]
 
     @GObject.Property(type=str)
     def current_image_path(self):
@@ -37,9 +40,16 @@ class CollectionViewer(GObject.Object):
     def current_image_path(self, value):
         self._current_image_path = value
 
+    def _update_current_image(self):
+        if self.has_images():
+            self._update_current_image_path()
+            self.current_image_details.set_image_metadata(
+                self.current_image().metadata
+            )
+
     def _update_current_image_path(self):
         if self.has_images():
-            self.props.current_image_path = self.current_image().path_as_bytes()
+            self.props.current_image_path = self.current_image().file.path_as_bytes()
         else:
             self.props.current_image_path = ""
 
@@ -47,7 +57,7 @@ class CollectionViewer(GObject.Object):
     def go_next(self):
         if self.current_index < len(self.images) - 1:
             self.current_index = self.current_index + 1
-            self._update_current_image_path()
+            self._update_current_image()
         return self
 
     def go_prev(self):
