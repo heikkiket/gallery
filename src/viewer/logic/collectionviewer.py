@@ -10,6 +10,7 @@ class CollectionViewer(GObject.Object):
 
     current_index = 0
     current_image_path = GObject.Property(type=str, default="")
+    current_image_details :ImageDetails
 
     def __init__(self) -> None:
         super().__init__()
@@ -25,6 +26,7 @@ class CollectionViewer(GObject.Object):
 
     def empty(self):
         self.images = []
+        self.current_image_details = ImageDetails()
 
     def count(self):
         return len(self.images)
@@ -55,7 +57,7 @@ class CollectionViewer(GObject.Object):
     def go_prev(self):
         if self.current_index > 0:
             self.current_index = self.current_index - 1
-            self._update_current_image_path()
+            self._update_current_image()
         return self
 
     def load_collection(self, collection: Collection):
