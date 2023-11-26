@@ -9,7 +9,7 @@ from gi.repository import GObject
 class CollectionViewer(GObject.Object):
 
     current_index = 0
-    _current_image_path = ""
+    current_image_path = GObject.Property(type=str, default="")
 
     def __init__(self) -> None:
         super().__init__()
@@ -31,14 +31,6 @@ class CollectionViewer(GObject.Object):
 
     def current_image(self) -> Image:
         return self.images[self.current_index]
-
-    @GObject.Property(type=str)
-    def current_image_path(self):
-        return self._current_image_path
-
-    @current_image_path.setter
-    def current_image_path_setter(self, value):
-        self._current_image_path = value
 
     def _update_current_image(self):
         if self.has_images():
