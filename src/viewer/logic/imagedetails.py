@@ -10,7 +10,7 @@ class ImageDetails(GObject.Object):
         return self._title
 
     @title.setter
-    def title(self, value):
+    def title_setter(self, value):
         self._title = value
 
     @GObject.Property(type=str)
@@ -18,7 +18,7 @@ class ImageDetails(GObject.Object):
         return self._description
 
     @description.setter
-    def description(self, value):
+    def description_setter(self, value):
         self._description = value
 
     @GObject.Property(type=str)
@@ -26,7 +26,7 @@ class ImageDetails(GObject.Object):
         return self._tags
 
     @tags.setter
-    def tags(self, value):
+    def tags_setter(self, value):
         self._tags = value
 
     def set_image_metadata(self, metadata):
