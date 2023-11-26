@@ -1,6 +1,4 @@
 from Imagegallery.image import Image
-from Imagegallery.imagefile import ImageFile
-from Imagegallery.imagemetadata import ImageMetadata
 
 class Collection:
 
