@@ -11,10 +11,11 @@ class CollectionViewer(GObject.Object):
     current_index = 0
     current_image_path = GObject.Property(type=str, default="")
     current_image_details :ImageDetails
+    images :list[Image]
 
     def __init__(self) -> None:
         super().__init__()
-        self.images: list[Image] = []
+        self.images = []
         self.current_image_details = ImageDetails()
 
     def has_images(self):
