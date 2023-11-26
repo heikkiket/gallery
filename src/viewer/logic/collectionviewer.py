@@ -37,7 +37,7 @@ class CollectionViewer(GObject.Object):
         return self._current_image_path
 
     @current_image_path.setter
-    def current_image_path(self, value):
+    def current_image_path_setter(self, value):
         self._current_image_path = value
 
     def _update_current_image(self):
