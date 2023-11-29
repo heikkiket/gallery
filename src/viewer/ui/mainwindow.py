@@ -1,7 +1,6 @@
 import os
 
 import gi
-from viewer.logic import CollectionViewer
 from viewer.ui.signal import signal
 
 gi.require_version("Gtk", "3.0")
