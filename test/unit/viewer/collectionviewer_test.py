@@ -100,18 +100,18 @@ def test_go_next_notifies_property(viewer):
     assert callback.method.call_count == 2
 
 def test_current_image_details(viewer):
-    assert viewer.current_image_details.title == "image 1"
+    assert viewer.current_image_details.get_property("title") == "image 1"
 
 
 def test_go_next_updates_image_details(viewer):
     viewer.go_next()
-    assert viewer.current_image_details.title == "image 2"
+    assert viewer.current_image_details.get_property("title") == "image 2"
 
 def test_go_prev_updates_image_details(viewer):
     viewer.go_next()
     viewer.go_prev()
-    assert viewer.current_image_details.title == "image 1"
+    assert viewer.current_image_details.get_property("title") == "image 1"
 
 def test_current_image_details_empty_after_calling_empty(viewer):
     viewer.empty()
-    assert viewer.current_image_details.title == ""
+    assert viewer.current_image_details.get_property("title") == ""
