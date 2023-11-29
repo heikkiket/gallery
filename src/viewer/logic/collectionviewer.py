@@ -27,7 +27,7 @@ class CollectionViewer(GObject.Object):
 
     def empty(self):
         self.images = []
-        self.current_image_details = ImageDetails()
+        self.current_image_details.clear()
 
     def count(self):
         return len(self.images)

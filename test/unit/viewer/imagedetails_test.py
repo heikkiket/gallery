@@ -20,3 +20,9 @@ def test_several_tags_are_comma_separated():
     imagedetails = ImageDetails()
     imagedetails.set_image_metadata(ImageMetadata(tags=["foo", "bar"]))
     assert imagedetails.get_property("tags") == "foo, bar"
+
+def test_clear():
+    imagedetails = ImageDetails()
+    imagedetails.set_image_metadata(ImageMetadata(title="baz"))
+    imagedetails.clear()
+    assert imagedetails.get_property("title") == ""
