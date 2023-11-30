@@ -41,23 +41,32 @@ def test_metadata_none_converts_to_empty():
     }
 
 def test_from_dict_fails_with_empty_dict():
-    with pytest.raises(AttributeError):
-        ImageMetadata.from_dict({})
+    result = ImageMetadata.from_dict({})
+
+    assert result.title == ""
+    assert result.description == ""
+    assert result.tags == []
 
 def test_from_dict_fails_with_wrong_keys():
-    with pytest.raises(AttributeError):
-        ImageMetadata.from_dict({
-            "foo": "",
-            "bar": "",
-            "baz": "",
-        })
+    result = ImageMetadata.from_dict({
+        "foo": "",
+        "bar": "",
+        "baz": "",
+    })
+
+    assert result.title == ""
+    assert result.description == ""
+    assert result.tags == []
 
 def test_from_dict_fails_with_partial_keys():
-    with pytest.raises(AttributeError):
-        ImageMetadata.from_dict({
-            "title": "",
-            "description": "",
-        })
+    result = ImageMetadata.from_dict({
+        "title": "",
+        "description": "",
+    })
+
+    assert result.title == ""
+    assert result.description == ""
+    assert result.tags == []
 
 
 def test_from_dict_returns_empty_with_right_keys():
@@ -73,12 +82,14 @@ def test_from_dict_returns_empty_with_right_keys():
 
 
 def test_from_dict_checks_tags_type():
-    with pytest.raises(AttributeError, match="ImageMetadata tags was something else than list"):
-        ImageMetadata.from_dict({
-            "title": "",
-            "description": "",
-            "tags": ""
-        })
+    result = ImageMetadata.from_dict({
+        "title": "",
+        "description": "",
+        "tags": ""
+    })
+    assert result.title == ""
+    assert result.description == ""
+    assert result.tags == []
 
 def test_from_dict_returns_with_right_content():
     result = ImageMetadata.from_dict({

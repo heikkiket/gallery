@@ -14,11 +14,16 @@ class ImageMetadata():
     @classmethod
     def from_dict(cls, dict):
         valid_keys = ["title", "description", "tags"]
-        if not all(key in dict.keys() for key in valid_keys):
-            raise AttributeError
 
-        if not isinstance(dict["tags"], list):
-            raise AttributeError("ImageMetadata tags was something else than list")
+        if not "title" in dict:
+            dict["title"] = ""
+
+        if not "description" in dict:
+            dict["description"] = ""
+
+        if not "tags" in dict or not isinstance(dict["tags"], list):
+            dict["tags"] = []
+
 
         return cls(
             title = dict["title"],
