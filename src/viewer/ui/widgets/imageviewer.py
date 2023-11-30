@@ -23,8 +23,10 @@ class ImageViewerWidget(Gtk.Box):
         super().__init__()
 
         self.model = model
-        self.image_area.add(ImageDetailsWidget())
-        self.model.connect("notify::current-image-path", self.update_image)
+        self.image_area.add(ImageDetailsWidget(
+            model=self.model.current_image_details))
+        self.model.connect("notify::current-image-path",
+                           self.update_image)
 
     def ref_parent(self, parent):
         self.logical_parent = parent
