@@ -101,11 +101,13 @@ def test_go_next_notifies_property(viewer):
 
 def test_current_image_details(viewer):
     assert viewer.current_image_details.get_property("title") == "image 1"
+    assert viewer.current_image_details.get_property("description") == "image 1 desc"
 
 
 def test_go_next_updates_image_details(viewer):
     viewer.go_next()
     assert viewer.current_image_details.get_property("title") == "image 2"
+    assert viewer.current_image_details.get_property("description") == ""
 
 def test_go_prev_updates_image_details(viewer):
     viewer.go_next()
