@@ -6,7 +6,13 @@ from Imagegallery.collections import make_collections
 
 @pytest.fixture()
 def imagegallery():
-    return Imagegallery.from_vars({"foo/bar/img1.jpg": {}}, Filetree())
+    return Imagegallery.from_vars(
+        {"foo/bar/img1.jpg": {
+            "title": "foo",
+            "description": "image desc",
+            "tags": ["bar"] }},
+        Filetree()
+    )
 
 def create_gallery(library_toml):
     return Imagegallery.from_vars(library_toml, Filetree())
@@ -16,13 +22,12 @@ def test_empty_library_toml_returns_empty_list():
 
     assert make_collections(imagegallery) == {}
 
-def test_library_toml_with_one_member_returns_its_path():
-    imagegallery = create_gallery({"foo/img1.jpg": {}})
+def test_library_toml_with_one_member_returns_its_path(imagegallery):
 
     collections = list(make_collections(imagegallery).values())
 
     assert len(collections) == 1
-    assert collections[0].name == "foo"
+    assert collections[0].name == "bar"
 
 def test_deep_library_toml_name(imagegallery):
 
@@ -85,3 +90,9 @@ def test_collection_really_contains_images():
 
 def test_creates_collections_inside_gallery(imagegallery):
     assert imagegallery.has_collections()
+
+def test_collections_has_metadata(imagegallery):
+    metadata = imagegallery.collections["foo/bar"].images[0].metadata
+    assert metadata.title == "foo"
+    assert metadata.description == "image desc"
+    assert metadata.tags == ["bar"]

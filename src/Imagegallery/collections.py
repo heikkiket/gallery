@@ -8,7 +8,7 @@ from Imagegallery.imagemetadata import ImageMetadata
 def make_collections(gallery):
     collections_dict = {}
 
-    for image_path in gallery.LibraryToml.filenames():
+    for image_path, metadata in gallery.LibraryToml.library_toml.items():
         image = ImageFile(Path(image_path), "footype")
         name = image.path.parent.name
         hash = str(image.path.parent)
@@ -17,6 +17,6 @@ def make_collections(gallery):
             collections_dict[hash] = Collection(name, hash)
 
         collections_dict[hash].add_image(Image(image,
-                                               ImageMetadata()))
+                                               ImageMetadata.from_dict(metadata)))
 
     return collections_dict
