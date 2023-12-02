@@ -34,7 +34,7 @@ class ImageDetailsWidget(Gtk.Box):
         self.title.set_text(self.model.props.title)
 
     def update_description(self, _, prop):
-        self.description.set_text(self.model.props.description)
+        self.description.get_buffer().set_text(self.model.props.description)
 
     def update_tags(self, _, prop):
         self.tags.set_text(self.model.props.tags)
