@@ -105,6 +105,10 @@
                 <property name="visible">True</property>
                 <property name="can-focus">True</property>
                 <property name="wrap-mode">word</property>
+                <property name="left-margin">7</property>
+                <property name="right-margin">7</property>
+                <property name="top-margin">5</property>
+                <property name="bottom-margin">5</property>
                 <property name="buffer">description_buffer</property>
               </object>
             </child>
