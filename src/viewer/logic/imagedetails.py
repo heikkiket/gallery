@@ -14,3 +14,10 @@ class ImageDetails(GObject.Object):
 
     def clear(self):
         self.set_image_metadata(ImageMetadata())
+
+    def get_metadata(self):
+        return ImageMetadata(
+            self.title,
+            self.description,
+            self.tags.split(",")
+        )
