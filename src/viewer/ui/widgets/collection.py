@@ -28,6 +28,3 @@ class CollectionWidget(Gtk.Box):
     def open_collection(self, *args):
         signal.emit(signal.SWITCH_TO_COLLECTION, self.collection.hash)
         signal.emit(signal.SWITCH_TO_IMAGE_VIEW)
-
-    def ref_parent(self, parent):
-        self.logical_parent = parent

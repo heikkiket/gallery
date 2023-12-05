@@ -22,7 +22,6 @@ class Mainwindow(Gtk.ApplicationWindow):
 
         self.imageviewer = imageviewerwidget
         self.collectiongrid = collectiongridwidget
-        self.imageviewer.ref_parent(self)
 
         self.stack.add_named(collectiongridwidget, "collectiongrid")
         self.stack.add_named(imageviewerwidget, "imageviewer")

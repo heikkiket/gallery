@@ -28,9 +28,6 @@ class ImageViewerWidget(Gtk.Box):
         self.model.connect("notify::current-image-path",
                            self.update_image)
 
-    def ref_parent(self, parent):
-        self.logical_parent = parent
-
     def update_image(self, _, prop):
         filename = self.model.get_property(prop.name)
         pixbuf = GdkPixbuf.Pixbuf.new_from_file_at_scale(filename, 600, 600, True)
