@@ -8,6 +8,7 @@ from viewer.ui.widgets.imagedetails import ImageDetailsWidget
 gi.require_version("Gtk", "3.0")
 from gi.repository import Gtk
 from gi.repository import GdkPixbuf
+from gi.repository import GLib
 
 template = os.path.dirname(__file__) + "/imageviewer.ui"
 
@@ -29,9 +30,12 @@ class ImageViewerWidget(Gtk.Box):
                            self.update_image)
 
     def update_image(self, _, prop):
-        filename = self.model.get_property(prop.name)
-        pixbuf = GdkPixbuf.Pixbuf.new_from_file_at_scale(filename, 600, 600, True)
-        self.image.set_from_pixbuf(pixbuf)
+        try:
+            filename = self.model.get_property(prop.name)
+            pixbuf = GdkPixbuf.Pixbuf.new_from_file_at_scale(filename, 600, 600, True)
+            self.image.set_from_pixbuf(pixbuf)
+        except GLib.Error:
+            self.image.set_from_icon_name("image-missing")
 
     @Gtk.Template.Callback()
     def next_button_clicked(self, _):
