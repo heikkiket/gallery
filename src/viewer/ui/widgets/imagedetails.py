@@ -7,6 +7,7 @@ from viewer.logic.imagedetails import ImageDetails
 
 gi.require_version("Gtk", "3.0")
 from gi.repository import Gtk
+from gi.repository import GObject
 
 template = os.path.dirname(__file__) + "/imagedetails.ui"
 
@@ -23,20 +24,10 @@ class ImageDetailsWidget(Gtk.Box):
         super().__init__()
 
         self.model = model
-        self.model.connect("notify::title",
-                           self.update_title)
-        self.model.connect("notify::description",
-                           self.update_description)
-        self.model.connect("notify::tags",
-                           self.update_tags)
-
-    def update_title(self, _, prop):
-        self.title.set_text(self.model.props.title)
-
-    def update_description(self, _, prop):
-        self.description.get_buffer().set_text(self.model.props.description)
-
-    def update_tags(self, _, prop):
-        self.tags.set_text(self.model.props.tags)
-
+        self.model.bind_property("title", self.title, "text",
+                                 GObject.BindingFlags.BIDIRECTIONAL)
+        self.model.bind_property("description", self.description.get_buffer(), "text",
+                                 GObject.BindingFlags.BIDIRECTIONAL)
+        self.model.bind_property("tags", self.tags, "text",
+                                 GObject.BindingFlags.BIDIRECTIONAL)
 
