@@ -30,8 +30,8 @@ class ImageViewerWidget(Gtk.Box):
                            self.update_image)
 
     def update_image(self, _, prop):
+        filename = self.model.get_property(prop.name)
         try:
-            filename = self.model.get_property(prop.name)
             pixbuf = GdkPixbuf.Pixbuf.new_from_file_at_scale(filename, 600, 600, True)
             self.image.set_from_pixbuf(pixbuf)
         except GLib.Error:
