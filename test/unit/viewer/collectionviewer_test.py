@@ -6,25 +6,25 @@ import pytest
 
 from Imagegallery import Collection, ImageFile
 from Imagegallery.image import Image
+from Imagegallery.imagemetadata import ImageMetadata
 from viewer.logic import CollectionViewer
-from viewer.logic.imagedetails import ImageDetails
 
 @pytest.fixture
 def images():
     return [
         Image(
             ImageFile(Path("img1.jpg"), "jpg"),
-            ImageDetails(title="image 1",
+            ImageMetadata(title="image 1",
                          description="image 1 desc",
                          tags=["foo", "bar", "baz"])
         ),
         Image(
             ImageFile(Path("img2"), "jpg"),
-            ImageDetails(title="image 2")
+            ImageMetadata(title="image 2")
         ),
         Image(
             ImageFile(Path("img3"), "jpg"),
-            ImageDetails(title="image 3")
+            ImageMetadata(title="image 3")
         )
     ]
 
