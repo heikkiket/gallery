@@ -37,7 +37,14 @@ def test_return_metadata(imagedetails):
     imagedetails.title = "test title"
     imagedetails.description = "test description"
     imagedetails.tags = "test"
-    metadata =  imagedetails.get_metadata()
+    metadata =  imagedetails.eject_metadata()
     assert metadata.title == "test title"
     assert metadata.description == "test description"
     assert metadata.tags == ["test"]
+
+def test_edit_metadata(imagedetails):
+    metadata = ImageMetadata(title="foo")
+    imagedetails.set_image_metadata(metadata)
+    imagedetails.title = "bar"
+    imagedetails.eject_metadata()
+    assert metadata.title == "bar"
