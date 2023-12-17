@@ -48,3 +48,8 @@ def test_edit_metadata(imagedetails):
     imagedetails.title = "bar"
     imagedetails.eject_metadata()
     assert metadata.title == "bar"
+
+def test_eject_nulls_metadata(imagedetails):
+    imagedetails.set_image_metadata(ImageMetadata(title="foo"))
+    imagedetails.eject_metadata()
+    assert imagedetails.title == ""

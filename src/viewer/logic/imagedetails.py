@@ -21,7 +21,9 @@ class ImageDetails(GObject.Object):
         self.set_image_metadata(ImageMetadata())
 
     def eject_metadata(self):
-        self._image_metadata.title = self.title
-        self._image_metadata.description = self.description
-        self._image_metadata.tags = self.tags.split(",")
-        return self._image_metadata
+        metadata = self._image_metadata
+        metadata.title = self.title
+        metadata.description = self.description
+        metadata.tags = self.tags.split(",")
+        self.clear()
+        return metadata
