@@ -36,3 +36,7 @@ def test_add_images_retains_others():
     ])
 
     assert len(collection.images) == 2
+
+def test_create_empty():
+    collection = Collection.create_empty()
+    assert collection.is_empty()

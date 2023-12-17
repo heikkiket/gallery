@@ -9,6 +9,10 @@ class Collection:
         self.hash = hash
         self.images: list[Image] = []
 
+    @classmethod
+    def create_empty(cls):
+        instance = cls("", "")
+        return instance
 
     def is_empty(self):
         return len(self.images) == 0
@@ -18,3 +22,4 @@ class Collection:
 
     def add_image(self, image: Image):
         self.images.append(image)
+
