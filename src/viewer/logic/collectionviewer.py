@@ -8,7 +8,7 @@ from gi.repository import GObject
 
 class CollectionViewer(GObject.Object):
 
-    current_index = 0
+    current_index = 1
     current_image_path = GObject.Property(type=str, default="")
     current_image_details :ImageDetails
     collection :Collection
@@ -18,6 +18,11 @@ class CollectionViewer(GObject.Object):
         self.current_image_details = ImageDetails()
         self.collection = Collection.create_empty()
 
+    def load_collection(self, collection: Collection):
+        self.collection = collection
+        self.current_index = 1
+        self._update_current_image()
+
     def has_images(self):
         return not self.collection.is_empty()
 
@@ -25,24 +30,19 @@ class CollectionViewer(GObject.Object):
         return self.collection.size()
 
     def go_next(self):
-        if self.current_index < self.collection.size() - 1:
+        if self.collection.has_after(self.current_index):
             self.current_index = self.current_index + 1
             self._update_current_image()
         return self
 
     def go_prev(self):
-        if self.current_index > 0:
+        if self.collection.has_before(self.current_index):
             self.current_index = self.current_index - 1
             self._update_current_image()
         return self
 
-    def load_collection(self, collection: Collection):
-        self.collection = collection
-        self.current_index = 0
-        self._update_current_image()
-
     def current_image(self) -> Image:
-        return self.collection.images[self.current_index]
+        return self.collection.nth(self.current_index)
 
     def _update_current_image(self):
         if self.has_images():

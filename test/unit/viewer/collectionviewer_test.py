@@ -115,9 +115,9 @@ def test_go_prev_updates_image_details(viewer):
 def test_load_collection_resets_index(viewer):
     viewer.go_next()
     viewer.go_next()
-    assert viewer.current_index == 2
+    assert viewer.current_index == 3
     viewer.load_collection(Collection("test collection", ""))
-    assert viewer.current_index == 0
+    assert viewer.current_index == 1
 
 def test_load_collection_resets_current_image(viewer):
     collection = Collection("test collection", "")
