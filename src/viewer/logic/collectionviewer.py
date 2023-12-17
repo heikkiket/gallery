@@ -31,6 +31,9 @@ class CollectionViewer(GObject.Object):
     def count(self):
         return self.collection.size()
 
+    def current_image(self) -> Image:
+        return self.collection.nth(self.current_index)
+
     def go_next(self):
         if self.collection.has_after(self.current_index):
             self.current_index = self.current_index + 1
@@ -42,9 +45,6 @@ class CollectionViewer(GObject.Object):
             self.current_index = self.current_index - 1
             self._update_current_image()
         return self
-
-    def current_image(self) -> Image:
-        return self.collection.nth(self.current_index)
 
     def _update_current_image(self):
         if self.has_images():
