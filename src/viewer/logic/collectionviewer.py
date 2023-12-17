@@ -22,14 +22,14 @@ class CollectionViewer(GObject.Object):
         return not self.collection.is_empty()
 
     def empty(self):
-        self.collection.images = []
+        self.collection = Collection.create_empty()
         self.current_image_details.clear()
 
     def count(self):
-        return len(self.collection.images)
+        return self.collection.size()
 
     def go_next(self):
-        if self.current_index < len(self.collection.images) - 1:
+        if self.current_index < self.collection.size() - 1:
             self.current_index = self.current_index + 1
             self._update_current_image()
         return self
