@@ -46,6 +46,10 @@ class CollectionViewer(GObject.Object):
             self._update_current_image()
         return self
 
+    def save_image_edits(self):
+        """Saves edits made to current image details into collection"""
+        self.current_image().metadata = self.current_image_details.eject_metadata()
+
     def _update_current_image(self):
         if self.has_images():
             self._update_current_image_path()
@@ -62,5 +66,3 @@ class CollectionViewer(GObject.Object):
     def _reset_index(self):
         self.current_index = 1
 
-    def save_collection(self):
-        pass

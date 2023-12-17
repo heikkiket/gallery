@@ -127,3 +127,9 @@ def test_load_collection_resets_current_image(viewer):
     viewer.go_next()
     viewer.load_collection(collection)
     assert viewer.current_image().metadata.title == "new test image"
+
+def test_edits_image_metadata(collection, viewer):
+    viewer.current_image_details.title = "edited title"
+    viewer.save_image_edits()
+    assert collection.images[0].metadata.title == "edited title"
+
