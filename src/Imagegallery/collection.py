@@ -25,3 +25,19 @@ class Collection:
 
     def size(self):
         return len(self.images)
+
+    def nth(self, index):
+        """
+        Get image from collection by index. Indexing starts from 1.
+
+        """
+        return self.images[index - 1]
+
+    def has_after(self, index):
+        """Checks if collection has image after given index. Indexing starts from 1."""
+        return index < len(self.images) and index > -1
+
+    def has_before(self, index):
+        """Checks if collection has image before given index. Indexing starts from 1."""
+        return index > 1 and index <= len(self.images)
+
