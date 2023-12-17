@@ -23,3 +23,5 @@ class Collection:
     def add_image(self, image: Image):
         self.images.append(image)
 
+    def size(self):
+        return len(self.images)
