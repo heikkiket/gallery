@@ -81,7 +81,8 @@ def test_can_load_empty_collection(viewer):
     viewer.load_collection(Collection("Foo", "bar/foo"))
     assert not viewer.has_images()
 
-def test_can_load_collection(viewer, collection):
+def test_can_load_collection(collection):
+    viewer = CollectionViewer()
     viewer.load_collection(collection)
     assert viewer.has_images()
 
