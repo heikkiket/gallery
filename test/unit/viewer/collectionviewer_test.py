@@ -29,9 +29,9 @@ def images():
     ]
 
 @pytest.fixture
-def viewer(images):
+def viewer(collection):
     viewer = CollectionViewer()
-    viewer.add_images(images)
+    viewer.load_collection(collection)
     return viewer
 
 @pytest.fixture
