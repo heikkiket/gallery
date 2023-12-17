@@ -38,6 +38,7 @@ class CollectionViewer(GObject.Object):
 
     def load_collection(self, collection: Collection):
         self.collection = collection
+        self.current_index = 0
         self._update_current_image()
 
     def current_image(self) -> Image:

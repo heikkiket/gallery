@@ -111,3 +111,19 @@ def test_go_prev_updates_image_details(viewer):
     viewer.go_prev()
     assert viewer.current_image_details.get_property("title") == "image 1"
 
+
+def test_load_collection_resets_index(viewer):
+    viewer.go_next()
+    viewer.go_next()
+    assert viewer.current_index == 2
+    viewer.load_collection(Collection("test collection", ""))
+    assert viewer.current_index == 0
+
+def test_load_collection_resets_current_image(viewer):
+    collection = Collection("test collection", "")
+    collection.add_image(Image(ImageFile(Path("test.jpg"), "jpg"),
+                               ImageMetadata(title="new test image")))
+
+    viewer.go_next()
+    viewer.load_collection(collection)
+    assert viewer.current_image().metadata.title == "new test image"
