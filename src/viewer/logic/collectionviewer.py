@@ -21,10 +21,6 @@ class CollectionViewer(GObject.Object):
     def has_images(self):
         return not self.collection.is_empty()
 
-    def empty(self):
-        self.collection = Collection.create_empty()
-        self.current_image_details.clear()
-
     def count(self):
         return self.collection.size()
 

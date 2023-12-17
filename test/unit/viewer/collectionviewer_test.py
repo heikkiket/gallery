@@ -73,10 +73,6 @@ def test_next_cant_go_out_of_bounds(viewer):
     viewer.go_next()
     assert viewer.go_next().current_image().file.name == "img3"
 
-def test_can_empty_viewer(viewer):
-    viewer.empty()
-    assert not viewer.has_images()
-
 def test_can_load_empty_collection(viewer):
     viewer.load_collection(Collection("Foo", "bar/foo"))
     assert not viewer.has_images()
@@ -115,6 +111,3 @@ def test_go_prev_updates_image_details(viewer):
     viewer.go_prev()
     assert viewer.current_image_details.get_property("title") == "image 1"
 
-def test_current_image_details_empty_after_calling_empty(viewer):
-    viewer.empty()
-    assert viewer.current_image_details.get_property("title") == ""
