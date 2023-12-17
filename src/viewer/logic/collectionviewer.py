@@ -8,19 +8,21 @@ from gi.repository import GObject
 
 class CollectionViewer(GObject.Object):
 
-    current_index = 1
-    current_image_path = GObject.Property(type=str, default="")
+    current_index :int
     current_image_details :ImageDetails
     collection :Collection
 
+    current_image_path= GObject.Property(type=str, default="") 
+
     def __init__(self) -> None:
         super().__init__()
+        self._reset_index()
         self.current_image_details = ImageDetails()
         self.collection = Collection.create_empty()
 
     def load_collection(self, collection: Collection):
         self.collection = collection
-        self.current_index = 1
+        self._reset_index()
         self._update_current_image()
 
     def has_images(self):
@@ -56,6 +58,9 @@ class CollectionViewer(GObject.Object):
             self.props.current_image_path = self.current_image().file.path_as_bytes()
         else:
             self.props.current_image_path = ""
+
+    def _reset_index(self):
+        self.current_index = 1
 
     def save_collection(self):
         pass
