@@ -96,3 +96,9 @@ def test_collections_has_metadata(imagegallery):
     assert metadata.title == "foo"
     assert metadata.description == "image desc"
     assert metadata.tags == ["bar"]
+
+
+def test_edits_in_collections_reflect_to_library_toml(imagegallery):
+    metadata = imagegallery.collections["foo/bar"].images[0].metadata
+    metadata.title = "my new title"
+    assert imagegallery.LibraryToml.get("foo/bar/img1.jpg").title == "my new title"
