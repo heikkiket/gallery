@@ -43,3 +43,7 @@ venv:
 #: Install dev dependencies
 dev-environment:
 	pip install ".[test]"
+
+#: Clean build artifacts
+clean:
+	rm -R build
