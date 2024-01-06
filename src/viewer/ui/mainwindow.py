@@ -2,6 +2,8 @@ import os
 
 import gi
 from viewer.ui.signal import signal
+from viewer.ui.widgets.collectiongrid import CollectionGridWidget
+from viewer.ui.widgets.imageviewer import ImageViewerWidget
 
 gi.require_version("Gtk", "3.0")
 from gi.repository import GObject, Gtk
@@ -14,15 +16,20 @@ class Mainwindow(Gtk.ApplicationWindow):
 
     stack = Gtk.Template.Child("main_stack")
 
-    def __init__(self, collectiongridwidget, imageviewerwidget, on_quit):
+    def __init__(self,
+                 collectiongridwidget :CollectionGridWidget,
+                 imageviewerwidget :ImageViewerWidget,
+                 on_quit):
         super().__init__()
-
-        signal.connect(signal.SWITCH_TO_IMAGE_VIEW, self.switch_to_image_view)
-        signal.connect(signal.SWITCH_TO_COLLECTIONGRID_VIEW, self.switch_to_collectiongrid_view)
 
         self.imageviewer = imageviewerwidget
         self.collectiongrid = collectiongridwidget
         self.on_quit = on_quit
+
+        signal.connect(signal.SWITCH_TO_IMAGE_VIEW,
+                       self.switch_to_image_view)
+        signal.connect(signal.SWITCH_TO_COLLECTIONGRID_VIEW,
+                       self.switch_to_collectiongrid_view)
 
         self.stack.add_named(collectiongridwidget, "collectiongrid")
         self.stack.add_named(imageviewerwidget, "imageviewer")
