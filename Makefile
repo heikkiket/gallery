@@ -8,15 +8,18 @@ help:
 
 #: Create a Python bundle from gallery with shiv
 bundle:
-	shiv -c gallery -o ~/bin/gallery .
+	@mkdir -p	bin
+	shiv -c gallery -o ./bin/gallery .
 
 #: Create a Python bundle from viewer with shiv
 viewer:
-		shiv -c gallery-viewer -o ~/bin/gallery-viewer .
+	@mkdir -p	bin
+	shiv -c gallery-viewer -o ./bin/gallery-viewer .
 
 #: Create a deb package
 build:
-	fpm -s python -t deb .
+	@mkdir -p	bin
+	fpm -s python -t deb ./bin
 
 .PHONY: test
 #: Run unit tests
