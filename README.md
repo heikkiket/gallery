@@ -16,7 +16,6 @@ Before we hop to all that, here's some links that give you a quick jump to other
  - [Why a world needs an UNIX-style image collection manager?](docs/why.md)
  - [Blog](docs/blog)
 
-
 ## gallery specification
 
 Your image gallery is just a directory tree containing pictures plus a library.toml file. An example directory tree could look like this:
@@ -73,7 +72,16 @@ The idea here is that the whole library.toml is easily hackable so you (or other
 
 ![Picture of gallery command line tool](./docs/screenshots/gallery-cmd.png)
 
-There is a simple, alpha-level utility called `gallery` that can be used to manipulate this gallery. Currently it has two functions.
+There is a simple, alpha-level utility called `gallery` that can be used to manipulate this gallery. Currently it has following functions.
+
+ * init
+ * list
+ * add
+ * edit
+
+The basic idea with this command and all these utilities is similar to for example Git: you use this command at the root of your image library. For example, if your images reside in `~/Photos/test_image_library`, then you will run all these commands in that directory.
+
+In that same directory resides your `library.toml` file.
 
 ### gallery list
 This command lists all the pictures in the library.toml. It checks that every image really exists on the disk and prints out *** FILE MISSING *** for ones that don't exist. Just go to the directory where library.toml sits and issue this command there.
@@ -90,18 +98,36 @@ This command creates a new library.toml by collecting all the image files from t
 gallery init > library.toml
 ```
 
+### gallery add
+This command adds a new file into library.toml file.
+One can define title, description or tags for an image by using this. Only filename is a mandatory argument.
+
+    gallery add -t "My image title" -d "A description for this image" --tags tag1 tag2 tag3 my_image.jpg
+
+### gallery edit
+With this you can edit image in a photo library. The command syntax is basically identical with add command.
+
+    gallery edit -t "My edited image title" -d "A new description" --tags newtag1 tag1 tag2 tag3 my_image.jpg
+
+If you only want to edit for example title, just give that argument like so:
+
+    gallery edit -t "My edited image title" my_image.jpg
+
 ## gallery-viewer (GTK)
 
 ![Picture of gallery-viewer](./docs/screenshots/gallery-viewer.png)
 
 gallery-viewer is a simple GTK-based program that can be started from command line and used to view images in the gallery. Start the program in the same directory that contains a library.toml file.
 
-gallery-viewer currently just lists all collections and allows to view images in each collection.
+Gallery-viewer actually allows also editing image metadata. So you can do quick fixes to your image library with that!
 
 In order to function gallery-viewer needs python3 installed in the host system as well as PyGobject library.
 
 ## Go and install it!
  Head to [INSTALL.md](INSTALL.md) to find out how!
+
+## Check out changelog
+I have a ugly but functional [CHANGELOG](CHANGELOG) generated with [git-cliff](https://github.com/orhun/git-cliff).
 
 ## Want to contribute?
 I value that greatly! Head on to [CONTRIBUTING.md](./CONTRIBUTING.md) to find out how to build the project.

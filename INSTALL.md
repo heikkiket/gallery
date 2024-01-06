@@ -6,6 +6,8 @@ If you don't know how to do that, there's also an deb-installation package for U
 
 [Head to releases and download this!](https://github.com/heikkiket/gallery/releases)
 
+If you aren't sure how to install and run these files, don't worry! This is an alpha level software, so if you can't install it, probably you couldn't use it either. Wait for few years and maybe this thing takes over the world! Then installation and usage will hopefully be easy.
+
 ### Installing PyGObject
 
 **In Ubuntu (and hopefully Debian as well):**
