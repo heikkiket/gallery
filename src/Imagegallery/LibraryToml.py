@@ -4,7 +4,7 @@ from Imagegallery.imagemetadata import ImageMetadata
 class LibraryToml:
 
     def __init__(self, library_toml):
-        self.library_toml = library_toml
+        self.library_toml = {filename:ImageMetadata.from_dict(metadata) for (filename, metadata) in library_toml.items()}
 
     def filenames(self):
         return list(self.library_toml.keys())
@@ -16,28 +16,27 @@ class LibraryToml:
         return filename in self.library_toml.keys()
 
     def add(self, filename, metadata=ImageMetadata()):
-        default_metadata = {
-            "title": "", "description": "", "tags": []
-        }
-        combined_metadata = default_metadata | metadata.as_dict()
-        self.library_toml[filename] = combined_metadata
+        self.library_toml[filename] = metadata
 
     def edit(self, filename, title=None, description=None, tags=None):
         if not self.has(filename):
             raise NoSuchImageError()
 
         if title:
-            self.library_toml[filename]["title"] = title
+            self.library_toml[filename].title = title
         if description:
-            self.library_toml[filename]["description"] = description
+            self.library_toml[filename].description = description
         if tags:
-            self.library_toml[filename]["tags"] = tags
+            self.library_toml[filename].tags = tags
 
     def get(self, filename):
         if not self.has(filename):
             raise NoSuchImageError()
 
-        return ImageMetadata.from_dict(self.library_toml[filename])
+        return self.library_toml[filename]
+
+    def to_dict(self):
+        return {filename:metadata.as_dict() for (filename, metadata) in self.library_toml.items()}
 
 class NoSuchImageError(Exception):
     pass

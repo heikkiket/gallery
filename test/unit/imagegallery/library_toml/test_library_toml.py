@@ -1,6 +1,7 @@
 import pytest
 
 from Imagegallery import LibraryToml, ImageMetadata, NoSuchImageError
+from test.unit.imagegallery.conftest import library_toml
 
 @pytest.fixture
 def library_data(library_toml):
@@ -75,3 +76,9 @@ def test_edit_changes_description(library_data):
 def test_edit_changes_tags(library_data):
     library_data.edit("path/to/image1.jpg", tags=["my", "new", "test"])
     assert library_data.get("path/to/image1.jpg").tags == ["my", "new", "test"]
+
+
+def test_to_dict():
+    library_toml = {"img1.jpg": {"title": "test image", "description": "Test description", "tags": ['foo', 'bar']}}
+    library = LibraryToml(library_toml)
+    assert library.to_dict() == library_toml

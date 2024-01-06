@@ -7,7 +7,7 @@ def save_library(libraryToml):
 
     file = open("library.toml", "wb")
     try:
-        tomli_w.dump(libraryToml.library_toml, file)
+        tomli_w.dump(libraryToml.to_dict(), file)
     except Exception as error:
         print("Error saving library to library.toml:", error)
         print("Here's what we tried to save:\n")
