@@ -19,7 +19,7 @@ viewer:
 #: Create a deb package
 build:
 	@mkdir -p	bin
-	fpm -s python -t deb ./bin
+	fpm -s python -t deb -p bin .
 
 .PHONY: test
 #: Run unit tests
