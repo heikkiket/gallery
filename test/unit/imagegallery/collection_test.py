@@ -88,3 +88,4 @@ def test_has_before_second_image(collection):
 
 def test_has_not_before_too_large_index(collection):
     assert not collection.has_before(3)
+
