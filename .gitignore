@@ -1,6 +1,10 @@
 /.venv/
 *.pyc
 /src/gallery.egg-info/*
-/build/
 /dist/
+# This is for small test code for Python
 /pocs/
+
+# Build related dirs
+/build/
+/bin/
