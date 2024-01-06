@@ -1,4 +1,5 @@
 from Imagegallery import Imagegallery
+from filesystem_operations.librarysaver import save_library
 from viewer.logic import GalleryViewer
 from viewer.ui.mainwindow import Mainwindow
 from viewer.ui.widgets.collectiongrid import CollectionGridWidget
@@ -15,8 +16,11 @@ def main():
         exit(1)
     gallery_viewer = GalleryViewer(gallery=imagegallery)
 
+    on_quit = lambda: save_library(imagegallery.LibraryToml)
+
     app = Mainwindow(
         CollectionGridWidget(model=gallery_viewer),
-        ImageViewerWidget(model=gallery_viewer.collection_viewer)
+        ImageViewerWidget(model=gallery_viewer.collection_viewer),
+        on_quit
     )
     app.start()
