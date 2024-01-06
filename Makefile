@@ -12,7 +12,7 @@ bundle:
 
 #: Create a Python bundle from viewer with shiv
 viewer:
-		shiv -c viewer -o ~/bin/gallery-viewer .
+		shiv -c gallery-viewer -o ~/bin/gallery-viewer .
 
 #: Create a deb package
 build:
