@@ -20,7 +20,7 @@ Before we hop to all that, here's some links that give you a quick jump to other
 
 Your photo library is just a directory tree containing pictures plus a library.toml file. An example directory tree could look like this:
 ```
-~/Pictures/gallery/
+~/Pictures/photo-library/
 ├── 2021
 │   └── 12
 │       └── 15
@@ -43,7 +43,7 @@ All the metadata is saved to a library.toml file. It looks like this:
 
 ```
 ["Wallpapers/Studio_Ghibli_Laputa_Laputa_Castle_in_the_Sky_Movie_Screenshots_far_view_anime_animated_movies-1845525.jpg"]
-title = ""
+title = "View from the sky"
 description = ""
 tags = ['movie', 'Laputa']
 
