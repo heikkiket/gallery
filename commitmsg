@@ -1,4 +1,4 @@
- : 
+: 
 #<type(scope)>: <description>
 #types: build, change, chore, ci, deprecate, docs, feat, fix, perf, refactor, remove, revert, security, style, test
 
