@@ -6,18 +6,20 @@ help:
 		| sed -n 's/^#: \(.*\)###\(.*\):.*/\2###\1/p' \
 		| column -t  -s '###'
 
-#: Create a Python bundle from gallery with shiv
+build-all: bundle viewer deb
+#: Create a Python bundle from photos with shiv
+
 bundle:
 	@mkdir -p	bin
-	shiv -c gallery -o ./bin/gallery .
+	shiv -c photos -o ./bin/photos .
 
-#: Create a Python bundle from viewer with shiv
+#: Create a Python bundle from photo-viewer with shiv
 viewer:
 	@mkdir -p	bin
-	shiv -c gallery-viewer -o ./bin/gallery-viewer .
+	shiv -c photo-viewer -o ./bin/photo-viewer .
 
 #: Create a deb package
-build:
+deb:
 	@mkdir -p	bin
 	fpm -s python -t deb -p bin .
 
@@ -46,4 +48,5 @@ dev-environment:
 
 #: Clean build artifacts
 clean:
+	rm -R bin
 	rm -R build

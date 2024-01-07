@@ -21,8 +21,8 @@ test = [
 ]
 
 [project.scripts]
-gallery = "gallerycmd:main"
-gallery-viewer = "viewer.ui.app:main"
+photos = "gallerycmd:main"
+photo-viewer = "viewer.ui.app:main"
 
 [tool.pytest.ini-options]
 testpaths = ["test",]

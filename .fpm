@@ -1,5 +1,5 @@
 -s python
---name gallery
+--name photos
 --license gpl3
 --version 0.3.1
 --architecture all
@@ -9,6 +9,6 @@
 --depends python3-tomli-w
 --depends python3-filetype
 
---description "A minimalist gallery application"
+--description "A minimalist photo library application"
 --url "https://github.com/heikkiket/gallery"
 --maintainer "Heikki Ketoharju <heikki.ketoharju@iki.fi>"
