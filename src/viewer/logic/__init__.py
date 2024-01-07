@@ -1,3 +1,3 @@
 from .collectionviewer import CollectionViewer
-from .galleryviewer import GalleryViewer
+from .libraryviewer import LibraryViewer
 

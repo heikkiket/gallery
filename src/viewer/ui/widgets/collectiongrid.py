@@ -5,7 +5,7 @@ import gi
 gi.require_version("Gtk", "3.0")
 from gi.repository import Gtk
 
-from viewer.logic import GalleryViewer
+from viewer.logic import LibraryViewer
 from viewer.ui.signal import signal
 from viewer.ui.widgets.collection import CollectionWidget
 
@@ -16,9 +16,9 @@ class CollectionGridWidget(Gtk.Box):
     __gtype_name__ = "collectiongrid"
 
     collections_grid = Gtk.Template.Child("collections")
-    model: GalleryViewer = None
+    model: LibraryViewer = None
 
-    def __init__(self, model :GalleryViewer):
+    def __init__(self, model :LibraryViewer):
         super().__init__()
 
         self.model = model

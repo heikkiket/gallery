@@ -4,7 +4,7 @@ import tomli
 from filesystem_operations.libraryreader import load_library
 
 
-def test_load_gallery_fails_without_filename():
+def test_load_photolibrary_fails_without_filename():
     with pytest.raises(TypeError, match="missing 1 required positional argument"):
         load_library()
 

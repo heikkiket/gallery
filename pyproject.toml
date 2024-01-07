@@ -1,5 +1,5 @@
 [project]
-name = "gallery"
+name = "photos"
 version = "0.3.1"
 dependencies = [
     # To read Toml
@@ -21,7 +21,7 @@ test = [
 ]
 
 [project.scripts]
-photos = "gallerycmd:main"
+photos = "photoscmd:main"
 photo-viewer = "viewer.ui.app:main"
 
 [tool.pytest.ini-options]

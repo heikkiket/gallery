@@ -1,6 +1,6 @@
 from gi.repository import GObject
 
-from Imagegallery.imagemetadata import ImageMetadata
+from PhotoLibrary.imagemetadata import ImageMetadata
 
 class ImageDetails(GObject.Object):
     title = GObject.Property(type=str, default="")

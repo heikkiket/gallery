@@ -2,7 +2,7 @@ from test.integration.filesystem_helpers import mkdir, mkfile, mkimg
 
 import pytest
 
-from Imagegallery import Filetree
+from PhotoLibrary import Filetree
 from filesystem_operations.filetreereader import Filetreereader
 
 

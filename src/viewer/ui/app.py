@@ -1,6 +1,6 @@
-from Imagegallery import Imagegallery
+from PhotoLibrary import PhotoLibrary
 from filesystem_operations.librarysaver import save_library
-from viewer.logic import GalleryViewer
+from viewer.logic import LibraryViewer
 from viewer.ui.mainwindow import Mainwindow
 from viewer.ui.widgets.collectiongrid import CollectionGridWidget
 from viewer.ui.widgets.imageviewer import ImageViewerWidget
@@ -9,18 +9,18 @@ from viewer.ui.widgets.imageviewer import ImageViewerWidget
 def main():
 
     try:
-        imagegallery = Imagegallery.from_disk()
+        photolibrary = PhotoLibrary.from_disk()
     except FileNotFoundError:
         print("No library.toml found from current working directory. Move to a directory containing a library.toml file or create one by issuing a following command:")
-        print("\n   gallery init\n")
+        print("\n   photos init\n")
         exit(1)
-    gallery_viewer = GalleryViewer(gallery=imagegallery)
+    library_viewer = LibraryViewer(photolibrary=photolibrary)
 
-    on_quit = lambda: save_library(imagegallery.LibraryToml)
+    on_quit = lambda: save_library(photolibrary.LibraryToml)
 
     app = Mainwindow(
-        CollectionGridWidget(model=gallery_viewer),
-        ImageViewerWidget(model=gallery_viewer.collection_viewer),
+        CollectionGridWidget(model=library_viewer),
+        ImageViewerWidget(model=library_viewer.collection_viewer),
         on_quit
     )
     app.start()

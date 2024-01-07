@@ -1,5 +1,5 @@
 import tomli_w
-from Imagegallery import LibraryToml
+from PhotoLibrary import LibraryToml
 
 def save_library(libraryToml):
     if not isinstance(libraryToml, LibraryToml):
