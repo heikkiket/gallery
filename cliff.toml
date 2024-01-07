@@ -19,13 +19,26 @@ body = """
 {% else %}\
     ## [unreleased]
 {% endif %}\
+
+{% macro commit(commit) -%}
+    - {% if commit.scope %}*({{ commit.scope }})* {% endif %}{% if commit.breaking %}[**breaking**] {% endif %}\
+        {{ commit.message | upper_first }} - [{{ commit.id | truncate(length=7, end="") }}]\
+{% endmacro -%}
+
 {% for group, commits in commits | group_by(attribute="group") %}
-    ### {{ group | upper_first }}
-    {% for commit in commits %}
-        - {% if commit.breaking %}[**breaking**] {% endif %}{{ commit.message | upper_first }}\
-    {% endfor %}
-{% endfor %}\n
-"""
+    ### {{ group | striptags | trim | upper_first }}
+    {% for commit in commits
+    | filter(attribute="scope")
+    | sort(attribute="scope") %}
+        {{ self::commit(commit=commit) }}
+    {%- endfor -%}
+    {% raw %}\n{% endraw %}\
+    {%- for commit in commits %}
+        {%- if not commit.scope -%}
+            {{ self::commit(commit=commit) }}
+        {% endif -%}
+    {% endfor -%}
+{% endfor %}\n"""
 # remove the leading and trailing whitespace from the template
 trim = true
 # changelog footer
@@ -52,17 +65,18 @@ commit_preprocessors = [
 # regex for parsing and grouping commits
 commit_parsers = [
   { message = "^feat", group = "Features" },
-  { message = "^fix", group = "Bug Fixes" },
-  { message = "^doc", group = "Documentation" },
+  { message = "^fix", group = "Fixed bugs" },
   { message = "^perf", group = "Performance" },
-  { message = "^refactor", group = "Refactor" },
-  { message = "^style", group = "Styling" },
-  { message = "^test", group = "Testing" },
+  { message = "^doc", group = "Refined Documentation" },
+  { message = "^refactor|^Refactor", group = "Refactor", skip = true },
+  { message = "^Change", group = "Change", skip = true },
+  { message = "^style", group = "Styling", skip = true },
+  { message = "^test", group = "Testing", skip = true },
   { message = "^chore\\(release\\): prepare for", skip = true },
   { message = "^chore\\(deps\\)", skip = true },
   { message = "^chore\\(pr\\)", skip = true },
   { message = "^chore\\(pull\\)", skip = true },
-  { message = "^chore|ci", group = "Miscellaneous Tasks" },
+  { message = "^chore|ci", group = "Miscellaneous Tasks", skip = true },
   { body = ".*security", group = "Security" },
   { message = "^revert", group = "Revert" },
 ]
@@ -80,6 +94,6 @@ ignore_tags = ""
 # sort the tags topologically
 topo_order = false
 # sort the commits inside sections by oldest/newest order
-sort_commits = "oldest"
+sort_commits = "newest"
 # limit the number of commits included in the changelog.
 # limit_commits = 42
