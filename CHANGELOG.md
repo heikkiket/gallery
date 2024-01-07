@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 
 ## [unreleased]
 
+### Refined Documentation
+
+- Use a new, git-cliff generated changelog format - [4565c24]
+## [0.3.0] - 2024-01-07
+
 ### Features
 
 - *(Imagegallery)* Imagegallery supports editing images - [ecfde12]
