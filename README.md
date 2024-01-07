@@ -127,7 +127,7 @@ In order to function gallery-viewer needs python3 installed in the host system a
  Head to [INSTALL.md](INSTALL.md) to find out how!
 
 ## Check out changelog
-I have a ugly but functional [CHANGELOG](CHANGELOG) generated with [git-cliff](https://github.com/orhun/git-cliff).
+I have a ugly but functional [CHANGELOG.md](CHANGELOG) generated with [git-cliff](https://github.com/orhun/git-cliff).
 
 ## Want to contribute?
 I value that greatly! Head on to [CONTRIBUTING.md](./CONTRIBUTING.md) to find out how to build the project.
