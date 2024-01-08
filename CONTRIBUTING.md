@@ -4,19 +4,20 @@ Currently this document mainly involves a short form developer documentation.
 
 ## Requirements:
 
- * Python 3
- * pip
- * make
- * git
+ * `Python 3`
+ * `python3-venv`
+ * `pip`
+ * `make`
+ * `git`
 
 And for packaging
 
- * shiv
- * fpm
+ * `shiv`
+ * `fpm`
 
 In Debian-based systems you can install these by issuing
 
-    sudo apt install python3 python3-pip make git
+    sudo apt install python3 python3-venv python3-pip make git
 
 ## Set up a development environment
 
@@ -42,7 +43,7 @@ Then activate your virtual environment:
 
 All commands from now on should be executed in this virtual environment.
 
-No, you might like to do pip install to install all dependencies. You need optional-dependency called *test* in order to run tests.
+Now, you might like to do pip install to install all dependencies. You need optional-dependency called *test* in order to run tests.
 
     pip install ".[test]"
 
