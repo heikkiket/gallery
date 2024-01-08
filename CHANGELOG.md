@@ -2,11 +2,21 @@
 
 All notable changes to this project will be documented in this file.
 
-## [unreleased]
+## [0.3.1] - 2024-01-08
+
+### Fixed bugs
+
+- Collection view doesn't lose image metadata anymore - [178530f]
+- Several tags are saved correctly after edits - [e9b97c1]
 
 ### Refined Documentation
 
+- Fix changelog so that it displays the right software version - [0e1d22e]
 - Use a new, git-cliff generated changelog format - [4565c24]
+
+### Build
+
+- Bump version - [0fca392]
 ## [0.3.0] - 2024-01-07
 
 ### Features
