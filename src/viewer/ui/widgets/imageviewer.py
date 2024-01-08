@@ -39,12 +39,10 @@ class ImageViewerWidget(Gtk.Box):
 
     @Gtk.Template.Callback()
     def next_button_clicked(self, _):
-        self.model.save_image_edits()
         self.model.go_next()
 
     @Gtk.Template.Callback()
     def prev_button_clicked(self, _):
-        self.model.save_image_edits()
         self.model.go_prev()
 
     @Gtk.Template.Callback()

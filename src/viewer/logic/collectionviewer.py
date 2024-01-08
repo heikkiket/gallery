@@ -36,12 +36,14 @@ class CollectionViewer(GObject.Object):
 
     def go_next(self):
         if self.collection.has_after(self.current_index):
+            self.save_image_edits()
             self.current_index = self.current_index + 1
             self._update_current_image()
         return self
 
     def go_prev(self):
         if self.collection.has_before(self.current_index):
+            self.save_image_edits()
             self.current_index = self.current_index - 1
             self._update_current_image()
         return self
