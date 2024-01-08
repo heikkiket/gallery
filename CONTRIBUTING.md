@@ -16,7 +16,7 @@ And for packaging
 
 In Debian-based systems you can install these by issuing
 
-    sudo apt install python3 python3-pip make git
+    sudo apt install python3 python3-venv python3-pip make git
 
 ## Set up a development environment
 
@@ -26,11 +26,11 @@ First, obtain code by doing a git clone:
 
 Then, you can either follow these commands manually or just execute all targets in Makefile.
 
-First, you need to set up a virtual environment. Of course, this is not mandatory, but pretty handy.
+First, you need to set up a virtual environment. This is mandatory on all systems which wish to follow [PEP 668](https://peps.python.org/pep-0668/) which prevents system-wide installs not handled by the system's package manager.
 
 I like to place my virtual env in hidden directory called `.venv`.
 
-    python -m venv .venv
+    python3 -m venv .venv
 
 or:
 
@@ -42,7 +42,7 @@ Then activate your virtual environment:
 
 All commands from now on should be executed in this virtual environment.
 
-No, you might like to do pip install to install all dependencies. You need optional-dependency called *test* in order to run tests.
+Now, you might like to do pip install to install all dependencies. You need optional-dependency called *test* in order to run tests.
 
     pip install ".[test]"
 

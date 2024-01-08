@@ -10,10 +10,10 @@ This project has three parts:
  * simple viewer program
 
 ## Useful links
-Before we hop to all that, here's some links that give you a quick jump to other parts of documentation
+Before we hop to all that, here are some links that give you a quick jump to other parts of documentation
 
  - [Installation](INSTALL.md)
- - [Why a world needs an UNIX-style image collection manager?](docs/why.md)
+ - [Why a world needs a UNIX-style image collection manager?](docs/why.md)
  - [Blog](docs/blog)
 
 ## gallery specification
@@ -22,16 +22,16 @@ Your image gallery is just a directory tree containing pictures plus a library.t
 ```
 ~/Pictures/gallery/
 ├── 2021
-│   └── 12
-│       └── 15
-│           └── image1.png
+│   └── 12
+│       └── 15
+│           └── image1.png
 ├── 2022
-│   ├── 01
-│   │   └── 15
-│   │       └── image2.png
-│   └── 03
-│       └── 02
-│           └── image3.jpg
+│   ├── 01
+│   │   └── 15
+│   │       └── image2.png
+│   └── 03
+│       └── 02
+│           └── image3.jpg
 └── library.toml
 ```
 
@@ -72,7 +72,7 @@ The idea here is that the whole library.toml is easily hackable so you (or other
 
 ![Picture of gallery command line tool](./docs/screenshots/gallery-cmd.png)
 
-There is a simple, alpha-level utility called `gallery` that can be used to manipulate this gallery. Currently it has following functions.
+There is a simple, alpha-level utility called `gallery` that can be used to manipulate this gallery. Currently, it has the following functions.
 
  * init
  * list
@@ -127,7 +127,7 @@ In order to function gallery-viewer needs python3 installed in the host system a
  Head to [INSTALL.md](INSTALL.md) to find out how!
 
 ## Check out changelog
-I have a ugly but functional [CHANGELOG.md](CHANGELOG.md) generated with [git-cliff](https://github.com/orhun/git-cliff).
+I have an ugly but functional [CHANGELOG.md](CHANGELOG.md) generated with [git-cliff](https://github.com/orhun/git-cliff).
 
 ## Want to contribute?
 I value that greatly! Head on to [CONTRIBUTING.md](./CONTRIBUTING.md) to find out how to build the project.
