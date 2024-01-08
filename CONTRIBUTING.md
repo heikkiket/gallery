@@ -26,11 +26,11 @@ First, obtain code by doing a git clone:
 
 Then, you can either follow these commands manually or just execute all targets in Makefile.
 
-First, you need to set up a virtual environment. Of course, this is not mandatory, but pretty handy.
+First, you need to set up a virtual environment.
 
 I like to place my virtual env in hidden directory called `.venv`.
 
-    python -m venv .venv
+    python3 -m venv .venv
 
 or:
 
@@ -42,7 +42,7 @@ Then activate your virtual environment:
 
 All commands from now on should be executed in this virtual environment.
 
-No, you might like to do pip install to install all dependencies. You need optional-dependency called *test* in order to run tests.
+Now, you might like to do pip install to install all dependencies. You need optional-dependency called *test* in order to run tests.
 
     pip install ".[test]"
 
