@@ -53,3 +53,9 @@ def test_eject_nulls_metadata(imagedetails):
     imagedetails.set_image_metadata(ImageMetadata(title="foo"))
     imagedetails.eject_metadata()
     assert imagedetails.title == ""
+
+def test_several_tags_are_ejected_properly(imagedetails):
+    imagedetails.set_image_metadata(ImageMetadata(tags=["bar", "baz"]))
+    metadata = imagedetails.eject_metadata()
+    assert metadata.tags == ["bar", "baz"]
+

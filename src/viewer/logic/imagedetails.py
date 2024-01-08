@@ -24,6 +24,6 @@ class ImageDetails(GObject.Object):
         metadata = self._image_metadata
         metadata.title = self.title
         metadata.description = self.description
-        metadata.tags = self.tags.split(",")
+        metadata.tags = self.tags.split(", ")
         self.clear()
         return metadata
