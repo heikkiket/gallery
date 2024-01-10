@@ -1,7 +1,7 @@
 import pytest
 import tomli
 
-from filesystem_operations.libraryreader import load_library
+from filesystem_operations.libraryreader import LibraryFileMissing, load_library
 
 
 def test_load_gallery_fails_without_filename():
@@ -9,7 +9,7 @@ def test_load_gallery_fails_without_filename():
         load_library()
 
 def test_file_not_found(tmp_path):
-    with pytest.raises(FileNotFoundError):
+    with pytest.raises(LibraryFileMissing):
         load_library(tmp_path / "foo")
 
 def test_file_not_toml(tmp_path):

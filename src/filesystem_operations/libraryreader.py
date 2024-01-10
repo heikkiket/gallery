@@ -2,4 +2,10 @@ import tomli
 
 
 def load_library(filename):
-    return tomli.load(open(filename, "rb"))
+    try:
+        return tomli.load(open(filename, "rb"))
+    except(FileNotFoundError):
+        raise LibraryFileMissing
+
+class LibraryFileMissing(Exception):
+    pass

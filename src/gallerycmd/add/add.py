@@ -1,4 +1,5 @@
 import sys
+from filesystem_operations.libraryreader import LibraryFileMissing
 from filesystem_operations.librarysaver import save_library
 
 from gallerycmd.parser import subparsers
@@ -14,6 +15,10 @@ def main(args):
         save_library(imagegallery.LibraryToml)
     except(FileNotFoundError):
         print("No such image:", args.filename)
+        exit(1)
+    except(LibraryFileMissing):
+        print("\nNo library.toml present!\n")
+        print("  You can create a new gallery by issuing 'gallery init > library.toml'")
         exit(1)
 
 

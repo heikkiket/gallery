@@ -1,12 +1,13 @@
 import pytest
 from _pytest import monkeypatch
+from filesystem_operations.libraryreader import LibraryFileMissing
 
 from test.integration.filesystem_helpers import mkdir
 from Imagegallery import Filetree, LibraryToml, Imagegallery
 
 def test_throws_if_no_library_toml(tmp_path, monkeypatch):
     monkeypatch.chdir(tmp_path)
-    with pytest.raises(FileNotFoundError):
+    with pytest.raises(LibraryFileMissing):
         gallery = Imagegallery.from_disk()
 
 def test_works_if_file_present(environment):
