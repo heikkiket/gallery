@@ -4,6 +4,6 @@ jobs:
   build-deb:
     runs-on: ubuntu-latest
     steps:
-      - run: apt install make fpm
+      - run: sudo apt install make fpm -y
       - name: create a deb package
         run: make build
