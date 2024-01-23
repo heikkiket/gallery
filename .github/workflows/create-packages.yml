@@ -9,3 +9,5 @@ jobs:
       - run: sudo gem install --no-document fpm
       - name: create a deb package
         run: make build
+      - name: create a github release
+        run: gh release create v1.2.3 --generate-notes bin/*.deb
