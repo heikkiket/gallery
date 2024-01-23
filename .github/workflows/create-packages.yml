@@ -1,5 +1,7 @@
 name: create-packages
 on: [push]
+env:
+  GH_TOKEN: ${{ github.token }}
 jobs:
   build-deb:
     runs-on: ubuntu-latest
