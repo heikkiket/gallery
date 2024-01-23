@@ -1,7 +1,11 @@
 name: create-packages
-on: [push]
+on:
+  push:
+    tags:
+    - 'v*'
 env:
   GH_TOKEN: ${{ github.token }}
+  VERSION: ${{ github.ref_name }}
 jobs:
   build-deb:
     runs-on: ubuntu-latest
@@ -12,4 +16,4 @@ jobs:
       - name: create a deb package
         run: make build
       - name: create a github release
-        run: gh release create v1.2.3 --generate-notes bin/*.deb
+        run: gh release create $VERSION --generate-notes bin/*.deb
