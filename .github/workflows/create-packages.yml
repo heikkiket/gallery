@@ -1,8 +1,9 @@
 name: create-packages
 on: [push]
 jobs:
-  test_job:
+  build-deb:
     runs-on: ubuntu-latest
     steps:
-      - run: python --version
-      - run: make
+      - run apt install make fpm
+      - name: create a deb package
+        run: make build
