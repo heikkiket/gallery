@@ -2,7 +2,7 @@ name: create-packages
 on:
   push:
     tags:
-    - 'v*'
+    - '*'
 env:
   GH_TOKEN: ${{ github.token }}
   VERSION: ${{ github.ref_name }}
