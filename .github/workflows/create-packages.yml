@@ -1,0 +1,8 @@
+name: create-packages
+on: [push]
+jobs:
+  test_job:
+    runs-on: ubuntu-latest
+    steps:
+      - run: python --version
+      - run: make
