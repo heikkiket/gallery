@@ -4,6 +4,7 @@ jobs:
   build-deb:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v4
       - run: sudo apt install make ruby-rubygems -y
       - run: sudo gem install --no-document fpm
       - name: create a deb package
