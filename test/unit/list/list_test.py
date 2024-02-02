@@ -1,8 +1,8 @@
 import pytest
 import tomli
 
-from gallerycmd.list import list
-from Imagegallery import Imagegallery
+from photoscmd.list import list
+from PhotoLibrary import PhotoLibrary
 
 singleimage = """
 ["path/to/image1.jpg"]
@@ -27,29 +27,29 @@ tags = ['foo']
 """
 
 @pytest.fixture
-def simple_gallery():
-    return Imagegallery.from_vars(
+def simple_photolibrary():
+    return PhotoLibrary.from_vars(
         tomli.loads(singleimage),
         None
     )
 
 @pytest.fixture
-def complex_gallery():
-    return Imagegallery.from_vars(
+def complex_photolibrary():
+    return PhotoLibrary.from_vars(
         tomli.loads(many_images),
         None
         )
 
-def test_list_single_image(simple_gallery):
-    formatted = list.format(simple_gallery)
+def test_list_single_image(simple_photolibrary):
+    formatted = list.format(simple_photolibrary)
     assert formatted == [
         "[path/to/image1.jpg]:",
         "My first image",
         "Image description",
         ""]
 
-def test_list_many_images(complex_gallery):
-    formatted = list.format(complex_gallery)
+def test_list_many_images(complex_photolibrary):
+    formatted = list.format(complex_photolibrary)
     assert formatted == [
         "[path/to/image1.jpg]:",
         "My first image",
@@ -61,9 +61,9 @@ def test_list_many_images(complex_gallery):
         ""
     ]
 
-def test_missing_file(simple_gallery):
-    simple_gallery.metadata["path/to/image1.jpg"]["missing"] = True
-    formatted = list.format(simple_gallery)
+def test_missing_file(simple_photolibrary):
+    simple_photolibrary.metadata["path/to/image1.jpg"]["missing"] = True
+    formatted = list.format(simple_photolibrary)
     assert formatted == [
         "[path/to/image1.jpg]:",
         "My first image",

@@ -6,7 +6,7 @@ from filesystem_operations.libraryreader import load_library
 
 from filesystem_operations.librarysaver import save_library, LibrarySaveError
 
-from Imagegallery import LibraryToml, Imagegallery
+from PhotoLibrary import LibraryToml, PhotoLibrary
 from test.integration.filesystem_helpers import file_exists
 
 @pytest.fixture
@@ -24,7 +24,7 @@ def test_throws_an_exception_with_empty_object():
 
 def test_only_accepts_library_toml_object():
     with pytest.raises(LibrarySaveError):
-        save_library(Imagegallery())
+        save_library(PhotoLibrary())
 
 def test_doesn_t_create_library_toml_with_wrong_argument(test_directory):
     try:
@@ -39,30 +39,30 @@ def test_creates_a_library_toml_file(test_directory):
     assert file_exists(test_directory / "library.toml")
 
 def test_file_has_right_content(test_directory):
-    example_gallery = {
+    example_library = {
         "image1.jpg": {
             "title": "foo",
             "description": "bar"
         }
     }
-    save_library(LibraryToml(example_gallery))
-    assert read_saved_library() == example_gallery
+    save_library(LibraryToml(example_library))
+    assert read_saved_library() == example_library
 
 def test_overrides_earlier_file(test_directory):
 
-    example_gallery = {
+    example_library = {
         "image1.jpg": {
             "title": "foo",
             "description": "bar"
         }
     }
 
-    save_library(LibraryToml(example_gallery))
+    save_library(LibraryToml(example_library))
 
-    example_gallery2 =  {
+    example_library2 =  {
         "image2": {
             "title": "test"
         }
     }
-    save_library(LibraryToml(example_gallery2))
-    assert read_saved_library() == example_gallery2
+    save_library(LibraryToml(example_library2))
+    assert read_saved_library() == example_library2

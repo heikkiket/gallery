@@ -1,5 +1,5 @@
 import gi
-from Imagegallery import Image, Collection
+from PhotoLibrary import Image, Collection
 from viewer.logic.imagedetails import ImageDetails
 
 gi.require_version("Gtk", "3.0")

@@ -1,6 +1,5 @@
 /.venv/
 *.pyc
-/src/gallery.egg-info/*
 /dist/
 # This is for small test code for Python
 /pocs/

@@ -2,7 +2,7 @@ import os
 
 import filetype
 
-from Imagegallery.filetree import Filetree
+from PhotoLibrary.filetree import Filetree
 
 
 class Filetreereader():

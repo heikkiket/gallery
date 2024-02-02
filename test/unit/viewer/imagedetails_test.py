@@ -1,6 +1,6 @@
 import pytest
 
-from Imagegallery.imagemetadata import ImageMetadata
+from PhotoLibrary.imagemetadata import ImageMetadata
 from viewer.logic.imagedetails import ImageDetails
 
 @pytest.fixture()

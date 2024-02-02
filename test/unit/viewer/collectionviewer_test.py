@@ -4,9 +4,9 @@ import unittest.mock as mock
 
 import pytest
 
-from Imagegallery import Collection, ImageFile
-from Imagegallery.image import Image
-from Imagegallery.imagemetadata import ImageMetadata
+from PhotoLibrary import Collection, ImageFile
+from PhotoLibrary.image import Image
+from PhotoLibrary.imagemetadata import ImageMetadata
 from viewer.logic import CollectionViewer
 
 @pytest.fixture
