@@ -1,18 +1,18 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.38.2 -->
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- Created with Cambalache 0.16.0 -->
 <interface>
+  <!-- interface-name imagedetails.ui -->
   <requires lib="gtk+" version="3.24"/>
-  <object class="GtkTextBuffer" id="description_buffer"/>
   <template class="imagedetails" parent="GtkBox">
-    <property name="visible">True</property>
     <property name="can-focus">False</property>
     <property name="orientation">vertical</property>
+    <property name="visible">True</property>
     <child>
       <object class="GtkLabel">
-        <property name="visible">True</property>
         <property name="can-focus">False</property>
         <property name="halign">start</property>
         <property name="label" translatable="yes">Image details</property>
+        <property name="visible">True</property>
         <attributes>
           <attribute name="weight" value="bold"/>
           <attribute name="scale" value="2"/>
@@ -21,25 +21,24 @@
       <packing>
         <property name="expand">False</property>
         <property name="fill">True</property>
-        <property name="position">0</property>
       </packing>
     </child>
     <child>
       <!-- n-columns=2 n-rows=3 -->
       <object class="GtkGrid" id="attributes">
-        <property name="visible">True</property>
         <property name="can-focus">False</property>
-        <property name="halign">center</property>
-        <property name="margin-start">30</property>
-        <property name="margin-end">30</property>
-        <property name="margin-top">30</property>
-        <property name="margin-bottom">30</property>
-        <property name="row-spacing">5</property>
         <property name="column-spacing">5</property>
+        <property name="halign">center</property>
+        <property name="margin-bottom">30</property>
+        <property name="margin-end">30</property>
+        <property name="margin-start">30</property>
+        <property name="margin-top">30</property>
+        <property name="row-spacing">5</property>
+        <property name="visible">True</property>
         <child>
           <object class="GtkEntry" id="tags">
-            <property name="visible">True</property>
             <property name="can-focus">True</property>
+            <property name="visible">True</property>
           </object>
           <packing>
             <property name="left-attach">1</property>
@@ -47,9 +46,19 @@
           </packing>
         </child>
         <child>
-          <object class="GtkEntry" id="title">
-            <property name="visible">True</property>
+          <object class="GtkEntry" id="description">
             <property name="can-focus">True</property>
+            <property name="visible">True</property>
+          </object>
+          <packing>
+            <property name="left-attach">1</property>
+            <property name="top-attach">1</property>
+          </packing>
+        </child>
+        <child>
+          <object class="GtkEntry" id="title">
+            <property name="can-focus">True</property>
+            <property name="visible">True</property>
           </object>
           <packing>
             <property name="left-attach">1</property>
@@ -58,10 +67,10 @@
         </child>
         <child>
           <object class="GtkLabel" id="title_label">
-            <property name="visible">True</property>
             <property name="can-focus">False</property>
             <property name="halign">start</property>
             <property name="label" translatable="yes">Title:</property>
+            <property name="visible">True</property>
             <property name="xalign">1</property>
           </object>
           <packing>
@@ -71,10 +80,10 @@
         </child>
         <child>
           <object class="GtkLabel" id="description_label">
-            <property name="visible">True</property>
             <property name="can-focus">False</property>
             <property name="halign">start</property>
             <property name="label" translatable="yes">Description:</property>
+            <property name="visible">True</property>
             <property name="xalign">1</property>
           </object>
           <packing>
@@ -84,10 +93,10 @@
         </child>
         <child>
           <object class="GtkLabel" id="tags_label">
-            <property name="visible">True</property>
             <property name="can-focus">False</property>
             <property name="halign">start</property>
             <property name="label" translatable="yes">Tags:</property>
+            <property name="visible">True</property>
             <property name="xalign">1</property>
           </object>
           <packing>
@@ -95,34 +104,10 @@
             <property name="top-attach">2</property>
           </packing>
         </child>
-        <child>
-          <object class="GtkScrolledWindow">
-            <property name="visible">True</property>
-            <property name="can-focus">True</property>
-            <property name="shadow-type">in</property>
-            <child>
-              <object class="GtkTextView" id="description">
-                <property name="visible">True</property>
-                <property name="can-focus">True</property>
-                <property name="wrap-mode">word</property>
-                <property name="left-margin">7</property>
-                <property name="right-margin">7</property>
-                <property name="top-margin">5</property>
-                <property name="bottom-margin">5</property>
-                <property name="buffer">description_buffer</property>
-              </object>
-            </child>
-          </object>
-          <packing>
-            <property name="left-attach">1</property>
-            <property name="top-attach">1</property>
-          </packing>
-        </child>
       </object>
       <packing>
         <property name="expand">False</property>
         <property name="fill">True</property>
-        <property name="position">1</property>
       </packing>
     </child>
   </template>

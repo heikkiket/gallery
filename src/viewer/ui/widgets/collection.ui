@@ -1,31 +1,31 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.22.2 -->
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- Created with Cambalache 0.16.0 -->
 <interface>
+  <!-- interface-name collection.ui -->
   <requires lib="gtk+" version="3.20"/>
   <template class="collection" parent="GtkBox">
-    <property name="visible">True</property>
-    <property name="can_focus">False</property>
+    <property name="can-focus">False</property>
     <property name="orientation">vertical</property>
+    <property name="visible">True</property>
     <child>
       <object class="GtkImage">
-        <property name="visible">True</property>
-        <property name="can_focus">False</property>
-        <property name="margin_top">26</property>
-        <property name="margin_bottom">25</property>
+        <property name="can-focus">False</property>
+        <property name="icon-size">6</property>
+        <property name="margin-bottom">25</property>
+        <property name="margin-top">26</property>
         <property name="stock">gtk-orientation-landscape</property>
-        <property name="icon_size">6</property>
+        <property name="visible">True</property>
       </object>
       <packing>
         <property name="expand">False</property>
         <property name="fill">True</property>
-        <property name="position">0</property>
       </packing>
     </child>
     <child>
       <object class="GtkLabel" id="name">
-        <property name="visible">True</property>
-        <property name="can_focus">False</property>
+        <property name="can-focus">False</property>
         <property name="label" translatable="yes">Holiday 2022</property>
+        <property name="visible">True</property>
         <attributes>
           <attribute name="weight" value="bold"/>
         </attributes>
@@ -33,14 +33,13 @@
       <packing>
         <property name="expand">False</property>
         <property name="fill">True</property>
-        <property name="position">1</property>
       </packing>
     </child>
     <child>
       <object class="GtkLabel" id="image_amount">
-        <property name="visible">True</property>
-        <property name="can_focus">False</property>
+        <property name="can-focus">False</property>
         <property name="label" translatable="yes">4 images</property>
+        <property name="visible">True</property>
         <attributes>
           <attribute name="style" value="italic"/>
         </attributes>
@@ -48,21 +47,19 @@
       <packing>
         <property name="expand">False</property>
         <property name="fill">True</property>
-        <property name="position">2</property>
       </packing>
     </child>
     <child>
       <object class="GtkButton" id="open_button">
+        <property name="can-focus">True</property>
         <property name="label" translatable="yes">Open</property>
+        <property name="receives-default">True</property>
         <property name="visible">True</property>
-        <property name="can_focus">True</property>
-        <property name="receives_default">True</property>
-        <signal name="clicked" handler="open_collection" swapped="no"/>
+        <signal name="clicked" handler="open_collection" swapped="yes"/>
       </object>
       <packing>
         <property name="expand">False</property>
         <property name="fill">True</property>
-        <property name="position">3</property>
       </packing>
     </child>
   </template>

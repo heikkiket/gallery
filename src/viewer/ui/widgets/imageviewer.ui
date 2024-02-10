@@ -1,61 +1,53 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!-- Generated with glade 3.38.2 -->
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- Created with Cambalache 0.16.0 -->
 <interface>
+  <!-- interface-name imageviewer.ui -->
   <requires lib="gtk+" version="3.20"/>
   <template class="imageviewer" parent="GtkBox">
-    <property name="visible">True</property>
     <property name="can-focus">False</property>
     <property name="orientation">vertical</property>
+    <property name="visible">True</property>
     <child>
       <object class="GtkButtonBox">
-        <property name="visible">True</property>
         <property name="can-focus">False</property>
         <property name="layout-style">start</property>
+        <property name="visible">True</property>
         <child>
           <object class="GtkButton">
-            <property name="label">gtk-go-back</property>
-            <property name="visible">True</property>
+            <property name="always-show-image">True</property>
             <property name="can-focus">True</property>
+            <property name="label">gtk-go-back</property>
             <property name="receives-default">True</property>
             <property name="use-stock">True</property>
-            <property name="always-show-image">True</property>
-            <signal name="clicked" handler="back_button_clicked" swapped="no"/>
+            <property name="visible">True</property>
+            <signal name="clicked" handler="back_button_clicked" swapped="yes"/>
           </object>
           <packing>
             <property name="expand">True</property>
             <property name="fill">True</property>
-            <property name="position">0</property>
           </packing>
-        </child>
-        <child>
-          <placeholder/>
-        </child>
-        <child>
-          <placeholder/>
         </child>
       </object>
       <packing>
         <property name="expand">False</property>
         <property name="fill">True</property>
-        <property name="position">0</property>
       </packing>
     </child>
     <child>
       <object class="GtkBox" id="controls">
-        <property name="visible">True</property>
         <property name="can-focus">False</property>
+        <property name="visible">True</property>
         <child>
           <object class="GtkButton" id="prev_button">
-            <property name="label" translatable="yes">prev</property>
-            <property name="visible">True</property>
             <property name="can-focus">True</property>
+            <property name="label" translatable="yes">prev</property>
             <property name="receives-default">True</property>
-            <signal name="clicked" handler="prev_button_clicked" swapped="no"/>
+            <property name="visible">True</property>
+            <signal name="clicked" handler="prev_button_clicked" swapped="yes"/>
           </object>
           <packing>
             <property name="expand">False</property>
             <property name="fill">True</property>
-            <property name="position">0</property>
           </packing>
         </child>
         <child>
@@ -65,46 +57,43 @@
           <packing>
             <property name="expand">True</property>
             <property name="fill">True</property>
-            <property name="position">1</property>
           </packing>
         </child>
         <child>
           <object class="GtkButton" id="next_button">
-            <property name="label" translatable="yes">next</property>
-            <property name="visible">True</property>
             <property name="can-focus">True</property>
+            <property name="label" translatable="yes">next</property>
             <property name="receives-default">True</property>
-            <signal name="clicked" handler="next_button_clicked" swapped="no"/>
+            <property name="visible">True</property>
+            <signal name="clicked" handler="next_button_clicked" swapped="yes"/>
           </object>
           <packing>
             <property name="expand">False</property>
             <property name="fill">True</property>
-            <property name="position">2</property>
           </packing>
         </child>
       </object>
       <packing>
         <property name="expand">False</property>
         <property name="fill">True</property>
-        <property name="position">1</property>
       </packing>
     </child>
     <child>
       <object class="GtkBox" id="image_area">
-        <property name="visible">True</property>
         <property name="can-focus">False</property>
+        <property name="visible">True</property>
         <child>
           <object class="GtkOverlay" id="image_display">
-            <property name="visible">True</property>
             <property name="can-focus">False</property>
+            <property name="visible">True</property>
             <child>
               <object class="GtkImage" id="image">
-                <property name="visible">True</property>
                 <property name="can-focus">False</property>
                 <property name="hexpand">True</property>
-                <property name="vexpand">True</property>
+                <property name="icon-size">6</property>
                 <property name="stock">gtk-missing-image</property>
-                <property name="icon_size">6</property>
+                <property name="vexpand">True</property>
+                <property name="visible">True</property>
               </object>
               <packing>
                 <property name="index">-1</property>
@@ -114,29 +103,23 @@
           <packing>
             <property name="expand">False</property>
             <property name="fill">True</property>
-            <property name="position">0</property>
           </packing>
-        </child>
-        <child>
-          <placeholder/>
         </child>
       </object>
       <packing>
         <property name="expand">False</property>
         <property name="fill">True</property>
-        <property name="position">2</property>
       </packing>
     </child>
     <child>
       <object class="GtkLabel">
-        <property name="visible">True</property>
         <property name="can-focus">False</property>
         <property name="label" translatable="yes">This software is pre-alpha. Don't expect too much!</property>
+        <property name="visible">True</property>
       </object>
       <packing>
         <property name="expand">False</property>
         <property name="fill">True</property>
-        <property name="position">3</property>
       </packing>
     </child>
   </template>
