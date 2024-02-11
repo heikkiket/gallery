@@ -5,7 +5,7 @@ from viewer.ui.signal import signal
 from viewer.ui.widgets.collectiongrid import CollectionGridWidget
 from viewer.ui.widgets.imageviewer import ImageViewerWidget
 
-gi.require_version("Gtk", "3.0")
+gi.require_version("Gtk", "4.0")
 from gi.repository import GObject, Gtk
 
 template = os.path.dirname(__file__) + "/mainwindow.ui"

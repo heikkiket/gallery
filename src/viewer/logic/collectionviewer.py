@@ -2,7 +2,7 @@ import gi
 from PhotoLibrary import Image, Collection
 from viewer.logic.imagedetails import ImageDetails
 
-gi.require_version("Gtk", "3.0")
+gi.require_version("Gtk", "4.0")
 from gi.repository import GObject
 
 
