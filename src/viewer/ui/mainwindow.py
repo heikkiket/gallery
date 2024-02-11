@@ -19,8 +19,9 @@ class Mainwindow(Gtk.ApplicationWindow):
     def __init__(self,
                  collectiongridwidget :CollectionGridWidget,
                  imageviewerwidget :ImageViewerWidget,
-                 on_quit):
-        super().__init__()
+                 on_quit,
+                 application=None):
+        super().__init__(application=application, title="Photo viewer")
 
         self.imageviewer = imageviewerwidget
         self.collectiongrid = collectiongridwidget
@@ -34,7 +35,6 @@ class Mainwindow(Gtk.ApplicationWindow):
         self.stack.add_named(collectiongridwidget, "collectiongrid")
         self.stack.add_named(imageviewerwidget, "imageviewer")
 
-        self.show_all()
         self.connect("destroy", self.quit)
 
     def switch_to_collectiongrid_view(self, _):
