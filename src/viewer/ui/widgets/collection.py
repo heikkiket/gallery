@@ -13,8 +13,8 @@ template = os.path.dirname(__file__) + "/collection.ui"
 class CollectionWidget(Gtk.Box):
     __gtype_name__ = "collection"
 
-    name = Gtk.Template.Child("name")
-    image_amount = Gtk.Template.Child("image_amount")
+    name = Gtk.Template.Child()
+    image_amount = Gtk.Template.Child()
 
 
     def __init__(self, collection):

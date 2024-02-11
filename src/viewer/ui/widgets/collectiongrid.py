@@ -27,7 +27,7 @@ class CollectionGridWidget(Gtk.Box):
                        self.switch_to_collection)
 
         for collection in self.model.list_collections():
-            self.collections_grid.add(CollectionWidget(collection))
+            self.collections_grid.append(CollectionWidget(collection))
 
     def switch_to_collection(self, signal, hash):
         self.model.switch_to_collection(hash)

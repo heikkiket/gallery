@@ -24,7 +24,7 @@ class ImageViewerWidget(Gtk.Box):
         super().__init__()
 
         self.model = model
-        self.image_area.add(ImageDetailsWidget(
+        self.image_area.append(ImageDetailsWidget(
             model=self.model.current_image_details))
         self.model.connect("notify::current-image-path",
                            self.update_image)
