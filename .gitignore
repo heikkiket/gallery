@@ -7,3 +7,6 @@
 # Build related dirs
 /build/
 /bin/
+
+# Ignore files added to samples by default
+samples/*
