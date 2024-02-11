@@ -6,13 +6,25 @@
   <template class="imageviewer" parent="GtkBox">
     <property name="orientation">vertical</property>
     <child>
+      <object class="GtkBox">
+        <child>
+          <object class="GtkButton" id="back_button">
+            <property name="icon-name">gtk-go-back-ltr</property>
+            <property name="label">Back</property>
+            <signal name="clicked" handler="back_button_clicked"/>
+          </object>
+        </child>
+      </object>
+    </child>
+    <child>
       <object class="GtkBox" id="controls">
         <child>
           <object class="GtkButton" id="prev_button">
             <property name="focusable">1</property>
+            <property name="icon-name">go-previous</property>
             <property name="label" translatable="yes">prev</property>
             <property name="receives-default">1</property>
-            <signal name="clicked" handler="prev_button_clicked" swapped="yes"/>
+            <signal name="clicked" handler="prev_button_clicked"/>
           </object>
         </child>
         <child>
@@ -24,9 +36,10 @@
         <child>
           <object class="GtkButton" id="next_button">
             <property name="focusable">1</property>
+            <property name="icon-name">go-next</property>
             <property name="label" translatable="yes">next</property>
             <property name="receives-default">1</property>
-            <signal name="clicked" handler="next_button_clicked" swapped="yes"/>
+            <signal name="clicked" handler="next_button_clicked"/>
           </object>
         </child>
       </object>
