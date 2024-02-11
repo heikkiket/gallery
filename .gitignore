@@ -1,7 +1,7 @@
 /.venv/
 *.pyc
 /dist/
-# This is for small test code for Python
+# This is for small try-outs with Python
 /pocs/
 
 # Build related dirs
