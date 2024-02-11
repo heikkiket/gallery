@@ -2,11 +2,11 @@
 <!DOCTYPE cambalache-project SYSTEM "cambalache-project.dtd">
 <cambalache-project version="0.13.1" target_tk="gtk-4.0">
   <ui>
-	(2,1,"mainwindow.ui","ohjelmakoodi/photolibrary/photolibrary/src/viewer/ui/mainwindow.cmb.ui",None,None,None,None,None,None,None),
-	(3,1,"collectiongrid.ui","ohjelmakoodi/photolibrary/photolibrary/src/viewer/ui/widgets/collectiongrid.ui",None,None,None,None,None,None,None),
-	(4,1,"imagedetails.ui","ohjelmakoodi/photolibrary/photolibrary/src/viewer/ui/widgets/imagedetails.ui",None,None,None,None,None,None,None),
-	(5,1,"imageviewer.ui","ohjelmakoodi/photolibrary/photolibrary/src/viewer/ui/widgets/imageviewer.ui",None,None,None,None,None,None,None),
-	(6,1,"collection.ui","ohjelmakoodi/photolibrary/photolibrary/src/viewer/ui/widgets/collection.ui",None,None,None,None,None,None,None)
+	(2,1,"mainwindow.ui","../src/viewer/ui/mainwindow.cmb.ui",None,None,None,None,None,None,None),
+	(3,1,"collectiongrid.ui","../src/viewer/ui/widgets/collectiongrid.ui",None,None,None,None,None,None,None),
+	(4,1,"imagedetails.ui","../src/viewer/ui/widgets/imagedetails.ui",None,None,None,None,None,None,None),
+	(5,1,"imageviewer.ui","../src/viewer/ui/widgets/imageviewer.ui",None,None,None,None,None,None,None),
+	(6,1,"collection.ui","../src/viewer/ui/widgets/collection.ui",None,None,None,None,None,None,None)
   </ui>
   <ui_library>
 	(2,"gtk","4.0",None),
@@ -32,14 +32,16 @@
 	(4,8,"GtkLabel","description_label",3,None,None,None,4,None),
 	(4,9,"GtkLabel","tags_label",3,None,None,None,5,None),
 	(5,1,"GtkBox","imageviewer",None,None,None,None,None,None),
-	(5,2,"GtkBox","controls",1,None,None,None,None,None),
+	(5,2,"GtkBox","controls",1,None,None,None,1,None),
 	(5,3,"GtkButton","prev_button",2,None,None,None,None,None),
 	(5,4,"GtkLabel","placeholder",2,None,None,None,1,None),
 	(5,5,"GtkButton","next_button",2,None,None,None,2,None),
-	(5,6,"GtkBox","image_area",1,None,None,None,1,None),
+	(5,6,"GtkBox","image_area",1,None,None,None,2,None),
 	(5,7,"GtkOverlay","image_display",6,None,None,None,None,None),
 	(5,8,"GtkImage","image",7,None,None,None,None,None),
-	(5,9,"GtkLabel",None,1,None,None,None,2,None),
+	(5,9,"GtkLabel",None,1,None,None,None,3,None),
+	(5,10,"GtkBox",None,1,None,None,None,None,None),
+	(5,11,"GtkButton","back_button",10,None,None,None,None,None),
 	(6,1,"GtkBox","collection",None,None,None,None,None,None),
 	(6,2,"GtkImage",None,1,None,None,None,None,None),
 	(6,3,"GtkLabel","name",1,None,None,None,1,None),
@@ -79,11 +81,13 @@
 	(4,9,"GtkLabel","xalign","1",None,None,None,None,None,None,None,None,None),
 	(4,9,"GtkWidget","halign","start",None,None,None,None,None,None,None,None,None),
 	(5,1,"GtkOrientable","orientation","vertical",None,None,None,None,None,None,None,None,None),
+	(5,3,"GtkButton","icon-name","go-previous",None,None,None,None,None,None,None,None,None),
 	(5,3,"GtkButton","label","prev",1,None,None,None,None,None,None,None,None),
 	(5,3,"GtkWidget","focusable","1",None,None,None,None,None,None,None,None,None),
 	(5,3,"GtkWidget","receives-default","1",None,None,None,None,None,None,None,None,None),
 	(5,4,"GtkWidget","hexpand","1",None,None,None,None,None,None,None,None,None),
 	(5,4,"GtkWidget","visible","0",None,None,None,None,None,None,None,None,None),
+	(5,5,"GtkButton","icon-name","go-next",None,None,None,None,None,None,None,None,None),
 	(5,5,"GtkButton","label","next",1,None,None,None,None,None,None,None,None),
 	(5,5,"GtkWidget","focusable","1",None,None,None,None,None,None,None,None,None),
 	(5,5,"GtkWidget","receives-default","1",None,None,None,None,None,None,None,None,None),
@@ -92,6 +96,8 @@
 	(5,8,"GtkWidget","hexpand","1",None,None,None,None,None,None,None,None,None),
 	(5,8,"GtkWidget","vexpand","1",None,None,None,None,None,None,None,None,None),
 	(5,9,"GtkLabel","label","This software is pre-alpha. Don't expect too much!",1,None,None,None,None,None,None,None,None),
+	(5,11,"GtkButton","icon-name","gtk-go-back-ltr",None,None,None,None,None,None,None,None,None),
+	(5,11,"GtkButton","label","Back",None,None,None,None,None,None,None,None,None),
 	(6,1,"GtkOrientable","orientation","vertical",None,None,None,None,None,None,None,None,None),
 	(6,2,"GtkImage","icon-size","6",None,None,None,None,None,None,None,None,None),
 	(6,2,"GtkWidget","margin-bottom","25",None,None,None,None,None,None,None,None,None),
@@ -117,9 +123,10 @@
 	(4,3,9,"GtkGridLayoutChild","row","2",None,None,None,None)
   </object_layout_property>
   <object_signal>
-	(1,5,3,"GtkButton","clicked","prev_button_clicked",None,None,"yes",None,None),
-	(2,5,5,"GtkButton","clicked","next_button_clicked",None,None,"yes",None,None),
-	(4,6,5,"GtkButton","clicked","open_collection",None,None,None,None,None)
+	(1,5,3,"GtkButton","clicked","prev_button_clicked",None,None,None,None,None),
+	(2,5,5,"GtkButton","clicked","next_button_clicked",None,None,None,None,None),
+	(4,6,5,"GtkButton","clicked","open_collection",None,None,None,None,None),
+	(9,5,11,"GtkButton","clicked","back_button_clicked",None,None,None,None,None)
   </object_signal>
   <object_data>
 	(4,2,"GtkLabel",1,1,None,None,None,None,None,None),
