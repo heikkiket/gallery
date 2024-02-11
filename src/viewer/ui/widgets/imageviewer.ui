@@ -51,7 +51,6 @@
             <property name="child">
               <object class="GtkImage" id="image">
                 <property name="hexpand">1</property>
-                <property name="icon-size">6</property>
                 <property name="vexpand">1</property>
               </object>
             </property>

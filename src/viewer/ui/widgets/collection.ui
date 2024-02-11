@@ -7,7 +7,6 @@
     <property name="orientation">vertical</property>
     <child>
       <object class="GtkImage">
-        <property name="icon-size">6</property>
         <property name="margin-bottom">25</property>
         <property name="margin-top">26</property>
       </object>

@@ -35,7 +35,7 @@ class ImageViewerWidget(Gtk.Box):
             pixbuf = GdkPixbuf.Pixbuf.new_from_file_at_scale(filename, 600, 600, True)
             self.image.set_from_pixbuf(pixbuf)
         except GLib.Error:
-            self.image.set_from_icon_name("image-missing", Gtk.IconSize.DIALOG)
+            self.image.set_from_icon_name("image-missing")
 
     @Gtk.Template.Callback()
     def next_button_clicked(self, _):
