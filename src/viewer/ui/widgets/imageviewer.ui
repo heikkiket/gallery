@@ -51,6 +51,8 @@
             <property name="child">
               <object class="GtkImage" id="image">
                 <property name="hexpand">1</property>
+                <property name="icon-name">gtk-image-missing</property>
+                <property name="icon-size">large</property>
                 <property name="vexpand">1</property>
               </object>
             </property>
