@@ -2,7 +2,7 @@
 <!DOCTYPE cambalache-project SYSTEM "cambalache-project.dtd">
 <cambalache-project version="0.13.1" target_tk="gtk-4.0">
   <ui>
-	(2,1,"mainwindow.ui","../src/viewer/ui/mainwindow.cmb.ui",None,None,None,None,None,None,None),
+	(2,1,"mainwindow.ui","../src/viewer/ui/mainwindow.ui",None,None,None,None,None,None,None),
 	(3,1,"collectiongrid.ui","../src/viewer/ui/widgets/collectiongrid.ui",None,None,None,None,None,None,None),
 	(4,1,"imagedetails.ui","../src/viewer/ui/widgets/imagedetails.ui",None,None,None,None,None,None,None),
 	(5,1,"imageviewer.ui","../src/viewer/ui/widgets/imageviewer.ui",None,None,None,None,None,None,None),
@@ -92,14 +92,16 @@
 	(5,5,"GtkWidget","focusable","1",None,None,None,None,None,None,None,None,None),
 	(5,5,"GtkWidget","receives-default","1",None,None,None,None,None,None,None,None,None),
 	(5,7,"GtkOverlay","child",None,None,None,None,None,8,None,None,None,None),
-	(5,8,"GtkImage","icon-size","6",None,None,None,None,None,None,None,None,None),
+	(5,8,"GtkImage","icon-name","gtk-image-missing",None,None,None,None,None,None,None,None,None),
+	(5,8,"GtkImage","icon-size","large",None,None,None,None,None,None,None,None,None),
 	(5,8,"GtkWidget","hexpand","1",None,None,None,None,None,None,None,None,None),
 	(5,8,"GtkWidget","vexpand","1",None,None,None,None,None,None,None,None,None),
 	(5,9,"GtkLabel","label","This software is pre-alpha. Don't expect too much!",1,None,None,None,None,None,None,None,None),
 	(5,11,"GtkButton","icon-name","gtk-go-back-ltr",None,None,None,None,None,None,None,None,None),
 	(5,11,"GtkButton","label","Back",None,None,None,None,None,None,None,None,None),
 	(6,1,"GtkOrientable","orientation","vertical",None,None,None,None,None,None,None,None,None),
-	(6,2,"GtkImage","icon-size","6",None,None,None,None,None,None,None,None,None),
+	(6,2,"GtkImage","icon-name","folder-pictures-symbolic",None,None,None,None,None,None,None,None,None),
+	(6,2,"GtkImage","icon-size","large",None,None,None,None,None,None,None,None,None),
 	(6,2,"GtkWidget","margin-bottom","25",None,None,None,None,None,None,None,None,None),
 	(6,2,"GtkWidget","margin-top","26",None,None,None,None,None,None,None,None,None),
 	(6,3,"GtkLabel","label","Holiday 2022",1,None,None,None,None,None,None,None,None),
