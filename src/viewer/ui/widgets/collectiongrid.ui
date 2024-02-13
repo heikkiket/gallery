@@ -12,11 +12,16 @@
       </object>
     </child>
     <child>
-      <object class="GtkFlowBox" id="collections">
-        <property name="column-spacing">3</property>
-        <property name="max-children-per-line">4</property>
-        <property name="min-children-per-line">3</property>
-        <property name="row-spacing">3</property>
+      <object class="GtkScrolledWindow">
+        <property name="child">
+          <object class="GtkFlowBox" id="collections">
+            <property name="column-spacing">3</property>
+            <property name="max-children-per-line">4</property>
+            <property name="row-spacing">3</property>
+          </object>
+        </property>
+        <property name="hscrollbar-policy">never</property>
+        <property name="propagate-natural-height">True</property>
       </object>
     </child>
   </template>
