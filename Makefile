@@ -7,15 +7,11 @@ help:
 		| column -t  -s '###'
 
 build-all: bundle viewer deb
-#: Create a Python bundle from photos with shiv
 
+#: Create a Python bundle from photos and photo-viewer with shiv
 bundle:
 	@mkdir -p	bin
 	shiv -c photos -o ./bin/photos .
-
-#: Create a Python bundle from photo-viewer with shiv
-viewer:
-	@mkdir -p	bin
 	shiv -c photo-viewer -o ./bin/photo-viewer .
 
 #: Create a deb package
