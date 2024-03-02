@@ -33,9 +33,9 @@ def main(args):
     print("\n".join(formatted))
 
 
-parser = subparsers.add_parser('list',
+parser = subparsers.add_parser(
+    'list',
     description="Lists photo library information into console",
-                               )
+)
 parser.add_argument('-t', '--tag')
 parser.set_defaults(func=main)
-
