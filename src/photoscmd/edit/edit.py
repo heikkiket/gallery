@@ -1,7 +1,9 @@
 from PhotoLibrary import PhotoLibrary
 from filesystem_operations.librarysaver import save_library
+from filesystem_operations.libraryreader import LibraryFileMissing
 
 from photoscmd.parser import subparsers
+from photoscmd.errors import print_libary_toml_missing_error
 
 
 def main(args):
@@ -17,6 +19,10 @@ def main(args):
     except(NeedsNamedArgument):
         print("You must provide either title, description or tags")
         exit(1)
+    except(LibraryFileMissing):
+        print_libary_toml_missing_error()
+        exit(1)
+
 
 def edit_image(filename, title=None, description=None, tags=None):
     photolibrary = PhotoLibrary.from_disk()

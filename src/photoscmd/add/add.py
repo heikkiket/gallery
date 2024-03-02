@@ -3,7 +3,9 @@ from filesystem_operations.libraryreader import LibraryFileMissing
 from filesystem_operations.librarysaver import save_library
 
 from photoscmd.parser import subparsers
+from photoscmd.errors import print_libary_toml_missing_error
 from PhotoLibrary import PhotoLibrary
+
 
 def main(args):
     try:
@@ -17,8 +19,7 @@ def main(args):
         print("No such image:", args.filename)
         exit(1)
     except(LibraryFileMissing):
-        print("\nNo library.toml present!\n")
-        print("  You can create a new gallery by issuing 'gallery init > library.toml'")
+        print_libary_toml_missing_error()
         exit(1)
 
 

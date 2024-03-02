@@ -1,6 +1,8 @@
 from photoscmd.parser import subparsers
 from PhotoLibrary import PhotoLibrary
 from PhotoLibrary.tags import filter_by_tag
+from filesystem_operations.libraryreader import LibraryFileMissing
+from photoscmd.errors import print_libary_toml_missing_error
 
 
 def format(photolibrary):
@@ -26,9 +28,9 @@ def main(args):
     try:
         photolibrary = PhotoLibrary.from_disk()
         photolibrary.flag_missing()
-    except FileNotFoundError:
-        print("No library.toml file found in this directory.")
-        exit(0)
+    except LibraryFileMissing:
+        print_libary_toml_missing_error()
+        exit(1)
 
     formatted = format(filter_by_tag(photolibrary, args.tag))
     print("\n".join(formatted))
