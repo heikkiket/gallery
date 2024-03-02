@@ -2,6 +2,37 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.3.2] - 2024-03-02
+
+### Features
+
+- Add scrolling to collectiongrid view - [64f943a]
+
+### Fixed bugs
+
+- Add gives proper error message when library.toml missing - [f0b3eea]
+
+### Refined Documentation
+
+- Inserted two drafts for blog posts about GTK development - [4679e80]
+- Add installation instructions for Fedora and Arch. - [4bd20c9]
+- Rename a last missing mention of "gallery" into photo library - [78d4c95]
+- Rename gallery -> photos in README - [543e3f4]
+- Update developer documentation a bit - [f9de867]
+
+### Build
+
+- Create a simple release routine - [c612405]
+- Combine shiv bundle steps to one - [b30c0fe]
+- Rename gallery -> photos in built packages - [7066962]
+
+### Change
+
+- Remove unneeded import in init.py - [876e9b5]
+- Enhance error messages for photos cmd - [e5a87a7]
+- Update icons for missing image and picture collections - [064d20f]
+- Port application to use GtkApplication - [69a58a2]
+- Upgrade to Gtk 4 - [b5ee358]
 ## [0.3.1] - 2024-01-08
 
 ### Fixed bugs
@@ -17,6 +48,10 @@ All notable changes to this project will be documented in this file.
 ### Build
 
 - Bump version - [0fca392]
+
+### Change
+
+- Bump version to 0.3.1 - [f80f137]
 ## [0.3.0] - 2024-01-07
 
 ### Features

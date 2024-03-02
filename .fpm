@@ -1,7 +1,7 @@
 -s python
 --name photos
 --license gpl3
---version 0.3.1
+--version 0.3.2
 --architecture all
 
 --no-python-dependencies
