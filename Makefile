@@ -14,6 +14,17 @@ bundle:
 	shiv -c photos -o ./bin/photos .
 	shiv -c photo-viewer -o ./bin/photo-viewer .
 
+#: Prepare a release. Pass a release with var VERSION=1.2.3
+release:
+ifndef VERSION
+	$(error Failed making a release. Define VERSION as an argument)
+endif
+
+	@echo Preparing version $(VERSION)
+	sed -i -E "s/--version .*/--version $(VERSION)/g" .fpm
+	sed -i -E "s/version = .*/version = \"$(VERSION)\"/g" pyproject.toml
+	git-cliff --tag $(VERSION) > CHANGELOG.md
+
 #: Create a deb package
 deb:
 	@mkdir -p	bin
