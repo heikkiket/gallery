@@ -1,7 +1,3 @@
-import sys
-
-import tomli
-
 from photoscmd.parser import subparsers
 from PhotoLibrary import PhotoLibrary
 from PhotoLibrary.tags import filter_by_tag
