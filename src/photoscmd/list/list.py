@@ -21,6 +21,7 @@ def format(photolibrary):
             rows.append("")
     return rows
 
+
 def main(args):
     try:
         photolibrary = PhotoLibrary.from_disk()
