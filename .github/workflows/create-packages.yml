@@ -16,8 +16,6 @@ jobs:
       - run: pip install setuptools shiv
       - name: create a deb package
         run: make deb
-      - name: create a Shiv bundle
-        run: make bundle
       - name: generate release notes for the latest release
         run: git-cliff --latest > release-notes.txt
       - name: create a github release
