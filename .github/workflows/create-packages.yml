@@ -11,6 +11,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - run: sudo apt update -y
       - run: sudo apt install make ruby-rubygems cargo -y
       - run: sudo gem install --no-document fpm
       - run: pip install setuptools shiv
