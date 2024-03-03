@@ -13,6 +13,7 @@ jobs:
       - uses: actions/checkout@v4
       - run: sudo apt install make ruby-rubygems -y
       - run: sudo gem install --no-document fpm
+      - run: pip install setuptools shiv
       - name: create a deb package
         run: make deb
       - name: create a Shiv bundle
