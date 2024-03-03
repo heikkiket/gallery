@@ -15,5 +15,7 @@ jobs:
       - run: sudo gem install --no-document fpm
       - name: create a deb package
         run: make deb
+      - name: create a Shiv bundle
+        run: make bundle
       - name: create a github release
         run: gh release create $VERSION --generate-notes bin/*.deb
