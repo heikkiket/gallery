@@ -12,13 +12,14 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: sudo apt update -y
-      - run: sudo apt install make ruby-rubygems cargo -y
+      - run: sudo apt install make ruby-rubygems -y
       - run: sudo gem install --no-document fpm
       - run: pip install setuptools shiv
-      - run: cargo install git-cliff
+      - run: wget "https://github.com/orhun/git-cliff/releases/download/v1.4.0/git-cliff-1.4.0-x86_64-unknown-linux-gnu.tar.gz"
+      - run: tar -xvzf git-cliff-*.tar.gz
       - name: create a deb package
         run: make deb
       - name: generate release notes for the latest release
-        run: git-cliff --latest > release-notes.txt
+        run: ./git-cliff/git-cliff --latest > release-notes.txt
       - name: create a github release
         run: gh release create $VERSION --notes-file release-notes.txt bin/*
