@@ -20,6 +20,6 @@ jobs:
       - name: create a deb package
         run: make deb
       - name: generate release notes for the latest release
-        run: ./git-cliff/git-cliff --latest > release-notes.txt
+        run: ./git-cliff-*/git-cliff --latest > release-notes.txt
       - name: create a github release
         run: gh release create $VERSION --notes-file release-notes.txt bin/*
