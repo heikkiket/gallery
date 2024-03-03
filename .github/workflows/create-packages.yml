@@ -21,4 +21,4 @@ jobs:
       - name: generate release notes for the latest release
         run: git-cliff --latest > release-notes.txt
       - name: create a github release
-        run: gh release create $VERSION --generate-notes --notes-file release-notes.txt bin/*
+        run: gh release create $VERSION --notes-file release-notes.txt bin/*
