@@ -17,5 +17,7 @@ jobs:
         run: make deb
       - name: create a Shiv bundle
         run: make bundle
+      - name: generate release notes for the latest release
+        run: git-cliff --latest > release-notes.txt
       - name: create a github release
-        run: gh release create $VERSION --generate-notes bin/*.deb
+        run: gh release create $VERSION --generate-notes --notes-file release-notes.txt bin/*
