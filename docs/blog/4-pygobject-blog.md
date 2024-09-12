@@ -1,22 +1,24 @@
 # Developing an application with GTK
 
-I started doing GTK application development with Python little bit over a year ago. It has been easy and delightful experience and I'd like to tell about my findings a bit.
+I started doing [GTK](https://gtk.org) application development with Python little bit over a year ago. It has been easy and delightful experience and I'd like to tell about my findings a bit.
 
 ## Background
 I chose Python as a language because it is pretty popular, general-purpose language and because GTK had reasonably good documentation for it.
 
-I chose my development language by rejecting worse options: I won't touch C unless someone pays me significant amounts of money, Vala is a special language used only by Gnome projects and Gnome's JavaScript is not the same thing as JavaScript I know from web development world. I probably couldn't use all the JS innovations from last ten years. At least this is what I do believe! Maybe someone proves me wrong. And while Rust is a nice and interesting language, I think it is pretty low-level for graphical desktop applications.
+I chose my development language by rejecting other options: I won't touch C unless someone pays me significant amounts of money, Vala is a special language used only by Gnome projects and Gnome's JavaScript is not the same thing as JavaScript I know from web development world. I probably couldn't use all the JS innovations from last ten years (AJM: I would verify this statement. AFAIK the JS engine is a faitly up to date version of SpiderMonkey.). ~At least this is what I do believe! Maybe someone proves me wrong. And~ While Rust is a nice and interesting language, I think it is pretty low-level for graphical desktop applications.
 
 In reality the quality of documentation could be a lot better, of course. That's the main reason I decided to write this blog: I hope I can do my part bridging the gap between Hello World examples, Python GTK 3 tutorial and API documentation.
+
+(AJM: Why not GTK 4? It's been out and stable for years.)
 
 But in general it's not too bad if you already know how to program.
 
 If you don't, there's plenty of nice Python tutorials out there. And when you have something working, it's pretty easy to add GUI parts with GTK on top of that.
 
 ## My development environment
-I use LTS Ubuntu with Gnome desktop for development. My editor of choice is Emacs, because I use it otherwise. It is important for me to use a free, native, general purpose editor that handles all my programming needs.
+I use LTS Ubuntu with Gnome desktop for development. My editor of choice is Emacs, because I use it otherwise (AJM: I would rephrase "because I use it otherwise", it's not how it's said in English. It's basically because you're familiar with it, right?). It is important for me to use a free, native, general purpose editor that handles all my programming needs.
 
-But I recommend trying Gnome builder. I have sometimes tried Gnome development with it and it's great. Learning Emacs takes away few years you could use for better purposes, e.g. developing free software. On the other hand, Emacs may be the last software you have to learn ;)
+But I recommend trying Gnome Builder. I have sometimes tried Gnome development with it and it's great. Learning Emacs takes away few years you could use for better purposes, e.g. developing free software. On the other hand, Emacs may be the last software you have to learn ;) (AJM: "Learning Emacs..." the last sentences are distracting, I would just remove them)
 
 I use LSP and Microsoft's language server for Python. As a test framework I chose pytest. I do my development inside Python virtual environment.
 
@@ -26,21 +28,23 @@ I push allmy code to Github. I don't feel good hosting my free software project 
 
 ## Nature of GTK
 
-If you have ever been working with 90's style native UI kits like JavaFX or .Net or whatever else, working with GTK feels familiar. Every user interface element is an object that can contain other objects. We interact with them via an object-oriented API.
+If you have ever been working with 90's (AJM: 90's? It's how it's done with every UI lib nowadays) style native UI kits like JavaFX or .Net or whatever else, working with GTK feels familiar. Every user interface element is an object that can contain other objects. We interact with them via an object-oriented API.
 
 That means code gets easily filled with getters and setters where I put one object inside other or pull from one object a reference to another in order to set some third object inside it. Also, you sometimes have to 'show' or 'activate' things with separate call. At least you have to show a window when you create it.
 
-This is a pretty stark contrast (or at least a mild one) to a present-day Web UI frameworks like React or Vue or whatever, where stuff is composed from components by using HTML-like template code and data flows via properties from parents to children.
+This is a pretty stark contrast (or at least a mild one) to a present-day Web UI frameworks like React or Vue ~or whatever~, where stuff is composed from components by using HTML-like template code and data flows via properties from parents to children.
 
 And of course you have to write signal and action handlers, but that is pretty similar to what one does with JS frameworks.
 
 Usually one doesn't worry about references when developing with those frameworks. In this sense GTK feels more "low-level". In reality references between components of course exist in JavaScript frameworks as well. And with Python there's no need to worry about references other than passing them around. No memory management or anything like that.
 
-## Creating UI:s
+## Creating UI's
 
-I define all UI:s via XML documents, in pure 90's/00's style. I don't like XML at all so I used Glade to do UI design. I don't like Glade either, because it has so weird and clunky user interface. I found a project called Cambalache which I plan to move next. There is a little bit of porting in order to move my .ui files to work with it.
+I define all UI's via XML documents, in pure 90's/00's style. I don't like XML at all so I used Glade to do UI design. I don't like Glade either, because it has so weird and clunky user interface. I found a project called Cambalache which I plan to move next. There is a little bit of porting in order to move my .ui files to work with it.
 
 I use functionality called Gtk.Template which allows me to load those XML files as part of my Python classes.
+
+(AJM: maybe something about the advantages of UI files? You do not have to code everything in Python. It shows the hierarchy of objects clearly. It works with UI editors.)
 
 I have to insert a little bit of boilerplate to do it, but only few lines.
 
@@ -64,14 +68,15 @@ Doing a lot of unit testing affects to my architecture. I have to separate GTK-r
 
 I do small commits, usually several per hour, into a single main branch of my git repository.
 
+(AJM: maybe to  separate article on the development style altogether? I like your approach: build the logic -- I assume you do not depend on PyGObject then -- and expose it via the GUI. This is how I tend to do it as well.)
 
 ## Architecture of this application
 
 In general I have a three-level architecture in my application: a library module, an I/O module and a GUI application part.
 
-I try to push all the actual functionality  into the library module that offers a clean object API outside. I/O module handles writing and reading to the disk. The GTK stuff I put into the GUI application module.
+I try to push all the actual functionality  into the library module that offers a clean API. I/O module handles writing and reading to the disk. The GTK stuff I put into the GUI application module.
 
-Inside GUI application module I divide functionality into two sub-modules: a model-part and a presenter/view sub-module. I first coined this architecture and then decided to call it Model-View-Presenter in the spirit of this Wikipedia article: https://en.m.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93presenter
+Inside the GUI application module I divide functionality into two sub-modules: a model-part and a presenter/view sub-module. I first coined this architecture and then decided to call it Model-View-Presenter in the spirit of this Wikipedia article: https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93presenter (AJM: What do you mean by "I first coined"?)
 
 I'm not too pedantic about naming, patterns and such, but I like to call my creations with precise and hopefully canonical names.
 
@@ -79,11 +84,12 @@ Model sub-module consists of calls to my library code and offering simple proper
 
 For example, I have next/previous buttons to browse images back and forth and for them I need a simple boundary-checking logic to prevent browsing past the list end.
 
-This way I can put all the GTK-related code into the presenter/view sub-module of my application. My goal is that in this sub-module there isn't a single if statement and hopefully not any for loops. Or in other words: no application logic lives inside presenter/view subsection of GUI module.
+This way I can put all the GTK-related code into the presenter/view sub-module of my application. My goal is that in this sub-module there isn't a single if statement and hopefully not any for loops. In other words: no application logic lives inside the presenter/view subsection of the GUI module.
 
-And on the other hand: no dependencies to GTK exists outside GUI module.
+Similarly: no dependencies to GTK exists outside the GUI module.
 
 I also try to keep the model sub-module of my GUI unit-testable. That means only GTK dependency allowed inside GUI/model is GObject dependencies: I don't want to mock any gui elements or suchlike. This way I can bind GObject properties from model to view/presenter submodule and on the other hand easily test my GObject property logic with unit tests.
+(AJM: You're saying that you're not mocking any GTK code. You can probably phrase this more concise. This is a very good approach, by the way.)
 
 Here's one example of a model, inheriting GObject.Object:
 ```
@@ -102,9 +108,10 @@ def test_image_details_has_needed_properties():
     assert ImageDetails().get_property("tags") == ""
 ```
 
-I have modelled all my user interfaces with a separate Cambalache application and exported them as .ui files. In addition, I have widget classes defined with Gtk.Template decorator, and there I connect all the signals and define click handlers and such.
+I have modelled all my user interfaces with a separate Cambalache application and exported them as .ui files. In addition, I have widget classes defined with a `Gtk.Template` decorator, and there I connect all the signals and define click handlers and such.
 
-I call these classes "presenters", think my ui-files as views and put inside these presenter classes a member property called "model" which references a model object from the model sub-module of my application.
+I call these classes "presenters". Think my ui-files as views and put inside these presenter classes a member property called "model" which references a model object from the model sub-module of my application.
+(AJM: The wording is somewhat confusing. You use Presenter classes to glue together the model and the UI. The presenter classes should only translate data from the model to the UI, and modify the model based on (user) events coming from the UI, right?)
 
 Here's an example of a widget class, playing a role of presenter:
 
@@ -127,22 +134,29 @@ class ImageDetailsWidget(Gtk.Box):
                                  GObject.BindingFlags.BIDIRECTIONAL)
 ```
 
-Actually, this is the class almost in its entirety. Note how declarative the code here is, when all the application logic resides in the model. GObject properties allow also declaring data bindings between model and presenter without any logic or model method calls.
-
+This is the class almost in its entirety. Note how declarative the code here is, when all the application logic resides in the model. GObject properties allow also declaring data bindings between model and presenter without any logic or model method calls.
 Here's also an example of my simple dependency injection style, where model is passed as a parameter to the class during instantiation.
 
+(AJM: Nice one. I haven't used any `bind_property` before in my code. This subject alone is worth a blog post. NB. GTK4 allows for bindings to be directly defined in the UI file.)
+
 In general I think it is good to separate all external library dependencies from the core application logic. My idea is that later I can easily move to a newer version of GTK. Also it would be possible to port my core application logic into some more performant language than Python if needed.
+(AJM: Looks like you're following the principles of the [Hexagonal/portal and adapters architecture](https://en.wikipedia.org/wiki/Hexagonal_architecture_(software)))
 
 ## My experiences
 Developing with GTK and PyGObject is not too bad at all, in my opinion. It is a little bit more complicated than using modern Web UI frameworks like React or Vue in a sense that somewhat more boilerplate is needed.
+(AJM: "not too bad" doesn't really convince anyone to give it a try. Maybe something a little more positive ;) )
 
-Also, I had to come up a good architecture by myself. For example with Vue it is basically pretty easy to separate all logic to a VueX state and use means it provides (actions, mutations, getters and so on) to wire data into the components and create almost declarative component syntax.
+Also, I had to come up with a good architecture by myself. For example with Vue it is basically pretty easy to separate all logic to a VueX state and use means it provides (actions, mutations, getters and so on) to wire data into the components and create almost declarative component syntax.
 
 On the other hand, Vue and React actually use some pretty modern/advanced programming paradigms, often originating from functional programming. Python plus GTK is pretty simple stuff and can be done with almost imperative style, only a little bit of object-oriented strucrures on the side.
+(AJM: Python also does support a functional programming style.)
 
 Of course I'm not sure how a beginner programmer sees these matters. Is Python with GTK a PHP-like combination where it is easy to write quick and dirty, hacky code and get things done? I myself value that kind of easiness although I'm a great proponent of clean code and clean architecture.
+(AJM: Not sure what you're trying to say here)
 
 And is it actually a pro that PyGObject is more Object-oriented than functional in style? I would need to do some more tinkering in ordee to find out how well GTK supports functional-style application development.
+
+(AJM: What I'm curious about now is why you wanted to build a desktop app, and not a webapp :) )
 
 ## Simple prototyping
 
